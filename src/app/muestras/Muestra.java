@@ -1,12 +1,13 @@
 package app.muestras;
 
 import app.vinchucas.*;
-import app.usuarios.*;
+import app.usuario.*;
+import app.ubicacion.*;
 
 public class Muestra {
 	
 	String fotoURL;
-	TipoUsuario muestraDeUsuario;
+	Usuario autor;
 	Ubicacion ubicacion;
 	
 	public TipoVinchuca especiaFotografiada{
