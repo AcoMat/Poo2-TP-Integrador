@@ -1,4 +1,4 @@
-package app.muestras;
+package app.sistemaDeVotos;
 
 public class SistemaDeVotos {
 
