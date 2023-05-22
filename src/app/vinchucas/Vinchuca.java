@@ -1,5 +1,5 @@
 package app.vinchucas;
 
-public class TipoVinchuca {
+public class Vinchuca {
 
 }
