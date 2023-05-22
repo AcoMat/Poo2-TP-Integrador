@@ -1,4 +1,4 @@
-package app.usuario;
+package app.muestras;
 
 public class Opinion {
 
