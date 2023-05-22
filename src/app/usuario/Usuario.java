@@ -1,5 +1,7 @@
 package app.usuario;
 
+import app.sistemaDeVotos.*;
+
 public class Usuario{
 	
 	String userName;
@@ -7,16 +9,22 @@ public class Usuario{
 	
 	//	Constructor
 	
-	public Usuario(Boolean validado) {
+	public Usuario(String name, Boolean validado) {
 		this.setConocimientoValidado(validado);
+		this.userName = name;
 	}
 
 
 	//	Setter
 
-	private void setConocimientoValidado(String name, boolean conocimientoValidado) {
-		this.userName = name;
+	private void setConocimientoValidado(boolean conocimientoValidado) {
 		this.conocimientoValidado = conocimientoValidado;
+	}
+	
+	//	Metodos
+	
+	public void opinar(TipoDeVoto voto) {
+		SistemaDeVotos.nuevaOpinion(this, voto);
 	}
 	
 	
