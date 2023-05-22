@@ -1,7 +1,7 @@
 package app.muestras;
 
-import app.vinchucas.*;
 import app.usuario.*;
+import app.sistemaDeVotos.*;
 import app.ubicacion.*;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Muestra {
 	
-	Vinchucha especie;
+	TipoDeVoto especie;
 	String fotoURL;
 	Usuario autor;
 	Ubicacion ubicacion;
@@ -18,7 +18,7 @@ public class Muestra {
 
 	//	Getters
 	
-	public Vinchucha getEspecie() {
+	public TipoDeVoto getEspecie() {
 		return especie;
 	}
 
@@ -37,7 +37,7 @@ public class Muestra {
 	
 	// Constructor
 
-	public Muestra(Vinchucha especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
+	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
 		this.especie = especie;
 		this.fotoURL = fotoURL;
 		this.autor = autor;
@@ -46,7 +46,7 @@ public class Muestra {
 	
 	// Metodos
 	
-	public Vinchuca resultadoActual() {
+	public TipoDeVoto resultadoActual() {
 		return sistemaDeVotos.calcularResultado(this.votos);
 	}
 	
