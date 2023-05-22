@@ -1,5 +1,5 @@
 package app.vinchucas;
 
-public class ChincheFoliada extends TipoVinchuca{
+public class ChincheFoliada extends Vinchuca{
 
 }
