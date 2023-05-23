@@ -3,13 +3,12 @@ package app.usuario;
 import app.sistemaDeVotos.SistemaDeVotos;
 import app.sistemaDeVotos.TipoDeVoto;
 
-public class Basico implements Estado {
+public class Experto implements Estado {
 	private Usuario usuario;
 
 	@Override
 	public void opinar(TipoDeVoto voto) {
 		SistemaDeVotos.nuevaOpinion(usuario, voto);
-
 	}
 
 	@Override

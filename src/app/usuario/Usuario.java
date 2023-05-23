@@ -30,7 +30,7 @@ public class Usuario {
 	// Metodos
 
 	public void opinar(TipoDeVoto voto) {
-		SistemaDeVotos.nuevaOpinion(this, voto);
+		this.estado.opinar(voto);
 	}
 
 }
