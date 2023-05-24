@@ -1,8 +1,8 @@
-package app.usuario;
+package sistema.usuario;
 
-import app.muestras.Muestra;
-import app.sistemaDeVotos.SistemaDeVotos;
-import app.sistemaDeVotos.TipoDeVoto;
+import sistema.muestras.Muestra;
+import sistema.sistemaDeVotos.SistemaDeVotos;
+import sistema.sistemaDeVotos.TipoDeVoto;
 
 public class Basico implements Tipo {
 	private Usuario usuario;

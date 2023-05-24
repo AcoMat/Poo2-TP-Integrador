@@ -1,7 +1,7 @@
-package app.usuario;
+package sistema.usuario;
 
-import app.muestras.Muestra;
-import app.sistemaDeVotos.TipoDeVoto;
+import sistema.muestras.Muestra;
+import sistema.sistemaDeVotos.TipoDeVoto;
 
 public interface Tipo {
 

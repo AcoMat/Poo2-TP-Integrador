@@ -1,6 +1,6 @@
-package app.sistemaDeVotos;
+package sistema.sistemaDeVotos;
 
-import app.usuario.Usuario;
+import sistema.usuario.Usuario;
 
 public class SistemaDeVotos {
 
@@ -9,6 +9,10 @@ public class SistemaDeVotos {
     }
 
     public static void nuevaOpinionExperto(Usuario usuario, TipoDeVoto voto) {
+
+    }
+
+    public void calcularResultado(){
 
     }
 }
