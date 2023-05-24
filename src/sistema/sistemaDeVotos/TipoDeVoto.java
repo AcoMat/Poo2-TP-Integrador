@@ -1,4 +1,4 @@
-package app.sistemaDeVotos;
+package sistema.sistemaDeVotos;
 
 public enum TipoDeVoto {
 	Vinchuca_Infestans,
