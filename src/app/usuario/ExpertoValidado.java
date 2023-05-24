@@ -1,4 +1,5 @@
 package app.usuario;
 
-public class ExpertoValidado {
+public class ExpertoValidado extends Experto {
+
 }

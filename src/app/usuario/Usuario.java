@@ -1,36 +1,42 @@
 package app.usuario;
 
+import app.muestras.Muestra;
 import app.sistemaDeVotos.*;
 
 public class Usuario {
 
-	String userName;
-	boolean conocimientoValidado = false;
+	private String userName;
 	private Tipo state;
 
 	// Constructor
 
 	public Usuario(String name, Boolean validado) {
-		this.setConocimientoValidado(validado);
-		this.userName = name;
-		this.setEstado(new Basico());
+		if (validado){
+			this.setTipo(new ExpertoValidado());
+			this.setUserName(name);
+		}else {
+			this.setTipo(new Basico());
+			this.setUserName(name);
+		}
 	}
 
 	// Setter
 
-	public void setEstado(Tipo state) {
+	private void setTipo(Tipo state) {
 		this.state = state;
 		this.state.setUsuario(this);
 	}
 
-	private void setConocimientoValidado(boolean conocimientoValidado) {
-		this.conocimientoValidado = conocimientoValidado;
+	private void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	// Metodos
 
-	public void opinar(TipoDeVoto voto) {
-		this.state.opinar(voto);
+	public void opinar(TipoDeVoto voto, Muestra muestra) {
+		this.state.opinar(voto, muestra);
 	}
+
+
 
 }
