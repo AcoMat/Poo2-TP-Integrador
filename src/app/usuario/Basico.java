@@ -3,7 +3,7 @@ package app.usuario;
 import app.sistemaDeVotos.SistemaDeVotos;
 import app.sistemaDeVotos.TipoDeVoto;
 
-public class Basico implements Estado {
+public class Basico implements Tipo {
 	private Usuario usuario;
 
 	@Override

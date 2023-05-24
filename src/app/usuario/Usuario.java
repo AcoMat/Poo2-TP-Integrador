@@ -6,7 +6,7 @@ public class Usuario {
 
 	String userName;
 	boolean conocimientoValidado = false;
-	private Estado estado;
+	private Tipo state;
 
 	// Constructor
 
@@ -16,12 +16,12 @@ public class Usuario {
 		this.setEstado(new Basico());
 	}
 
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-		this.estado.setUsuario(this);
-	}
-
 	// Setter
+
+	public void setEstado(Tipo state) {
+		this.state = state;
+		this.state.setUsuario(this);
+	}
 
 	private void setConocimientoValidado(boolean conocimientoValidado) {
 		this.conocimientoValidado = conocimientoValidado;
@@ -30,7 +30,7 @@ public class Usuario {
 	// Metodos
 
 	public void opinar(TipoDeVoto voto) {
-		this.estado.opinar(voto);
+		this.state.opinar(voto);
 	}
 
 }

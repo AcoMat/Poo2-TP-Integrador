@@ -2,7 +2,7 @@ package app.usuario;
 
 import app.sistemaDeVotos.TipoDeVoto;
 
-public interface Estado {
+public interface Tipo {
 
 	void opinar(TipoDeVoto voto);
 
