@@ -10,7 +10,6 @@ public class Usuario {
 
 	private String userName;
 	private Tipo state;
-	private ArrayList<Muestra> muestrasPosteadas;
 
 	// Constructor
 
@@ -41,15 +40,6 @@ public class Usuario {
 
 	// Metodos
 
-	public void opinar(TipoDeVoto voto, Muestra muestra) {
-		this.state.opinar(voto, muestra);
-	}
-
-	public void postearMuestra(TipoDeVoto opinion, String fotoURL, Ubicacion ubicacion){
-		Muestra m = new Muestra(opinion, fotoURL, this, ubicacion);
-		muestrasPosteadas.add(m);
-
-	}
 
 
 }

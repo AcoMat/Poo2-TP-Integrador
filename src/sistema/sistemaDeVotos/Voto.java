@@ -1,5 +1,5 @@
 package sistema.sistemaDeVotos;
 
-public class Opinion {
+public class Voto {
 
 }
