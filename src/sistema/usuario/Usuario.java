@@ -1,15 +1,9 @@
 package sistema.usuario;
 
-import sistema.muestras.Muestra;
-import sistema.sistemaDeVotos.*;
-import sistema.ubicacion.Ubicacion;
-
-import java.util.ArrayList;
-
 public class Usuario {
 
 	private String userName;
-	private Tipo state;
+	private Nivel state;
 
 	// Constructor
 
@@ -25,7 +19,7 @@ public class Usuario {
 
 	// Setter y Getters
 
-	private void setTipo(Tipo state) {
+	private void setTipo(Nivel state) {
 		this.state = state;
 		this.state.setUsuario(this);
 	}

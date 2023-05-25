@@ -4,7 +4,7 @@ import sistema.muestras.Muestra;
 import sistema.sistemaDeVotos.SistemaDeVotos;
 import sistema.sistemaDeVotos.TipoDeVoto;
 
-public class Basico implements Tipo {
+public class Basico implements Nivel {
 	private Usuario usuario;
 
 	@Override
