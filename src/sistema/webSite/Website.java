@@ -21,7 +21,7 @@ public class Website {
     }
 
     public void registrarOpinion(Muestra muestra, TipoDeVoto voto, Usuario user){
-        sistemaDeVotos.
+        sistemaDeVotos.agregarOpinion(muestra, voto, user);
     }
 
 

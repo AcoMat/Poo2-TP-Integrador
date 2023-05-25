@@ -9,7 +9,7 @@ public class Experto implements Nivel {
 
 	@Override
 	public void opinar(TipoDeVoto voto, Muestra muestra) {
-		SistemaDeVotos.nuevaOpinionExperto(usuario, voto);
+
 	}
 
 

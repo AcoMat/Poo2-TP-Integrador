@@ -1,5 +1,8 @@
 package sistema.usuario;
 
+import sistema.muestras.Muestra;
+import sistema.sistemaDeVotos.TipoDeVoto;
+
 public class Usuario {
 
 	private String userName;
@@ -17,7 +20,7 @@ public class Usuario {
 		}
 	}
 
-	// Setter y Getters
+	// Setter
 
 	private void setTipo(Nivel state) {
 		this.state = state;
@@ -28,11 +31,22 @@ public class Usuario {
 		this.userName = userName;
 	}
 
+	//	Getters
+
 	public String getUserName() {
 		return userName;
 	}
+	public Nivel getState() {
+		return state;
+	}
+
 
 	// Metodos
+
+	public void opinar(TipoDeVoto voto, Muestra muestra){
+		this.getState().opinar(voto, muestra);
+	}
+
 
 
 

@@ -13,6 +13,8 @@ public class Muestra {
 	Usuario autor;
 	Ubicacion ubicacion;
 	TipoDeVoto resultadoActual;
+
+	ArrayList<Opinion> opiniones;
 	
 
 	//	Getters
@@ -28,6 +30,9 @@ public class Muestra {
 	}
 	public TipoDeVoto getResultadoActual() {
 		return resultadoActual;
+	}
+	public ArrayList<Opinion> getOpiniones() {
+		return opiniones;
 	}
 
 	//	Setters
