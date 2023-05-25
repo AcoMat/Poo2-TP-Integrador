@@ -12,7 +12,6 @@ public class Muestra {
 	String fotoURL;
 	Usuario autor;
 	Ubicacion ubicacion;
-	ArrayList<Voto> votos;
 	TipoDeVoto resultadoActual;
 	
 
