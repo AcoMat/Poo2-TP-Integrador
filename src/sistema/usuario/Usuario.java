@@ -1,16 +1,12 @@
 package sistema.usuario;
 
 import sistema.muestras.Muestra;
-import sistema.sistemaDeVotos.*;
-import sistema.ubicacion.Ubicacion;
-
-import java.util.ArrayList;
+import sistema.sistemaDeVotos.TipoDeVoto;
 
 public class Usuario {
 
 	private String userName;
-	private Tipo state;
-	private ArrayList<Muestra> muestrasPosteadas;
+	private Nivel state;
 
 	// Constructor
 
@@ -24,9 +20,9 @@ public class Usuario {
 		}
 	}
 
-	// Setter y Getters
+	// Setter
 
-	private void setTipo(Tipo state) {
+	private void setTipo(Nivel state) {
 		this.state = state;
 		this.state.setUsuario(this);
 	}
@@ -35,21 +31,23 @@ public class Usuario {
 		this.userName = userName;
 	}
 
+	//	Getters
+
 	public String getUserName() {
 		return userName;
 	}
+	public Nivel getState() {
+		return state;
+	}
+
 
 	// Metodos
 
-	public void opinar(TipoDeVoto voto, Muestra muestra) {
-		this.state.opinar(voto, muestra);
+	public void opinar(TipoDeVoto voto, Muestra muestra){
+		this.getState().opinar(voto, muestra);
 	}
 
-	public void postearMuestra(TipoDeVoto opinion, String fotoURL, Ubicacion ubicacion){
-		Muestra m = new Muestra(opinion, fotoURL, this, ubicacion);
-		muestrasPosteadas.add(m);
 
-	}
 
 
 }

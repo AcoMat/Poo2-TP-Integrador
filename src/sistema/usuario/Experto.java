@@ -4,12 +4,12 @@ import sistema.muestras.Muestra;
 import sistema.sistemaDeVotos.SistemaDeVotos;
 import sistema.sistemaDeVotos.TipoDeVoto;
 
-public class Experto implements Tipo {
+public class Experto implements Nivel {
 	private Usuario usuario;
 
 	@Override
 	public void opinar(TipoDeVoto voto, Muestra muestra) {
-		SistemaDeVotos.nuevaOpinionExperto(usuario, voto);
+
 	}
 
 

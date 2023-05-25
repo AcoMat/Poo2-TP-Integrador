@@ -1,18 +1,12 @@
 package sistema.sistemaDeVotos;
 
+import sistema.muestras.Muestra;
 import sistema.usuario.Usuario;
 
 public class SistemaDeVotos {
 
-    public static void nuevaOpinionBasico(Usuario usuario, TipoDeVoto voto) {
 
-    }
-
-    public static void nuevaOpinionExperto(Usuario usuario, TipoDeVoto voto) {
-
-    }
-
-    public void calcularResultado(){
+    public void agregarOpinion(Muestra muestra, TipoDeVoto voto, Usuario user) {
 
     }
 }
