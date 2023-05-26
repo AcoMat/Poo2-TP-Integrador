@@ -12,9 +12,8 @@ public class Muestra {
 	String fotoURL;
 	Usuario autor;
 	Ubicacion ubicacion;
-	TipoDeVoto resultadoActual;
 
-	ArrayList<Opinion> opiniones;
+	ManejadorDeVotos hadler = new ManejadorDeVotos();
 	
 
 	//	Getters
@@ -28,13 +27,9 @@ public class Muestra {
 	public Ubicacion getUbicacion() {
 		return ubicacion;
 	}
-	public TipoDeVoto getResultadoActual() {
-		return resultadoActual;
+	public ManejadorDeVotos getHadler() {
+		return hadler;
 	}
-	public ArrayList<Opinion> getOpiniones() {
-		return opiniones;
-	}
-
 	//	Setters
 
 	public void setFotoURL(String fotoURL) {
@@ -46,24 +41,27 @@ public class Muestra {
 	public void setUbicacion(Ubicacion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-	public void setResultadoActual(TipoDeVoto resultadoActual) {
-		this.resultadoActual = resultadoActual;
-	}
 
 
 	// Constructor
 
 	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
-		this.setResultadoActual(especie);
+		this.getHadler().asociarMuestra(this);
 		this.setFotoURL(fotoURL);
 		this.setAutor(autor);
 		this.setUbicacion(ubicacion);
 	}
 	
 	// Metodos
-	
-	public TipoDeVoto resultadoActual() {
-		return this.getResultadoActual();
+
+	public void registrarOpinion(Opinion o){
+		this.getHadler().registrarOpinion(o);
+	}
+
+	// la muestra de un experto la pueden opinar basicos? seguramente no??
+
+	public resultadoActual(){
+		this.getHadler().resultadoActual();
 	}
 
 	
