@@ -4,8 +4,6 @@ import sistema.usuario.*;
 import sistema.sistemaDeVotos.*;
 import sistema.ubicacion.*;
 
-import java.util.ArrayList;
-
 
 public class Muestra {
 
@@ -13,7 +11,7 @@ public class Muestra {
 	Usuario autor;
 	Ubicacion ubicacion;
 
-	ManejadorDeVotos hadler = new ManejadorDeVotos();
+	ManejadorDeVotos handler = new ManejadorDeVotos();
 	
 
 	//	Getters
@@ -27,8 +25,8 @@ public class Muestra {
 	public Ubicacion getUbicacion() {
 		return ubicacion;
 	}
-	public ManejadorDeVotos getHadler() {
-		return hadler;
+	public ManejadorDeVotos getHandler() {
+		return handler;
 	}
 	//	Setters
 
@@ -46,7 +44,7 @@ public class Muestra {
 	// Constructor
 
 	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
-		this.getHadler().asociarMuestra(this);
+		this.getHandler().asociarMuestra(this);
 		this.setFotoURL(fotoURL);
 		this.setAutor(autor);
 		this.setUbicacion(ubicacion);
@@ -55,13 +53,13 @@ public class Muestra {
 	// Metodos
 
 	public void registrarOpinion(Opinion o){
-		this.getHadler().registrarOpinion(o);
+		this.getHandler().registrarOpinion(o);
 	}
 
 	// la muestra de un experto la pueden opinar basicos? seguramente no??
 
-	public resultadoActual(){
-		this.getHadler().resultadoActual();
+	public TipoDeVoto resultadoActual(){
+		this.getHandler().resultadoActual();
 	}
 
 	

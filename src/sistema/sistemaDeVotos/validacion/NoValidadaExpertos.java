@@ -1,4 +1,14 @@
 package sistema.sistemaDeVotos.validacion;
 
-public class NoValidadaExpertos {
+import sistema.sistemaDeVotos.ManejadorDeVotos;
+
+public class NoValidadaExpertos extends Validacion{
+
+    public NoValidadaExpertos(ManejadorDeVotos h){
+        super(h);
+    }
+
+    public void registrarOpinion(){
+
+    }
 }

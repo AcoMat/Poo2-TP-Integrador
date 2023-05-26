@@ -1,6 +1,8 @@
 package sistema.sistemaDeVotos;
 
 import sistema.muestras.Muestra;
+import sistema.sistemaDeVotos.validacion.NoValidada;
+import sistema.sistemaDeVotos.validacion.Validacion;
 import sistema.usuario.Usuario;
 
 import java.util.ArrayList;
@@ -9,28 +11,23 @@ public class ManejadorDeVotos {
 
     Muestra muestraAsociada;
     ArrayList<Opinion> opiniones;
-    Boolean soloExpertos = false;
-    TipoDeVoto resultadoActual = TipoDeVoto.Ninguna;
+
+    Validacion state = new NoValidada(this);
+
 
     //Getters
 
-    public Boolean getSoloExpertos() {
-        return soloExpertos;
-    }
     public ArrayList<Opinion> getOpiniones() {
         return opiniones;
-    }
-    public TipoDeVoto getResultadoActual() {
-        return resultadoActual;
     }
 
     //Setters
 
-    public void setSoloExpertos(Boolean soloExpertos) {
-        this.soloExpertos = soloExpertos;
-    }
     private void setMuestraAsociada(Muestra m) {
         this.muestraAsociada = m;
+    }
+    public void setState(Validacion state) {
+        this.state = state;
     }
 
     //
@@ -40,16 +37,13 @@ public class ManejadorDeVotos {
     }
 
     public void registrarOpinion(Opinion o) {
-        if (o.getEsExperto()){
-            this.agregarExperto();
-        }else{
-            this.agregarBasico();
-        }
-    }
-
-    private void agregarExperto() {
 
     }
+
+    public void agregarOpinion(Opinion o){
+        opiniones.add(o);
+    }
+
 
 
 
@@ -57,7 +51,7 @@ public class ManejadorDeVotos {
 
 
     public TipoDeVoto resultadoActual() {
-        return this.getResultadoActual();
+
     }
 }
 

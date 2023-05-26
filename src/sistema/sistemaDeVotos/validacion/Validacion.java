@@ -1,13 +1,15 @@
 package sistema.sistemaDeVotos.validacion;
 
+import sistema.muestras.Muestra;
+import sistema.sistemaDeVotos.ManejadorDeVotos;
 import sistema.sistemaDeVotos.Opinion;
 import sistema.usuario.Usuario;
 
 public abstract class Validacion {
-    Usuario user;
+    ManejadorDeVotos handlerAsoc;
 
-    Validacion (Usuario user){
-        this.user = user;
+    public Validacion (ManejadorDeVotos h){
+        this.handlerAsoc = h;
     }
 
     protected abstract void registrarOpinion(Opinion o);
