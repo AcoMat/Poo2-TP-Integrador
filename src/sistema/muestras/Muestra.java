@@ -49,7 +49,9 @@ public class Muestra {
 		this.setAutor(autor);
 		this.setUbicacion(ubicacion);
 	}
-	
+
+	// Cuando se crea una muestra se le registra el voto del owner, del resto se encarga el sistema
+
 	// Metodos
 
 	public void registrarOpinion(Opinion o){

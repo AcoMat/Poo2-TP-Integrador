@@ -13,7 +13,7 @@ public class NoValidada extends Validacion {
     @Override
     protected void registrarOpinion(Opinion o) {
         if (o.getEsExperto()){
-            Validacion soloExpertos = new NoValidadaExpertos();
+            Validacion soloExpertos = new NoValidadaExpertos(handlerAsoc);
             handlerAsoc.agregarOpinion(o);
             handlerAsoc.setState(soloExpertos);
         }else{
