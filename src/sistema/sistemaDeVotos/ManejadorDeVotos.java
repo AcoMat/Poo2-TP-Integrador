@@ -26,9 +26,6 @@ public class ManejadorDeVotos {
     private void setMuestraAsociada(Muestra m) {
         this.muestraAsociada = m;
     }
-    public void setState(Validacion state) {
-        this.state = state;
-    }
 
     //
 
@@ -37,7 +34,7 @@ public class ManejadorDeVotos {
     }
 
     public void registrarOpinion(Opinion o) {
-
+        state.
     }
 
     public void agregarOpinion(Opinion o){
@@ -48,10 +45,8 @@ public class ManejadorDeVotos {
 
 
 
-
-
     public TipoDeVoto resultadoActual() {
-
+        return //el voto q mas aparece en el arraylist
     }
 }
 

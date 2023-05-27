@@ -48,6 +48,7 @@ public class Muestra {
 		this.setFotoURL(fotoURL);
 		this.setAutor(autor);
 		this.setUbicacion(ubicacion);
+		//registrar voto owner
 	}
 
 	// Cuando se crea una muestra se le registra el voto del owner, del resto se encarga el sistema
@@ -61,7 +62,7 @@ public class Muestra {
 	// la muestra de un experto la pueden opinar basicos? seguramente no??
 
 	public TipoDeVoto resultadoActual(){
-		this.getHandler().resultadoActual();
+		return this.getHandler().resultadoActual();
 	}
 
 	
