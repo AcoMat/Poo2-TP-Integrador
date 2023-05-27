@@ -43,10 +43,9 @@ public class Usuario {
 
 	// Metodos
 
-	public void opinar(TipoDeVoto voto, Muestra muestra){
-		this.getState().opinar(voto, muestra);
+	public Boolean soyExperto(){
+		return this.state.esExperto();
 	}
-
 
 
 

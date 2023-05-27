@@ -8,4 +8,6 @@ public interface Nivel {
 	void opinar(TipoDeVoto voto, Muestra muestra);
 
 	void setUsuario(Usuario usuario);
+
+	boolean esExperto();
 }

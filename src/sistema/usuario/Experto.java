@@ -1,7 +1,6 @@
 package sistema.usuario;
 
 import sistema.muestras.Muestra;
-import sistema.sistemaDeVotos.SistemaDeVotos;
 import sistema.sistemaDeVotos.TipoDeVoto;
 
 public class Experto implements Nivel {
@@ -19,4 +18,8 @@ public class Experto implements Nivel {
 
 	}
 
+	@Override
+	public boolean esExperto() {
+		return true;
+	}
 }
