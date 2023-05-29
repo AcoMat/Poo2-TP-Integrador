@@ -7,11 +7,6 @@ public class Basico implements Nivel {
 	private Usuario usuario;
 
 	@Override
-	public void opinar(TipoDeVoto voto, Muestra muestra) {
-
-	}
-
-	@Override
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 

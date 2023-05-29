@@ -1,13 +1,28 @@
 package sistema.usuario;
 
-import sistema.muestras.Muestra;
+import sistema.sistemaDeVotos.Opinion;
 import sistema.sistemaDeVotos.TipoDeVoto;
+import sistema.ubicacion.Ubicacion;
+import sistema.muestras.*;
 
 public interface Nivel {
 
-	void opinar(TipoDeVoto voto, Muestra muestra);
+	public static Usuario usuario = null;
 
-	void setUsuario(Usuario usuario);
+	public default void opinar(Muestra muestra, TipoDeVoto voto) {
+		Opinion nuevaOpinion = new Opinion(voto, usuario.getName(), usuario.esExperto());
+		muestra.getHandler().nuevaOpinion(usuario, voto);
+		usuario.guardarOpinion(nuevaOpinion);
+	};
+
+	public default void enviarMuestra(TipoDeVoto especie, String fotoURL, Ubicacion ubicacion) {
+		Muestra nuevaMuestra = new Muestra(especie, fotoURL, usuario, ubicacion);
+		usuario.guardarMuestra(nuevaMuestra);
+	};
+
+	public default void setUsuario(Usuario nuevoUsuario) {
+//		usuario = nuevoUsuario;
+	}
 
 	boolean esExperto();
 }

@@ -1,6 +1,9 @@
 package sistema.muestras;
 
 import sistema.usuario.*;
+
+import java.util.Date;
+
 import sistema.sistemaDeVotos.*;
 import sistema.ubicacion.*;
 
@@ -10,6 +13,7 @@ public class Muestra {
 	String fotoURL;
 	Usuario autor;
 	Ubicacion ubicacion;
+	Date fecha;
 
 	ManejadorDeVotos handler = new ManejadorDeVotos();
 	
@@ -48,6 +52,7 @@ public class Muestra {
 		this.setFotoURL(fotoURL);
 		this.setAutor(autor);
 		this.setUbicacion(ubicacion);
+		this.fecha = new Date();
 		//registrar voto owner
 	}
 
@@ -56,7 +61,7 @@ public class Muestra {
 	// Metodos
 
 	public void registrarOpinion(Opinion o){
-		this.getHandler().registrarOpinion(o);
+		this.getHandler().agregarOpinion(o);
 	}
 
 	// la muestra de un experto la pueden opinar basicos? seguramente no??
