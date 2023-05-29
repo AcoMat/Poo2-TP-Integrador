@@ -1,44 +1,45 @@
 package sistema.sistemaDeVotos;
 
-import sistema.usuario.Nivel;
+import java.util.Date;
 
 public class Opinion {
-    private TipoDeVoto voto;
-    private String votoUserName;
-    private Boolean esExperto;
-    private Nivel estadoDeUsuarioAlVotar;
+	private TipoDeVoto voto;
+	private String votoUserName;
+	private Boolean esExperto;
+	Date fecha = new Date();
 
-    public Opinion(TipoDeVoto v, String username, Boolean esExperto){
-        this.voto = v;
-        this.votoUserName = username;
-        this.esExperto = esExperto;
-    }
+	public Opinion(TipoDeVoto v, String username, Boolean esExperto) {
+		this.voto = v;
+		this.votoUserName = username;
+		this.esExperto = esExperto;
+	}
 
-    public TipoDeVoto getVoto() {
-        return voto;
-    }
+	public TipoDeVoto getVoto() {
+		return voto;
+	}
 
-    public void setVoto(TipoDeVoto voto) {
-        this.voto = voto;
-    }
+	public void setVoto(TipoDeVoto voto) {
+		this.voto = voto;
+	}
 
-    public String getVotoUserName() {
-        return votoUserName;
-    }
+	public String getVotoUserName() {
+		return votoUserName;
+	}
 
-    public void setVotoUserName(String votoUserName) {
-        this.votoUserName = votoUserName;
-    }
+	public Date getFecha() {
+		return fecha;
+	}
 
-    public Boolean getEsExperto() {
-        return esExperto;
-    }
+	public void setVotoUserName(String votoUserName) {
+		this.votoUserName = votoUserName;
+	}
 
-    public void setEsExperto(Boolean esExperto) {
-        this.esExperto = esExperto;
-    }
+	public Boolean getEsExperto() {
+		return esExperto;
+	}
+
+	public void setEsExperto(Boolean esExperto) {
+		this.esExperto = esExperto;
+	}
+
 }
-
-
-
-

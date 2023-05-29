@@ -13,12 +13,12 @@ public class Website {
 
     private Buscador motorDeBusqueda;
 
-    public void registrarPosteoDesdeLaApp(TipoDeVoto especieFotografiada, String fotoURL, Ubicacion ubicacion, Usuario user){
-        motorDeBusqueda.nuevaMuestraEnSistema(new Muestra(especieFotografiada, fotoURL, user, ubicacion));
+    public void registrarPosteoDesdeLaApp(Muestra muestra){
+        motorDeBusqueda.nuevaMuestraEnSistema(muestra);
     }
 
-    public void registrarOpinion(Muestra muestra, TipoDeVoto voto, Usuario user){
-        muestra.registrarOpinion(new Opinion(voto, user.getName(), user.esExperto()));//se llaman igual
+    public void registrarOpinion(Muestra muestra, Opinion opinion){
+        muestra.registrarOpinion(opinion);//se llaman igual
     }
 
 

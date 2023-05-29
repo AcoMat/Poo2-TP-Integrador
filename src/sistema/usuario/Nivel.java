@@ -12,7 +12,7 @@ public interface Nivel {
 	public default void opinar(Muestra muestra, TipoDeVoto voto) {
 		Opinion nuevaOpinion = new Opinion(voto, usuario.getName(), usuario.esExperto());
 		muestra.getHandler().nuevaOpinion(usuario, voto);
-		usuario.guardarOpinion(nuevaOpinion);
+		usuario.guardarOpinion(muestra, nuevaOpinion);
 	};
 
 	public default void enviarMuestra(TipoDeVoto especie, String fotoURL, Ubicacion ubicacion) {
