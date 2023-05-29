@@ -18,7 +18,7 @@ public class Website {
     }
 
     public void registrarOpinion(Muestra muestra, TipoDeVoto voto, Usuario user){
-        muestra.registrarOpinion(new Opinion(voto, user.getUserName(), user.soyExperto()));//se llaman igual
+        muestra.registrarOpinion(new Opinion(voto, user.getName(), user.esExperto()));//se llaman igual
     }
 
 

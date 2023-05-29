@@ -33,8 +33,8 @@ public class ManejadorDeVotos {
         this.setMuestraAsociada(m);
     }
 
-    public void registrarOpinion(Opinion o) {
-        state.
+    public void nuevaOpinion(Usuario usuario, TipoDeVoto voto) {
+//        state.
     }
 
     public void agregarOpinion(Opinion o){
@@ -46,7 +46,7 @@ public class ManejadorDeVotos {
 
 
     public TipoDeVoto resultadoActual() {
-        return //el voto q mas aparece en el arraylist
+        return null; //el voto q mas aparece en el arraylist
     }
 }
 

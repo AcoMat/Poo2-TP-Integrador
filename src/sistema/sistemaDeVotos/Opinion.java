@@ -1,9 +1,12 @@
 package sistema.sistemaDeVotos;
 
+import sistema.usuario.Nivel;
+
 public class Opinion {
     private TipoDeVoto voto;
     private String votoUserName;
     private Boolean esExperto;
+    private Nivel estadoDeUsuarioAlVotar;
 
     public Opinion(TipoDeVoto v, String username, Boolean esExperto){
         this.voto = v;
