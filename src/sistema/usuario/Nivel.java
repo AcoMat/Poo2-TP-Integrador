@@ -10,7 +10,7 @@ public interface Nivel {
 	public static Usuario usuario = null;
 
 	public default void opinar(Muestra muestra, TipoDeVoto voto) {
-		Opinion nuevaOpinion = new Opinion(voto, usuario.getName(), usuario.esExperto());
+		Opinion nuevaOpinion = new Opinion(voto, usuario.getUserName(), usuario.esExperto());
 		muestra.getHandler().nuevaOpinion(usuario, voto);
 		usuario.guardarOpinion(muestra, nuevaOpinion);
 	};

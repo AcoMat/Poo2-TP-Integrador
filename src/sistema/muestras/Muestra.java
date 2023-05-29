@@ -17,6 +17,21 @@ public class Muestra {
 
 	ManejadorDeVotos handler = new ManejadorDeVotos();
 
+	// Constructor
+
+	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
+		this.getHandler().asociarMuestra(this);
+		this.setFotoURL(fotoURL);
+		this.setAutor(autor);
+		this.setUbicacion(ubicacion);
+		this.especie = especie;
+		this.fecha = new Date();
+		// registrar voto owner
+	}
+
+	// Cuando se crea una muestra se le registra el voto del owner, del resto se
+	// encarga el sistema
+
 	// Getters
 
 	public String getFotoURL() {
@@ -56,21 +71,6 @@ public class Muestra {
 	public void setUbicacion(Ubicacion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-
-	// Constructor
-
-	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
-		this.getHandler().asociarMuestra(this);
-		this.setFotoURL(fotoURL);
-		this.setAutor(autor);
-		this.setUbicacion(ubicacion);
-		this.especie = especie;
-		this.fecha = new Date();
-		// registrar voto owner
-	}
-
-	// Cuando se crea una muestra se le registra el voto del owner, del resto se
-	// encarga el sistema
 
 	// Metodos
 

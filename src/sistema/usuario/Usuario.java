@@ -46,7 +46,7 @@ public class Usuario {
 		return this.conocimientoValidado || (this.cumpleEnvios() && this.cumpleRevisiones());
 	}
 
-	public void setEstado() {
+	public void setNivel() {
 		this.nivel = this.esExperto() ? new Experto() : new Basico();
 		this.nivel.setUsuario(this);
 	}
@@ -60,7 +60,7 @@ public class Usuario {
 	// Metodos
 
 	public void opinar(Muestra muestra, TipoDeVoto voto) {
-		this.setEstado();
+		this.setNivel();
 		this.nivel.opinar(muestra, voto);
 	}
 
@@ -74,7 +74,7 @@ public class Usuario {
 		this.muestras.add(muestra);
 	}
 
-	public String getName() {
+	public String getUserName() {
 		return this.userName;
 	}
 
