@@ -2,9 +2,10 @@ package sistema.usuario;
 
 import sistema.muestras.Muestra;
 import java.util.ArrayList;
-
+import java.util.Date;
 import sistema.sistemaDeVotos.Opinion;
 import sistema.sistemaDeVotos.TipoDeVoto;
+import sistema.webSite.Website;
 
 public class Usuario {
 
@@ -13,6 +14,7 @@ public class Usuario {
 	private Nivel nivel;
 	private ArrayList<Muestra> muestras;
 	private ArrayList<Opinion> opiniones;
+	private Website website;
 
 	// Constructor
 
@@ -22,14 +24,14 @@ public class Usuario {
 		this.nivel = new Basico();
 	}
 
-	private int cantEnviosEn30Dias() {
-		return 0;
-//		return muestras.stream().count(muestra => muestra.getFecha() - today <= 30);
+	private long cantEnviosEn30Dias() {
+		Date fechaActual = new Date();
+		return muestras.stream().filter(muestra -> muestra.getFecha().getTime() - fechaActual.getTime() <= 30).count();
 	}
 
-	private int cantRevisionesEn30Dias() {
-		return 0;
-//		return opiniones.stream().count(opinion => opinion.getFecha() - today <= 30);
+	private long cantRevisionesEn30Dias() {
+		Date fechaActual = new Date();
+		return opiniones.stream().filter(opinion -> opinion.getFecha().getTime() - fechaActual.getTime() <= 30).count();
 	}
 
 	private Boolean cumpleEnvios() {
@@ -62,11 +64,13 @@ public class Usuario {
 		this.nivel.opinar(muestra, voto);
 	}
 
-	public void guardarOpinion(Opinion opinion) {
+	public void guardarOpinion(Muestra muestra, Opinion opinion) {
+		this.website.registrarOpinion(muestra, opinion);
 		this.opiniones.add(opinion);
 	}
 
 	public void guardarMuestra(Muestra muestra) {
+		this.website.registrarPosteoDesdeLaApp(muestra);
 		this.muestras.add(muestra);
 	}
 
