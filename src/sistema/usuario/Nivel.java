@@ -20,8 +20,8 @@ public abstract class Nivel {
 		usuario.guardarMuestra(nuevaMuestra);
 	};
 
-	public  void setUsuario(Usuario nuevoUsuario) {
-//		usuario = nuevoUsuario;
+	public void setUsuario(Usuario nuevoUsuario) {
+		this.usuario = nuevoUsuario;
 	}
 
 	abstract boolean esExperto();
