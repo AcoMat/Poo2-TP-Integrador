@@ -30,7 +30,7 @@ public class Usuario {
 		return this.userName;
 	}
 
-	public Boolean conocimientoValidado() {
+	public Boolean isConocimientoValidado() {
 		return this.conocimientoValidado;
 	}
 
