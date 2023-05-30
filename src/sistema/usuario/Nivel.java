@@ -5,24 +5,24 @@ import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.ubicacion.Ubicacion;
 import sistema.muestras.*;
 
-public interface Nivel {
+public abstract class Nivel {
 
-	public static Usuario usuario = null;
+	public Usuario usuario;
 
-	public default void opinar(Muestra muestra, TipoDeVoto voto) {
+	public void opinar(Muestra muestra, TipoDeVoto voto) {
 		Opinion nuevaOpinion = new Opinion(voto, usuario.getUserName(), usuario.esExperto());
 		muestra.getHandler().nuevaOpinion(usuario, voto);
 		usuario.guardarOpinion(muestra, nuevaOpinion);
 	};
 
-	public default void enviarMuestra(TipoDeVoto especie, String fotoURL, Ubicacion ubicacion) {
+	public void enviarMuestra(TipoDeVoto especie, String fotoURL, Ubicacion ubicacion) {
 		Muestra nuevaMuestra = new Muestra(especie, fotoURL, usuario, ubicacion);
 		usuario.guardarMuestra(nuevaMuestra);
 	};
 
-	public default void setUsuario(Usuario nuevoUsuario) {
+	public  void setUsuario(Usuario nuevoUsuario) {
 //		usuario = nuevoUsuario;
 	}
 
-	boolean esExperto();
+	abstract boolean esExperto();
 }
