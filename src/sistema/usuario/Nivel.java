@@ -8,7 +8,7 @@ import sistema.muestras.*;
 public abstract class Nivel {
 
 	public void opinar(Usuario usuario, Muestra muestra, TipoDeVoto voto) {
-		Opinion nuevaOpinion = new Opinion(voto, usuario.getUserName(), usuario.esExperto());
+		Opinion nuevaOpinion = new Opinion(voto, usuario.getUserName(), this.esExperto());
 		muestra.getHandler().nuevaOpinion(usuario, voto);
 		usuario.guardarOpinion(muestra, nuevaOpinion);
 	};

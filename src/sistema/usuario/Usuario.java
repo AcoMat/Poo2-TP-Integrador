@@ -1,8 +1,8 @@
 package sistema.usuario;
 
 import sistema.muestras.Muestra;
+
 import java.util.ArrayList;
-import java.util.Date;
 import sistema.sistemaDeVotos.Opinion;
 import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.ubicacion.Ubicacion;
@@ -30,12 +30,27 @@ public class Usuario {
 		return this.userName;
 	}
 
-	// Setters
-	public void setNivel() {
-		this.nivel = this.esExperto() ? new Experto() : new Basico();
+	public Boolean conocimientoValidado() {
+		return this.conocimientoValidado;
 	}
 
+	public ArrayList<Muestra> getMuestras() {
+		return muestras;
+	}
+
+	public ArrayList<Opinion> getOpiniones() {
+		return opiniones;
+	}
+
+	// Setters
+	public void setNivel() {
+		CalculadorDeNivel calculador = new CalculadorDeNivel();
+		this.nivel = calculador.esExperto(this) ? new Experto() : new Basico();
+	}
+
+	//
 	// Metodos
+	//
 	// Opinar
 	public void opinar(Muestra muestra, TipoDeVoto voto) {
 		this.setNivel();
@@ -57,28 +72,4 @@ public class Usuario {
 		this.website.registrarPosteoDesdeLaApp(muestra);
 		this.muestras.add(muestra);
 	}
-
-	// Calculos para saber si es experto
-	private long cantEnviosEn30Dias() {
-		Date fechaActual = new Date();
-		return muestras.stream().filter(muestra -> muestra.getFecha().getTime() - fechaActual.getTime() <= 30).count();
-	}
-
-	private long cantRevisionesEn30Dias() {
-		Date fechaActual = new Date();
-		return opiniones.stream().filter(opinion -> opinion.getFecha().getTime() - fechaActual.getTime() <= 30).count();
-	}
-
-	private Boolean cumpleEnvios() {
-		return this.cantEnviosEn30Dias() >= 10;
-	}
-
-	private Boolean cumpleRevisiones() {
-		return this.cantRevisionesEn30Dias() >= 20;
-	}
-
-	public Boolean esExperto() {
-		return this.conocimientoValidado || (this.cumpleEnvios() && this.cumpleRevisiones());
-	}
-
 }
