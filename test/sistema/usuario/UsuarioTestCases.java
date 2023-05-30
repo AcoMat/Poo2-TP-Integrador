@@ -1,28 +1,35 @@
 package sistema.usuario;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnit;
-
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class UsuarioTestCases {
 
+	Usuario usuarioLeo = new Usuario("Leo", false);
+	Usuario usuarioDiego = new Usuario("Diego", true);
+
+	@BeforeEach
+	public void setUp() {
+
+	}
+
 	@Test
-	public void test() {
-		 Usuario usuario1 = mock(Usuario.class);
-		 Usuario usuario2 = mock(Usuario.class);
-		 
-		 when(usuario1.getMuestras()).thenReturn(null);
+	public void testCreacionLeo() {
+		assertEquals("Leo", usuarioLeo.getUserName());
+		assertFalse(usuarioLeo.isConocimientoValidado());
+	}
+
+	@Test
+	public void testCreacionDiego() {
+		assertEquals("Diego", usuarioDiego.getUserName());
+		assertTrue(usuarioDiego.isConocimientoValidado());
 	}
 
 }
-
 
 //Creación
 //ClassName varName = mock(ClassName.class);
@@ -40,19 +47,15 @@ class UsuarioTestCases {
 //atMost( int ) times( int )
 //timeout(long) never()
 
-
 //Dummy: 
 //Son objetos que se pasan por allí, pero nunca se utilizan realmente. 
 //Por lo general, sólo son utilizadas para rellenar listas de parámetros.
 
-
 //Stub:
 //Proporciona respuestas preprogramadas a las llamadas realizadas durante la prueba.
-
 
 //Mock:
 //Es un Stub con la capacidad de poder verificarse.
 
-
-	//Spy
-	//Es un Mock pero que llama realmente a los métodos del objeto real.
+// Spy
+// Es un Mock pero que llama realmente a los métodos del objeto real.
