@@ -19,32 +19,24 @@ public class Usuario {
 
 	// Constructor
 
-	public Usuario(String name, Boolean validado) {
-		this.setConocimientoValidado(validado);
+	public Usuario(String name, Boolean expertoValidado) {
+		conocimientoValidado = expertoValidado;
 		this.userName = name;
 		this.nivel = new Basico();
 	}
 
-	
-	//Getters
+	// Getters
 	public String getUserName() {
 		return this.userName;
 	}
 
 	// Setters
-
-	private void setConocimientoValidado(boolean conocimientoValidado) {
-		this.conocimientoValidado = conocimientoValidado;
-	}
-	
 	public void setNivel() {
 		this.nivel = this.esExperto() ? new Experto() : new Basico();
 	}
 
 	// Metodos
-	
-	
-	//Opinar
+	// Opinar
 	public void opinar(Muestra muestra, TipoDeVoto voto) {
 		this.setNivel();
 		this.nivel.opinar(this, muestra, voto);
@@ -55,7 +47,7 @@ public class Usuario {
 		this.opiniones.add(opinion);
 	}
 
-	//Enviar muestras
+	// Enviar muestras
 	public void enviarMuestra(TipoDeVoto especie, String fotoURL, Ubicacion ubicacion) {
 		this.setNivel();
 		this.nivel.enviarMuestra(this, especie, fotoURL, ubicacion);
@@ -65,8 +57,8 @@ public class Usuario {
 		this.website.registrarPosteoDesdeLaApp(muestra);
 		this.muestras.add(muestra);
 	}
-	
-	//Calculos para saber si es experto
+
+	// Calculos para saber si es experto
 	private long cantEnviosEn30Dias() {
 		Date fechaActual = new Date();
 		return muestras.stream().filter(muestra -> muestra.getFecha().getTime() - fechaActual.getTime() <= 30).count();
