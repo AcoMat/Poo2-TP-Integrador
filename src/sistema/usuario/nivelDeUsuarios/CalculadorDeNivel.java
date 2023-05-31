@@ -1,4 +1,6 @@
-package sistema.usuario;
+package sistema.usuario.nivelDeUsuarios;
+
+import sistema.usuario.Usuario;
 
 import java.util.Date;
 

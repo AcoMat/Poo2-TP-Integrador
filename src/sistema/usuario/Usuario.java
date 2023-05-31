@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import sistema.sistemaDeVotos.Opinion;
 import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.ubicacion.Ubicacion;
+import sistema.usuario.nivelDeUsuarios.Basico;
+import sistema.usuario.nivelDeUsuarios.CalculadorDeNivel;
+import sistema.usuario.nivelDeUsuarios.Experto;
+import sistema.usuario.nivelDeUsuarios.Nivel;
 import sistema.webSite.Website;
 
 public class Usuario {
@@ -58,6 +62,7 @@ public class Usuario {
 
 	public void guardarOpinion(Muestra muestra, Opinion opinion) {
 		this.website.registrarOpinion(muestra, opinion);
+		//creo q el usuario deberia opinar desde el website (como parametro), por ende no tendria ese atributo "website"
 		this.opiniones.add(opinion);
 	}
 

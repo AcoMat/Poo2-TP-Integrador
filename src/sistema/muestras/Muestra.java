@@ -17,6 +17,8 @@ public class Muestra {
 
 	ManejadorDeVotos manejadorVotos = new ManejadorDeVotos();
 
+	// La muestra debe conocer a "website"?? xq a la hora de validar o agregar, las zonas de cobertura tienen q estar al tanto
+
 	// Constructor
 
 	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
@@ -78,7 +80,7 @@ public class Muestra {
 		this.getManejadorVotos().agregarOpinion(o);
 	}
 
-	// la muestra de un experto la pueden opinar basicos? seguramente no??
+	// la muestra de un experto la pueden opinar basicos?¿ seguramente no??
 
 	public TipoDeVoto resultadoActual() {
 		return this.getManejadorVotos().resultadoActual();
