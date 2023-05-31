@@ -2,6 +2,7 @@ package sistema.webSite;
 
 import sistema.buscador.Buscador;
 import sistema.muestras.Muestra;
+import sistema.organizaciones.Organizacion;
 import sistema.organizaciones.TipoDeOrg;
 import sistema.sistemaDeVotos.ManejadorDeVotos;
 import sistema.sistemaDeVotos.Opinion;
@@ -9,11 +10,15 @@ import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.ubicacion.Ubicacion;
 import sistema.usuario.Usuario;
 
+import java.util.ArrayList;
+
 public class Website {
     //registrar usuarios usar el buscador etc
 
     private Buscador motorDeBusqueda;
-    private usuariosRegistrados
+    private ArrayList<Usuario> usersRegistrados;
+    private ArrayList<Organizacion> organizacionsRegistradas;
+
 
     //  Metodos
 
@@ -26,11 +31,11 @@ public class Website {
     }
 
     public void registrarNuevoUsuario(){
-
+        //todo, agregar al array
     }
 
     public void registrarNuevaOrganizacion(Ubicacion ubicacion, TipoDeOrg tipo, int empleados){
-
+        //todo, agregar al array
     }
 
 
