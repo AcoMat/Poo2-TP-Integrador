@@ -10,16 +10,21 @@ import java.util.ArrayList;
 public class ManejadorDeVotos {
 
     Muestra muestraAsociada;
-    ArrayList<Opinion> opiniones;
+    ArrayList<Opinion> opinionesExpertos;
+    ArrayList<Opinion> opinionesBasicos;
+    
 
     Validacion state = new NoValidada(this);
 
 
     //Getters
-
-    public ArrayList<Opinion> getOpiniones() {
-        return opiniones;
-    }
+    public ArrayList<Opinion> getOpinionesExpertos() {
+		return opinionesExpertos;
+	}
+    
+    public ArrayList<Opinion> getOpinionesBasicos() {
+		return opinionesBasicos;
+	}
 
     //Setters
 
@@ -27,18 +32,33 @@ public class ManejadorDeVotos {
         this.muestraAsociada = m;
     }
 
-    //
+    // expertos
 
-    public void asociarMuestra(Muestra m){
+	public void setOpinionesExpertos(ArrayList<Opinion> opinionesExpertos) {
+		this.opinionesExpertos = opinionesExpertos;
+	}
+
+	// basico 
+	public void setOpinionesBasicos(ArrayList<Opinion> opinionesBasicos) {
+		this.opinionesBasicos = opinionesBasicos;
+	}
+	// muestra 
+	public void asociarMuestra(Muestra m){
         this.setMuestraAsociada(m);
     }
 
     public void nuevaOpinion(Usuario usuario, TipoDeVoto voto) {
-//        state.
+    	//state.
     }
-
-    public void agregarOpinion(Opinion o){
-        opiniones.add(o);
+    
+    //agragamos la opinion
+    public void agregarOpinion(Opinion nuevaOpinion){
+    	if ( nuevaOpinion.getEsExperto()) {
+    		opinionesExpertos.add(nuevaOpinion);
+    	}
+    	else {
+    		opinionesBasicos.add(nuevaOpinion);
+    	}
     }
 
 
