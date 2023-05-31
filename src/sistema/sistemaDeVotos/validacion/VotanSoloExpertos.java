@@ -2,19 +2,26 @@ package sistema.sistemaDeVotos.validacion;
 
 import sistema.sistemaDeVotos.ManejadorDeVotos;
 import sistema.sistemaDeVotos.Opinion;
+import sistema.sistemaDeVotos.TipoDeVoto;
 
-public class NoValidadaExpertos extends Validacion{
+public class VotanSoloExpertos extends EstadoValidacion {
 
-    public NoValidadaExpertos(ManejadorDeVotos h){
-        super(h);
-    }
+	// Booleanos a refactorizar
+	public Boolean permiteVotoBasico() {
+		return false;
+	}
 
-    @Override
-    public void registrarOpinion(Opinion o){
-        if (o.getEsExperto()){
-            handlerAsoc.agregarOpinion(o);
-        }else{
-            System.out.println("Solo pueden votar expertos!");
-        }
-    }
+	public Boolean permiteVotoExperto() {
+		return true;
+	}
+
+	// Cambio de estado
+	public EstadoValidacion cambioDeEstado(ManejadorDeVotos manejadorDeVotos) {
+		return manejadorDeVotos.getOpinionesExpertas().size() > 0 ? new VotanSoloExpertos() : this;
+	}
+
+	// Resultado Actual
+	public TipoDeVoto resultadoActual(ManejadorDeVotos manejadorDeVotos) {
+		return null;
+	}
 }
