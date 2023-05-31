@@ -37,11 +37,19 @@ public class ManejadorDeVotos {
 	// Agregar Opiniones
 
 	public void agregarOpinionBasica(Opinion opinion) {
-		opinionesBasicas.add(opinion);
+		if (estadoValidacion.permiteVotoBasico()) {
+			opinionesBasicas.add(opinion);
+			setEstadoValidacion();
+		}
+
 	}
 
 	public void agregarOpinionExperta(Opinion opinion) {
-		opinionesExpertas.add(opinion);
+		if (estadoValidacion.permiteVotoExperto()) {
+			opinionesExpertas.add(opinion);
+			setEstadoValidacion();
+		}
+
 	}
 
 	//
