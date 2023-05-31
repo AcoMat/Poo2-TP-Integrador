@@ -28,15 +28,15 @@ public class Buscador {
 
 	// consultar tenemos 2 arrrays para opiniones
 	public Opinion ultimaOpinionBasico(Muestra muestra) {
-		return muestra.getHandler().getOpinionesBasicos().stream().max(comparator).get();
+		return muestra.getManejadorVotos().getOpinionesBasicas().stream().max(comparator).get();
 	}
 
 	public Opinion ultimaOpinionExperto(Muestra muestra) {
-		return muestra.getHandler().getOpinionesExpertos().stream().max(comparator).get();
+		return muestra.getManejadorVotos().getOpinionesExpertas().stream().max(comparator).get();
 	}
 
 	public Date ultimaFechaDeVotacionBasico() {
-    	return muestrasTotalesDelSys.stream().forEach(s-> this.ultimaOpinionBasico(s)).max(comparator).get()comparator.;
+    	return muestrasTotalesDelSys.stream().forEach(s-> this.ultimaOpinionBasico(s)).max(comparator).get().;
     	
     }
 
@@ -49,5 +49,11 @@ public class Buscador {
 	public ArrayList<Muestra> nivelValidacion(Validacion validacionMuestra){
     	return (ArrayList<Muestra>) muestrasTotalesDelSys.stream().filter(s-> s.getEstado()== ValidacionMuestra));
     }
+	
+	public ArrayList<Muestra> buscadorGeneral(Date fecha, TipoDeVoto insecto, Validacion validacionM, boolean ultimaFecha){
+		if (ultimaFecha) {
+			return this.muestraCreadaEnLaFecha(fecha) && this.muestrasConInsecto(insecto);
+		}
+	}
 
 }
