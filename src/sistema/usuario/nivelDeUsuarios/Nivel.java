@@ -7,7 +7,7 @@ import sistema.muestras.*;
 import sistema.usuario.Usuario;
 
 public abstract class Nivel {
-	abstract void opinar(Usuario usuario, Muestra muestra, TipoDeVoto voto);
+	public abstract void opinar(Usuario usuario, Muestra muestra, TipoDeVoto voto);
 
 	public void enviarMuestra(Usuario usuario, TipoDeVoto especie, String fotoURL, Ubicacion ubicacion) {
 		Muestra nuevaMuestra = new Muestra(especie, fotoURL, usuario, ubicacion);

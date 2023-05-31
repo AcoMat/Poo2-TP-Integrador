@@ -16,7 +16,7 @@ public class Usuario {
 
 	String userName;
 	boolean conocimientoValidado = false;
-	private Nivel nivel;
+	private Nivel nivel = new Basico();
 	private ArrayList<Muestra> muestras = new ArrayList<Muestra>();
 	private ArrayList<Opinion> opiniones = new ArrayList<Opinion>();
 	private Website website;
@@ -25,7 +25,6 @@ public class Usuario {
 	public Usuario(String name, Boolean expertoValidado) {
 		conocimientoValidado = expertoValidado;
 		this.userName = name;
-		this.nivel = new Basico();
 	}
 
 	// Getters
