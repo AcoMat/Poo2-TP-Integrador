@@ -6,6 +6,15 @@ import sistema.ubicacion.Ubicacion;
 import sistema.muestras.*;
 
 public abstract class Nivel {
+	private boolean esExperto= false;
+	
+	public boolean isEsExperto() {
+		return esExperto;
+	}
+
+	public void setEsExperto(boolean esExperto) {
+		this.esExperto = esExperto;
+	}
 
 	public void opinar(Usuario usuario, Muestra muestra, TipoDeVoto voto) {
 		Opinion nuevaOpinion = new Opinion(voto, usuario.getUserName(), this.esExperto());

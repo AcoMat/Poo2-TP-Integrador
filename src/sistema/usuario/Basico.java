@@ -3,10 +3,10 @@ package sistema.usuario;
 import sistema.muestras.Muestra;
 import sistema.sistemaDeVotos.TipoDeVoto;
 
-public class Basico implements Nivel {
+public class Basico extends Nivel {
 	private Usuario usuario;
 
-	@Override
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 
