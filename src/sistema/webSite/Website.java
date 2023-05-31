@@ -25,7 +25,7 @@ public class Website {
 
     }
 
-    public void registrarNuevaOrganizacion(){
+    public void registrarNuevaOrganizacion(Ubicacion ubicacion, TipoDeOrganizacion tipo, int empleados){
 
     }
 
