@@ -2,7 +2,7 @@ package sistema.sistemaDeVotos;
 
 import sistema.muestras.Muestra;
 import sistema.sistemaDeVotos.validacion.NoValidada;
-import sistema.sistemaDeVotos.validacion.Validacion;
+import sistema.sistemaDeVotos.validacion.EstadoValidacion;
 import sistema.usuario.Usuario;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class ManejadorDeVotos {
 	ArrayList<Opinion> opinionesBasicas;
 	ArrayList<Opinion> opinionesExpertas;
 
-	Validacion state = new NoValidada(this);
+	EstadoValidacion estadoValidacion = new NoValidada(this);
 
 	// Getters
 
@@ -42,10 +42,24 @@ public class ManejadorDeVotos {
 	public void agregarOpinionExperta(Opinion opinion) {
 		opinionesExpertas.add(opinion);
 	}
+	
+	//
+	// Set Estado
+	public void setEstadoValidacion() {
+		estadoValidacion = null;
+	}
 
 	//
 	// Resultado Actual
 	public TipoDeVoto resultadoActual() {
-		return null; // el voto q mas aparece en el arraylist
+		if (this.opinionesExpertas.size() > 0) {
+			return this.opinionGanadora(opinionesExpertas);
+		} else {
+			return this.opinionGanadora(opinionesBasicas);
+		}
+	}
+	
+	public TipoDeVoto opinionGanadora(ArrayList<Opinion> opiniones) {
+		return null;
 	}
 }
