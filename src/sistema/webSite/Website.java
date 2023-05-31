@@ -21,7 +21,13 @@ public class Website {
         muestra.registrarOpinion(opinion);//se llaman igual
     }
 
+    public void registrarNuevoUsuario(){
 
+    }
+
+    public void registrarNuevaOrganizacion(){
+
+    }
 
 
 }
