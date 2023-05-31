@@ -13,12 +13,11 @@ public class Usuario {
 	String userName;
 	boolean conocimientoValidado = false;
 	private Nivel nivel;
-	private ArrayList<Muestra> muestras;
-	private ArrayList<Opinion> opiniones;
+	private ArrayList<Muestra> muestras = new ArrayList<Muestra>();
+	private ArrayList<Opinion> opiniones = new ArrayList<Opinion>();
 	private Website website;
 
 	// Constructor
-
 	public Usuario(String name, Boolean expertoValidado) {
 		conocimientoValidado = expertoValidado;
 		this.userName = name;
@@ -69,7 +68,7 @@ public class Usuario {
 	}
 
 	public void guardarMuestra(Muestra muestra) {
-		this.website.registrarPosteoDesdeLaApp(muestra);
+//		this.website.registrarPosteoDesdeLaApp(muestra);
 		this.muestras.add(muestra);
 	}
 }
