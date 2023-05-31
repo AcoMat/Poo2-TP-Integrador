@@ -44,13 +44,16 @@ public class Organizacion {
     public void deSuscribirseDe(ZonaDeCobertura zona){
         zona.desuscribirA(this);
     }
+    //
+
+    //  Funcionalidades Externas
 
     public void eventoNuevaMuestra(){
-
+        //Todo
     }
 
     public void eventoNuevaValidacion(){
-
+        //TODO
     }
 
 }

@@ -42,5 +42,9 @@ public class Website {
         organizacionsRegistradas.add(nuevaOrg);
     }
 
+    public void nuevaZonaDeCobertura(String nombre,Ubicacion epicentro, int radio){
+        //TODO
+    }
+
 
 }
