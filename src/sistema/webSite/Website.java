@@ -25,9 +25,11 @@ public class Website {
 
     public void registrarPosteoDesdeLaApp(Muestra muestra){
         motorDeBusqueda.nuevaMuestraEnSistema(muestra);
+        //notificar al observer "zonaDeCobertura"
     }
 
     public void registrarOpinion(Muestra muestra, Opinion opinion){
+        //tengo q verificar que el usuario se registró?
         muestra.registrarOpinion(opinion);//se llaman igual
     }
 

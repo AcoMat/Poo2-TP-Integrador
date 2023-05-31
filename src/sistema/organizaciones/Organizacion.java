@@ -17,7 +17,6 @@ public class Organizacion {
 
     //  Constructor
 
-
     public Organizacion(Ubicacion ubicacion, TipoDeOrg tipoDeLaOrg, int cantEmpleados, FuncionalidadExterna nuevaMuestra, FuncionalidadExterna validacionMuestra) {
         this.ubicacion = ubicacion;
         this.tipoDeLaOrg = tipoDeLaOrg;
@@ -26,6 +25,17 @@ public class Organizacion {
         this.seValidoUnaMuestra = validacionMuestra;
     }
 
+    //
+
+    public void setSeCargoUnaNuevaMuestra(FuncionalidadExterna seCargoUnaNuevaMuestra) {
+        this.seCargoUnaNuevaMuestra = seCargoUnaNuevaMuestra;
+    }
+
+    public void setSeValidoUnaMuestra(FuncionalidadExterna seValidoUnaMuestra) {
+        this.seValidoUnaMuestra = seValidoUnaMuestra;
+    }
+
+    //
     public void suscribirseAZona(ZonaDeCobertura zona){
         //observer
         zona.suscribirA(this);
