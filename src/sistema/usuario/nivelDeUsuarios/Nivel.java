@@ -1,9 +1,10 @@
-package sistema.usuario;
+package sistema.usuario.nivelDeUsuarios;
 
 import sistema.sistemaDeVotos.Opinion;
 import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.ubicacion.Ubicacion;
 import sistema.muestras.*;
+import sistema.usuario.Usuario;
 
 public abstract class Nivel {
 	public void opinar(Usuario usuario, Muestra muestra, TipoDeVoto voto) {
