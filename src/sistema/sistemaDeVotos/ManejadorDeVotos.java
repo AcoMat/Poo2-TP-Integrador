@@ -9,65 +9,43 @@ import java.util.ArrayList;
 
 public class ManejadorDeVotos {
 
-    Muestra muestraAsociada;
-    ArrayList<Opinion> opinionesExpertos;
-    ArrayList<Opinion> opinionesBasicos;
-    
+	Muestra muestraAsociada;
 
-    Validacion state = new NoValidada(this);
+	ArrayList<Opinion> opinionesBasicas;
+	ArrayList<Opinion> opinionesExpertas;
 
+	Validacion state = new NoValidada(this);
 
-    //Getters
-    public ArrayList<Opinion> getOpinionesExpertos() {
-		return opinionesExpertos;
-	}
-    
-    public ArrayList<Opinion> getOpinionesBasicos() {
-		return opinionesBasicos;
+	// Getters
+
+	public ArrayList<Opinion> getOpinionesBasicas() {
+		return opinionesBasicas;
 	}
 
-    //Setters
-
-    private void setMuestraAsociada(Muestra m) {
-        this.muestraAsociada = m;
-    }
-
-    // expertos
-
-	public void setOpinionesExpertos(ArrayList<Opinion> opinionesExpertos) {
-		this.opinionesExpertos = opinionesExpertos;
+	public ArrayList<Opinion> getOpinionesExpertas() {
+		return opinionesExpertas;
 	}
 
-	// basico 
-	public void setOpinionesBasicos(ArrayList<Opinion> opinionesBasicos) {
-		this.opinionesBasicos = opinionesBasicos;
+	// Setters
+
+	public void asociarMuestra(Muestra m) {
+		this.muestraAsociada = m;
 	}
-	// muestra 
-	public void asociarMuestra(Muestra m){
-        this.setMuestraAsociada(m);
-    }
 
-    public void nuevaOpinion(Usuario usuario, TipoDeVoto voto) {
-    	//state.
-    }
-    
-    //agragamos la opinion
-    public void agregarOpinion(Opinion nuevaOpinion){
-    	if ( nuevaOpinion.getEsExperto()) {
-    		opinionesExpertos.add(nuevaOpinion);
-    	}
-    	else {
-    		opinionesBasicos.add(nuevaOpinion);
-    	}
-    }
+	//
+	// Agregar Opiniones
 
+	public void agregarOpinionBasica(Opinion opinion) {
+		opinionesBasicas.add(opinion);
+	}
 
+	public void agregarOpinionExperta(Opinion opinion) {
+		opinionesExpertas.add(opinion);
+	}
 
-
-
-    public TipoDeVoto resultadoActual() {
-        return null; //el voto q mas aparece en el arraylist
-    }
+	//
+	// Resultado Actual
+	public TipoDeVoto resultadoActual() {
+		return null; // el voto q mas aparece en el arraylist
+	}
 }
-
-

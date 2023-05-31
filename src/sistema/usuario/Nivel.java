@@ -6,11 +6,7 @@ import sistema.ubicacion.Ubicacion;
 import sistema.muestras.*;
 
 public abstract class Nivel {
-	public void opinar(Usuario usuario, Muestra muestra, TipoDeVoto voto) {
-		Opinion nuevaOpinion = new Opinion(voto, usuario.getUserName(), this.esExperto());
-		muestra.getHandler().nuevaOpinion(usuario, voto);
-		usuario.guardarOpinion(muestra, nuevaOpinion);
-	};
+	abstract void opinar(Usuario usuario, Muestra muestra, TipoDeVoto voto);
 
 	public void enviarMuestra(Usuario usuario, TipoDeVoto especie, String fotoURL, Ubicacion ubicacion) {
 		Muestra nuevaMuestra = new Muestra(especie, fotoURL, usuario, ubicacion);
