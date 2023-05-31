@@ -35,7 +35,7 @@ public class Website {
     }
 
     public void registrarNuevaOrganizacion(Ubicacion ubicacion, TipoDeOrg tipo, int empleados){
-        //todo, agregar al array
+        Organizacion nuevaOrg = new Organizacion()
     }
 
 
