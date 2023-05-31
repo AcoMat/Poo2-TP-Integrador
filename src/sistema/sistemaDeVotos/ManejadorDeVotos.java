@@ -1,73 +1,75 @@
 package sistema.sistemaDeVotos;
 
 import sistema.muestras.Muestra;
-import sistema.sistemaDeVotos.validacion.NoValidada;
-import sistema.sistemaDeVotos.validacion.Validacion;
+
+import sistema.sistemaDeVotos.validacion.VotanTodos;
+import sistema.sistemaDeVotos.validacion.EstadoValidacion;
+import sistema.sistemaDeVotos.validacion.Validada;
 import sistema.usuario.Usuario;
 
 import java.util.ArrayList;
 
 public class ManejadorDeVotos {
 
-    Muestra muestraAsociada;
-    ArrayList<Opinion> opinionesExpertos;
-    ArrayList<Opinion> opinionesBasicos;
-    
+	Muestra muestraAsociada;
 
-    Validacion state = new NoValidada(this);
+	ArrayList<Opinion> opinionesBasicas;
+	ArrayList<Opinion> opinionesExpertas;
 
+	EstadoValidacion estadoValidacion = new VotanTodos();
 
-    //Getters
-    public ArrayList<Opinion> getOpinionesExpertos() {
-		return opinionesExpertos;
-	}
-    
-    public ArrayList<Opinion> getOpinionesBasicos() {
-		return opinionesBasicos;
+	// Getters
+
+	public ArrayList<Opinion> getOpinionesBasicas() {
+		return opinionesBasicas;
 	}
 
-    //Setters
-
-    private void setMuestraAsociada(Muestra m) {
-        this.muestraAsociada = m;
-    }
-
-    // expertos
-
-	public void setOpinionesExpertos(ArrayList<Opinion> opinionesExpertos) {
-		this.opinionesExpertos = opinionesExpertos;
+	public ArrayList<Opinion> getOpinionesExpertas() {
+		return opinionesExpertas;
 	}
 
-	// basico 
-	public void setOpinionesBasicos(ArrayList<Opinion> opinionesBasicos) {
-		this.opinionesBasicos = opinionesBasicos;
+	// Setters
+
+	public void asociarMuestra(Muestra m) {
+		this.muestraAsociada = m;
 	}
-	// muestra 
-	public void asociarMuestra(Muestra m){
-        this.setMuestraAsociada(m);
-    }
 
-    public void nuevaOpinion(Usuario usuario, TipoDeVoto voto) {
-    	//state.
-    }
-    
-    //agragamos la opinion
-    public void agregarOpinion(Opinion nuevaOpinion){
-    	if ( nuevaOpinion.getEsExperto()) {
-    		opinionesExpertos.add(nuevaOpinion);
-    	}
-    	else {
-    		opinionesBasicos.add(nuevaOpinion);
-    	}
-    }
+	//
+	// Agregar Opiniones
 
+	public void agregarOpinionBasica(Opinion opinion) {
+		if (estadoValidacion.permiteVotoBasico()) {
+			opinionesBasicas.add(opinion);
+			setEstadoValidacion();
+		}
 
+	}
 
+	public void agregarOpinionExperta(Opinion opinion) {
+		if (estadoValidacion.permiteVotoExperto()) {
+			if (opinionesExpertas.stream().anyMatch(opinionExperta -> opinion.getVoto() == opinionExperta.getVoto())) {
+				opinionesExpertas.add(opinion);
+				estadoValidacion = new Validada(opinion.getVoto());
+			} else {
+				opinionesExpertas.add(opinion);
+				setEstadoValidacion();
+			}
+		}
 
+	}
 
-    public TipoDeVoto resultadoActual() {
-        return null; //el voto q mas aparece en el arraylist
-    }
+	//
+	// Set Estado
+	public void setEstadoValidacion() {
+		estadoValidacion = estadoValidacion.cambioDeEstado(this);
+	}
+
+	public Boolean hayDosVotosExpertosIguales() {
+		return true;
+	}
+
+	// Resultado de votación actual
+	public TipoDeVoto resultadoDeVotacion() {
+		return estadoValidacion.resultadoActual(this);
+	}
 }
-
-

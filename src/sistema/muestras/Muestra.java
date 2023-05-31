@@ -15,7 +15,7 @@ public class Muestra {
 	Date fecha;
 	TipoDeVoto especie;
 
-	ManejadorDeVotos handler = new ManejadorDeVotos();
+	ManejadorDeVotos manejadorVotos = new ManejadorDeVotos();
 
 	// La muestra debe conocer a "website"?? xq a la hora de validar o agregar, las zonas de cobertura tienen q estar al tanto
 
@@ -48,8 +48,8 @@ public class Muestra {
 		return ubicacion;
 	}
 
-	public ManejadorDeVotos getHandler() {
-		return handler;
+	public ManejadorDeVotos getManejadorVotos() {
+		return manejadorVotos;
 	}
 
 	public Date getFecha() {
@@ -77,13 +77,13 @@ public class Muestra {
 	// Metodos
 
 	public void registrarOpinion(Opinion o) {
-		this.getHandler().agregarOpinion(o);
+		this.getManejadorVotos().agregarOpinion(o);
 	}
 
 	// la muestra de un experto la pueden opinar basicos?¿ seguramente no??
 
 	public TipoDeVoto resultadoActual() {
-		return this.getHandler().resultadoActual();
+		return this.getManejadorVotos().resultadoActual();
 	}
 
 }
