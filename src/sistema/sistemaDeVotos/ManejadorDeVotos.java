@@ -4,6 +4,7 @@ import sistema.muestras.Muestra;
 
 import sistema.sistemaDeVotos.validacion.VotanTodos;
 import sistema.sistemaDeVotos.validacion.EstadoValidacion;
+import sistema.sistemaDeVotos.validacion.Validada;
 import sistema.usuario.Usuario;
 
 import java.util.ArrayList;
@@ -46,8 +47,13 @@ public class ManejadorDeVotos {
 
 	public void agregarOpinionExperta(Opinion opinion) {
 		if (estadoValidacion.permiteVotoExperto()) {
-			opinionesExpertas.add(opinion);
-			setEstadoValidacion();
+			if (opinionesExpertas.stream().anyMatch(opinionExperta -> opinion.getVoto() == opinionExperta.getVoto())) {
+				opinionesExpertas.add(opinion);
+				estadoValidacion = new Validada(opinion.getVoto());
+			} else {
+				opinionesExpertas.add(opinion);
+				setEstadoValidacion();
+			}
 		}
 
 	}
@@ -55,7 +61,11 @@ public class ManejadorDeVotos {
 	//
 	// Set Estado
 	public void setEstadoValidacion() {
-		estadoValidacion = null;
+		estadoValidacion = estadoValidacion.cambioDeEstado(this);
+	}
+
+	public Boolean hayDosVotosExpertosIguales() {
+		return true;
 	}
 
 	// Resultado de votación actual
