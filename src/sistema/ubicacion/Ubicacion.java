@@ -20,6 +20,7 @@ public class Ubicacion {
 
 	public ArrayList<Muestra> muestrasAMenosDeXKm(int kms){
 		//TODO
+		//	como hago para saber las muestras a menos de x km???
 	}
 	
 }
