@@ -2,6 +2,7 @@ package sistema.webSite;
 
 import sistema.buscador.Buscador;
 import sistema.muestras.Muestra;
+import sistema.organizaciones.FuncionalidadExterna;
 import sistema.organizaciones.Organizacion;
 import sistema.organizaciones.TipoDeOrg;
 import sistema.sistemaDeVotos.ManejadorDeVotos;
@@ -34,8 +35,9 @@ public class Website {
         //todo, agregar al array
     }
 
-    public void registrarNuevaOrganizacion(Ubicacion ubicacion, TipoDeOrg tipo, int empleados){
-        Organizacion nuevaOrg = new Organizacion()
+    public void registrarNuevaOrganizacion(Ubicacion ubicacion, TipoDeOrg tipoDeLaOrg, int cantEmpleados, FuncionalidadExterna nuevaMuestra, FuncionalidadExterna validacionMuestra){
+        Organizacion nuevaOrg = new Organizacion(ubicacion, tipoDeLaOrg, cantEmpleados , nuevaMuestra, validacionMuestra);
+        organizacionsRegistradas.add(nuevaOrg);
     }
 
 

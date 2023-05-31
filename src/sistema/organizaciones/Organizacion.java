@@ -28,6 +28,7 @@ public class Organizacion {
 
     public void suscribirseAZona(ZonaDeCobertura zona){
         //observer
+
     }
 
     public void deSuscribirseDe(ZonaDeCobertura zona){
