@@ -21,6 +21,18 @@ public class ZonaDeCobertura {
     }
 
 
+    public void nuevaMuestraEnLaZona(Muestra muestra){
+        muestrasReportadas.add(muestra);
+        for (Organizacion org:organizacionesSuscritas) {
+            org.eventoNuevaMuestra();
+        }
+    }
+
+    public void nuevaValidacionEnLaZona(Muestra muestra){
+        for (Organizacion org:organizacionesSuscritas) {
+            org.eventoNuevaValidacion();
+        }
+    }
 
 
     public void suscribirA(Organizacion org) {
