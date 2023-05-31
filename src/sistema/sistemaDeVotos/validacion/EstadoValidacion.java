@@ -3,15 +3,20 @@ package sistema.sistemaDeVotos.validacion;
 import sistema.muestras.Muestra;
 import sistema.sistemaDeVotos.ManejadorDeVotos;
 import sistema.sistemaDeVotos.Opinion;
+import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.usuario.Usuario;
 
-public abstract class Validacion {
-    ManejadorDeVotos handlerAsoc;
+public abstract class EstadoValidacion {
 
-    public Validacion (ManejadorDeVotos h){
-        this.handlerAsoc = h;
-    }
+	// Booleanos a refactorizar
+	public abstract Boolean permiteVotoBasico();
 
-    protected abstract void registrarOpinion(Opinion o);
+	public abstract Boolean permiteVotoExperto();
+
+	// Cambio de estado
+	public abstract EstadoValidacion cambioDeEstado(ManejadorDeVotos manejadorDeVotos);
+
+	// Resultado Actual
+	public abstract TipoDeVoto resultadoActual(ManejadorDeVotos manejadorDeVotos);
 
 }
