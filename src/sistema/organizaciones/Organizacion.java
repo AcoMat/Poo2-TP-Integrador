@@ -28,11 +28,11 @@ public class Organizacion {
 
     public void suscribirseAZona(ZonaDeCobertura zona){
         //observer
-
+        zona.suscribirA(this);
     }
 
     public void deSuscribirseDe(ZonaDeCobertura zona){
-        //TODO
+        zona.desuscribirA(this);
     }
 
     public void eventoNuevaMuestra(){
