@@ -22,7 +22,7 @@ public class Muestra {
 	// Constructor
 
 	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
-		this.getHandler().asociarMuestra(this);
+		this.getManejadorVotos().asociarMuestra(this);
 		this.setFotoURL(fotoURL);
 		this.setAutor(autor);
 		this.setUbicacion(ubicacion);
