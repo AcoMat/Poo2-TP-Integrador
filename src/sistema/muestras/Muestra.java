@@ -23,7 +23,7 @@ public class Muestra {
 
 	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
 		this.getManejadorVotos().asociarMuestra(this);
-		this.setFotoURL(fotoURL);
+		this.setFotoURL(fotoURL); 
 		this.setAutor(autor);
 		this.setUbicacion(ubicacion);
 		this.especie = especie;

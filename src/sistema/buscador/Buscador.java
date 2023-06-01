@@ -11,10 +11,10 @@ public class Buscador {
 	private ArrayList<Muestra> muestrasTotalesDelSys;
 	private Comparator<Opinion> comparator = Comparator.comparing(Opinion::getFecha);
 
-	public void nuevaMuestraEnSistema(Muestra m) {
+	public void muestraAAgregar(Muestra m) {
 		muestrasTotalesDelSys.add(m);
 	}
-
+ 
 	// buscar muestras por la fecha de creacion
 	public ArrayList<Muestra> muestraCreadaEnLaFecha(Date fecha) {
 		return (ArrayList<Muestra>) muestrasTotalesDelSys.stream().filter(s -> s.getFecha() == fecha);
@@ -65,6 +65,13 @@ public class Buscador {
 		this.muestrasTotalesDelSys = muestrasTotalesDelSys;
 	}
 
+	public ArrayList<Muestra> getMuestrasTotalesDelSys() {
+		return muestrasTotalesDelSys;
+	}
+
+	public void setMuestrasTotalesDelSys(ArrayList<Muestra> muestrasTotalesDelSys) {
+		this.muestrasTotalesDelSys = muestrasTotalesDelSys;
+	}
 	
 	
 
