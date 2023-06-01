@@ -1,5 +1,4 @@
 package sistema.buscador;
-
 import java.util.Date;
 import java.util.Optional;
 import java.util.ArrayList;
@@ -21,34 +20,44 @@ public class Buscador {
 		return (ArrayList<Muestra>) muestrasTotalesDelSys.stream().filter(s -> s.getFecha() == fecha);
 	}
 
-	// consultar tenemos 2 arrrays para opiniones
-	public Opinion ultimaOpinionBasico(Muestra muestra) {
-		return muestra.getManejadorVotos().getOpinionesBasicas().stream().max(comparator).get();
-	}
-
-	public Opinion ultimaOpinionExperto(Muestra muestra) {
-		return muestra.getManejadorVotos().getOpinionesExpertas().stream().max(comparator).get();
-	}
-
-	public Date ultimaFechaDeVotacionBasico() {
-    	return muestrasTotalesDelSys.stream().forEach(s-> this.ultimaOpinionBasico(s)).max(comparator).get().;
-    	
-    }
+	// consultar tenemos 2 arrays para opiniones
+//	public Opinion ultimaOpinionBasico(Muestra muestra) {
+//		return muestra.getManejadorVotos().getOpinionesBasicas().stream().max(comparator).get();
+//	}
+//
+//	public Opinion ultimaOpinionExperto(Muestra muestra) {
+//		return muestra.getManejadorVotos().getOpinionesExpertas().stream().max(comparator).get();
+//	}
+//
+//	public Date ultimaFechaDeVotacionBasico() {
+//    	return muestrasTotalesDelSys.stream().forEach(s-> this.ultimaOpinionBasico(s)).max(comparator).get().;
+//    	
+//    }
 
 	// Busqueda por la especie 
 	public ArrayList<Muestra> muestrasConInsecto(TipoDeVoto insecto) {
-		return (ArrayList<Muestra>) muestrasTotalesDelSys.stream().filter(s -> s.getEspecie() == insecto);
+		return (ArrayList<Muestra>) muestrasTotalesDelSys.stream().filter(s -> s.getEspecieEstadoActual() == insecto);
 	}
 	
 	// Busqueda por la validacion (falta completar la clase validacion con la muestra)
-	public ArrayList<Muestra> nivelValidacion(EstadoValidacion validacionMuestra){
-    	return (ArrayList<Muestra>) muestrasTotalesDelSys.stream().filter(s-> s.get()== ValidacionMuestra) ;
+	public ArrayList<Muestra> nivelValidacion(TipoDeVoto validacionMuestra){
+    	return (ArrayList<Muestra>) muestrasTotalesDelSys.stream().filter(s-> s.getEstado()== validacionMuestra);
     }
 	
-	public ArrayList<Muestra> buscadorGeneral(Date fecha, TipoDeVoto insecto, EstadoValidacion validacionM, boolean ultimaFecha){
+	public ArrayList<Muestra> buscadorGeneral(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM, boolean ultimaFecha){
 		if (ultimaFecha) {
-			return this.muestraCreadaEnLaFecha(fecha) && this.muestrasConInsecto(insecto);
+			return extracted(fecha, insecto, validacionM);
 		}
+		else {
+			 return extracted(fecha, insecto, validacionM); //agregarElFiltroPorUltimaFecha
+		}
+	}
+
+	private ArrayList<Muestra> extracted(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM) {
+		return (ArrayList<Muestra>) muestrasTotalesDelSys.stream().
+				filter(s-> s.getFecha() == fecha && 
+				s.getEspecieEstadoActual()== insecto &&
+				s.getEstado() == validacionM );
 	}
 
 }

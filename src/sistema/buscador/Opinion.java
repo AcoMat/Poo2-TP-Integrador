@@ -1,5 +1,7 @@
 package sistema.buscador;
 
-public interface Opinion {
+import java.util.Date;
 
+public interface Opinion {
+	public Date getFecha();
 }
