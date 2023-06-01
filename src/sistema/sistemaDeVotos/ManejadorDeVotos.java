@@ -40,28 +40,25 @@ public class ManejadorDeVotos {
 	public void agregarOpinionBasica(Opinion opinion) {
 		if (estadoValidacion.permiteVotoBasico()) {
 			opinionesBasicas.add(opinion);
-			setEstadoValidacion();
+			setEstadoValidacion(opinion);
 		}
 
 	}
 
 	public void agregarOpinionExperta(Opinion opinion) {
 		if (estadoValidacion.permiteVotoExperto()) {
-			if (opinionesExpertas.stream().anyMatch(opinionExperta -> opinion.getVoto() == opinionExperta.getVoto())) {
-				opinionesExpertas.add(opinion);
-				estadoValidacion = new Validada(opinion.getVoto());
-			} else {
-				opinionesExpertas.add(opinion);
-				setEstadoValidacion();
-			}
+			opinionesExpertas.add(opinion);
+			setEstadoValidacion(opinion);
+		} else {
+			System.err.println("No es posible agregar opiniones");
 		}
 
 	}
 
 	//
 	// Set Estado
-	public void setEstadoValidacion() {
-		estadoValidacion = estadoValidacion.cambioDeEstado(this);
+	public void setEstadoValidacion(Opinion opinion) {
+		estadoValidacion = estadoValidacion.cambioDeEstado(this, opinion);
 	}
 
 	public Boolean hayDosVotosExpertosIguales() {

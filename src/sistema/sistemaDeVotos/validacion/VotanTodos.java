@@ -17,7 +17,7 @@ public class VotanTodos extends EstadoValidacion {
 	}
 
 	// Cambio de estado
-	public EstadoValidacion cambioDeEstado(ManejadorDeVotos manejadorDeVotos) {
+	public EstadoValidacion cambioDeEstado(ManejadorDeVotos manejadorDeVotos, Opinion opinion) {
 		return manejadorDeVotos.getOpinionesExpertas().size() > 0 ? new VotanSoloExpertos() : this;
 	}
 	
