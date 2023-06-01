@@ -1,10 +1,5 @@
 package sistema.buscador;
 
-import sistema.muestras.Muestra;
-import sistema.sistemaDeVotos.Opinion;
-import sistema.sistemaDeVotos.TipoDeVoto;
-import sistema.sistemaDeVotos.validacion.Validacion;
-
 import java.util.Date;
 import java.util.Optional;
 import java.util.ArrayList;
@@ -46,11 +41,11 @@ public class Buscador {
 	}
 	
 	// Busqueda por la validacion (falta completar la clase validacion con la muestra)
-	public ArrayList<Muestra> nivelValidacion(Validacion validacionMuestra){
-    	return (ArrayList<Muestra>) muestrasTotalesDelSys.stream().filter(s-> s.getEstado()== ValidacionMuestra));
+	public ArrayList<Muestra> nivelValidacion(EstadoValidacion validacionMuestra){
+    	return (ArrayList<Muestra>) muestrasTotalesDelSys.stream().filter(s-> s.get()== ValidacionMuestra) ;
     }
 	
-	public ArrayList<Muestra> buscadorGeneral(Date fecha, TipoDeVoto insecto, Validacion validacionM, boolean ultimaFecha){
+	public ArrayList<Muestra> buscadorGeneral(Date fecha, TipoDeVoto insecto, EstadoValidacion validacionM, boolean ultimaFecha){
 		if (ultimaFecha) {
 			return this.muestraCreadaEnLaFecha(fecha) && this.muestrasConInsecto(insecto);
 		}
