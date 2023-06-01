@@ -60,4 +60,12 @@ public class Buscador {
 				s.getEstado() == validacionM );
 	}
 
+	public Buscador(ArrayList<Muestra> muestrasTotalesDelSys) {
+		super();
+		this.muestrasTotalesDelSys = muestrasTotalesDelSys;
+	}
+
+	
+	
+
 }

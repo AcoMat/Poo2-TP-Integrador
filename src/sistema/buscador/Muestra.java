@@ -2,9 +2,17 @@ package sistema.buscador;
 
 import java.util.Date;
 
-public interface Muestra {
-	public TipoDeVoto getEstado();
-	public TipoDeVoto getEspecieEstadoActual();
-	public ManejadorVotos getManejadorVotos(); 
-	public Date getFecha();
+public class Muestra {
+	public  TipoDeVoto getEstado() {
+		return null;
+	}
+	public TipoDeVoto getEspecieEstadoActual() {
+		return null;
+	}
+	public ManejadorVotos getManejadorVotos() {
+		return null;
+	}
+	public Date getFecha() {
+		return null;
+	}
 }
