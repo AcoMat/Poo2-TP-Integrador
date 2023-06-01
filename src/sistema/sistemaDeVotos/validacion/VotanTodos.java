@@ -24,6 +24,7 @@ public class VotanTodos extends EstadoValidacion {
 	//Resultado Actual
 	public TipoDeVoto resultadoActual(ManejadorDeVotos manejadorDeVotos) {
 		return null;
+//		Map<String, Long> ocurrencias = list.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 	}
 
 }
