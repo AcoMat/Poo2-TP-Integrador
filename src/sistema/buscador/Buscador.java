@@ -51,7 +51,7 @@ public class Buscador {
 		else {
 			 return extracted(fecha, insecto, validacionM); //agregarElFiltroPorUltimaFecha
 		}
-	}
+	} 
 
 	private ArrayList<Muestra> extracted(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM) {
 		return (ArrayList<Muestra>) muestrasTotalesDelSys.stream().
@@ -71,7 +71,9 @@ public class Buscador {
 
 	public void setMuestrasTotalesDelSys(ArrayList<Muestra> muestrasTotalesDelSys) {
 		this.muestrasTotalesDelSys = muestrasTotalesDelSys;
-	}
+	} 
+	
+	///cacasca
 	
 	
 

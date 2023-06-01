@@ -38,7 +38,7 @@ class UsuarioTestCases {
 	@Test
 	public void testLeoEnviaMuestra() {
 		String fotoURL = "https://estaesunaurl.com/picture1";
-		Ubicacion ubicacion = new Ubicacion();
+		Ubicacion ubicacion = new Ubicacion(0, 0);
 		TipoDeVoto tipoDeVoto = TipoDeVoto.Vinchuca_Guasayana;
 
 		Muestra muestraDeLeo = new Muestra(tipoDeVoto, fotoURL, usuarioLeo, ubicacion);
@@ -54,7 +54,7 @@ class UsuarioTestCases {
 	@Test
 	public void testDiegoO() {
 		String fotoURL = "https://estaesunaurl.com/picture1";
-		Ubicacion ubicacion = new Ubicacion();
+		Ubicacion ubicacion = new Ubicacion(0, 0);
 		TipoDeVoto tipoDeVoto = TipoDeVoto.Vinchuca_Guasayana;
 
 		Muestra muestraDeLeo = new Muestra(tipoDeVoto, fotoURL, usuarioLeo, ubicacion);
