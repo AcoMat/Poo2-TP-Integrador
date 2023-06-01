@@ -16,8 +16,13 @@ public class VotanSoloExpertos extends EstadoValidacion {
 	}
 
 	// Cambio de estado
-	public EstadoValidacion cambioDeEstado(ManejadorDeVotos manejadorDeVotos) {
-		return manejadorDeVotos.getOpinionesExpertas().size() > 0 ? new VotanSoloExpertos() : this;
+	public EstadoValidacion cambioDeEstado(ManejadorDeVotos manejadorDeVotos, Opinion opinion) {
+		if (manejadorDeVotos.getOpinionesExpertas().stream()
+				.anyMatch(opinionExperta -> opinion.getVoto() == opinionExperta.getVoto())) {
+			return new Validada(opinion.getVoto());
+		} else {
+			return this;
+		}
 	}
 
 	// Resultado Actual

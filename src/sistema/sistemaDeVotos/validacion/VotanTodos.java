@@ -17,13 +17,14 @@ public class VotanTodos extends EstadoValidacion {
 	}
 
 	// Cambio de estado
-	public EstadoValidacion cambioDeEstado(ManejadorDeVotos manejadorDeVotos) {
+	public EstadoValidacion cambioDeEstado(ManejadorDeVotos manejadorDeVotos, Opinion opinion) {
 		return manejadorDeVotos.getOpinionesExpertas().size() > 0 ? new VotanSoloExpertos() : this;
 	}
 	
 	//Resultado Actual
 	public TipoDeVoto resultadoActual(ManejadorDeVotos manejadorDeVotos) {
 		return null;
+//		Map<String, Long> ocurrencias = list.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 	}
 
 }
