@@ -7,19 +7,22 @@ import java.util.ArrayList;
 
 public class ZonaDeCobertura {
     private Ubicacion epicentro;
-    private Integer radio;
+    private double radio;
     private String nombre;
 
     private ArrayList<Muestra> muestrasReportadas;
 
     private ArrayList<Organizacion> organizacionesSuscritas;
 
-    //  Metodos
-
-    public ArrayList<ZonaDeCobertura> zonasQueSeSolapan(){
-        //TODo
+    public Ubicacion getEpicentro() {
+        return epicentro;
     }
 
+    public double getRadio() {
+        return radio;
+    }
+
+    //  Metodos
 
     public void nuevaMuestraEnLaZona(Muestra muestra){
         muestrasReportadas.add(muestra);
@@ -41,5 +44,9 @@ public class ZonaDeCobertura {
 
     public void desuscribirA(Organizacion org) {
         organizacionesSuscritas.remove(org);
+    }
+
+    public boolean seSolapaCon(ZonaDeCobertura zc){
+        return (this.epicentro.distanciaHasta(zc.getEpicentro())) < zc.getRadio();
     }
 }
