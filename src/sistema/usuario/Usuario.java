@@ -22,9 +22,10 @@ public class Usuario {
 	private Website website;
 
 	// Constructor
-	public Usuario(String name, Boolean expertoValidado) {
+	public Usuario(String name, Boolean expertoValidado, Website registradoEn) {
 		conocimientoValidado = expertoValidado;
 		this.userName = name;
+		this.website = registradoEn;
 	}
 
 	// Getters
@@ -44,6 +45,10 @@ public class Usuario {
 		return opiniones;
 	}
 
+	public Website dondeEstaRegistrado() {
+		return website;
+	}
+
 	// Setters
 	public void setNivel() {
 		CalculadorDeNivel calculador = new CalculadorDeNivel();
@@ -60,8 +65,6 @@ public class Usuario {
 	}
 
 	public void guardarOpinion(Muestra muestra, Opinion opinion) {
-		this.website.registrarOpinion(muestra, opinion);
-		//creo q el usuario deberia opinar desde el website (como parametro), por ende no tendria ese atributo "website"
 		this.opiniones.add(opinion);
 	}
 
@@ -72,7 +75,7 @@ public class Usuario {
 	}
 
 	public void guardarMuestra(Muestra muestra) {
-//		this.website.registrarPosteoDesdeLaApp(muestra);
+		this.website.registrarNuevaMuestra(muestra);
 		this.muestras.add(muestra);
 	}
 }

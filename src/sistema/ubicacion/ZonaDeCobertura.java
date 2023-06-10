@@ -22,7 +22,21 @@ public class ZonaDeCobertura {
         return radio;
     }
 
+    //
+
+    public ZonaDeCobertura(Ubicacion epicentro, double radio,String nombre){
+        this.epicentro = epicentro;
+        this. radio = radio;
+        this.nombre = nombre;
+    }
+
     //  Metodos
+
+    public void agregarSiEstaEnLaZona(Muestra muestra){
+        if(this.epicentro.distanciaHasta(muestra.getUbicacion()) < this.radio){
+            this.nuevaMuestraEnLaZona(muestra);
+        }
+    }
 
     public void nuevaMuestraEnLaZona(Muestra muestra){
         muestrasReportadas.add(muestra);
@@ -31,12 +45,13 @@ public class ZonaDeCobertura {
         }
     }
 
+
+
     public void nuevaValidacionEnLaZona(Muestra muestra){
         for (Organizacion org:organizacionesSuscritas) {
             org.eventoNuevaValidacion();
         }
     }
-
 
     public void suscribirA(Organizacion org) {
         organizacionesSuscritas.add(org);
