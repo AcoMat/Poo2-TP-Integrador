@@ -22,9 +22,10 @@ public class Usuario {
 	private Website website;
 
 	// Constructor
-	public Usuario(String name, Boolean expertoValidado) {
+	public Usuario(String name, Boolean expertoValidado, Website registradoEn) {
 		conocimientoValidado = expertoValidado;
 		this.userName = name;
+		this.website = registradoEn;
 	}
 
 	// Getters

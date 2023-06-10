@@ -1,4 +1,4 @@
-package sistema.buscador;
+package sistema.buscador.implementacionMartin;
 
 import java.util.Date;
 

@@ -37,7 +37,6 @@ public class ZonaDeCobertura {
         }
     }
 
-
     public void suscribirA(Organizacion org) {
         organizacionesSuscritas.add(org);
     }
