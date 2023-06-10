@@ -78,7 +78,7 @@ public class Muestra {
 	// la muestra de un experto la pueden opinar basicos?¿ seguramente no??
 
 	public TipoDeVoto resultadoActual() {
-		return this.getManejadorVotos().resultadoActual();
+		return this.getManejadorVotos().resultadoDeVotacion();
 	}
 
 }
