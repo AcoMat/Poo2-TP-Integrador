@@ -2,7 +2,7 @@ package sistema.buscador;
 
 import java.util.Date;
 
-public class Muestra {
+public abstract class Muestra {
 	public  TipoDeVoto getEstado() {
 		return null;
 	}
@@ -15,4 +15,5 @@ public class Muestra {
 	public Date getFecha() {
 		return null;
 	}
+	public abstract Date FechaUltimaOpinion() ;
 }
