@@ -31,12 +31,12 @@ public class Buscador {
 	}
 
 	// Busqueda por la validacion (falta completar la clase validacion con la
-	// muestra)
+	// muestra
 	public Stream<Muestra> nivelValidacion(TipoDeVoto validacionMuestra) {
 		return muestrasTotalesDelSys.stream().filter(s -> s.getEstado() == validacionMuestra);
 	}
 
-	public ArrayList<Muestra> buscadorGeneral(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM,
+	public Stream<Muestra>  buscadorGeneral(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM,
 			boolean ultimaFecha) {
 		if (ultimaFecha) {
 			return extracted(fecha, insecto, validacionM);
@@ -45,15 +45,17 @@ public class Buscador {
 		}
 	}
 
-	private ArrayList<Muestra> extracted(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM) {
-		return (ArrayList<Muestra>) muestrasTotalesDelSys.stream().filter(
+	private Stream<Muestra>  extracted(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM) {
+		return  muestrasTotalesDelSys.stream().filter(
 				s -> s.getFecha() == fecha && s.getEspecieEstadoActual() == insecto && s.getEstado() == validacionM);
 	}
 
+	// constructor
 	public Buscador(ArrayList<Muestra> muestrasTotalesDelSys) {
 		super();
 		this.muestrasTotalesDelSys = muestrasTotalesDelSys;
 	}
+
 	// setter y getter
 	public ArrayList<Muestra> getMuestrasTotalesDelSys() {
 		return muestrasTotalesDelSys;
