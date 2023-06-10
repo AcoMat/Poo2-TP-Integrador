@@ -1,5 +1,6 @@
 package sistema.webSite;
 
+import sistema.buscador.BuscadorV2;
 import sistema.buscador.implementacionMartin.Buscador;
 import sistema.muestras.Muestra;
 import sistema.organizaciones.FuncionalidadExterna;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 public class Website {
     //registrar usuarios usar el buscador etc
 
-    private Buscador motorDeBusqueda= new BuscadorV2();
+    private BuscadorV2 motorDeBusqueda= new BuscadorV2();
     private ArrayList<Organizacion> organizacionsRegistradas;
     private ArrayList<ZonaDeCobertura> zonasDeCoberturas = new ArrayList<ZonaDeCobertura>();
 
@@ -26,8 +27,9 @@ public class Website {
         new Usuario(name, esExpertoValidado, this);
     }
 
-    public void registrarNuevaMuestraPosteada(Muestra muestra){
-        motorDeBusqueda.nuevaMuestraEnSistema(muestra);
+    public void registrarNuevaMuestra(Muestra muestra){
+        motorDeBusqueda.registrarNuevaMuestra(muestra);
+
     }
 
     public void registrarOpinion(Muestra muestra, Opinion opinion){

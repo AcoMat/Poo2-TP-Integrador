@@ -73,7 +73,7 @@ public class Usuario {
 	}
 
 	public void guardarMuestra(Muestra muestra) {
-//		this.website.registrarPosteoDesdeLaApp(muestra);
+		this.website.registrarNuevaMuestra(muestra);
 		this.muestras.add(muestra);
 	}
 }

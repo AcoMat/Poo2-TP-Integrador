@@ -24,6 +24,12 @@ public class ZonaDeCobertura {
 
     //  Metodos
 
+    public void agregarSiEstaEnLaZona(Muestra muestra){
+        if(this.epicentro.distanciaHasta(muestra.getUbicacion()) < this.radio){
+
+        }
+    }
+
     public void nuevaMuestraEnLaZona(Muestra muestra){
         muestrasReportadas.add(muestra);
         for (Organizacion org:organizacionesSuscritas) {
