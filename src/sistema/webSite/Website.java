@@ -23,17 +23,9 @@ public class Website {
 
     //  Metodos
 
-    public void registrarNuevoUsuario(String name, boolean esExpertoValidado){
-        new Usuario(name, esExpertoValidado, this);
-    }
-
     public void registrarNuevaMuestra(Muestra muestra){
-        motorDeBusqueda.registrarNuevaMuestra(muestra);
-
-    }
-
-    public void registrarOpinion(Muestra muestra, Opinion opinion){
-        muestra.registrarOpinion(opinion);
+        this.motorDeBusqueda.registrarNuevaMuestra(muestra);
+        this.zonasDeCoberturas.stream().forEach(zC -> zC.agregarSiEstaEnLaZona(muestra));
     }
 
     public void registrarNuevaOrganizacion(Ubicacion ubicacion, TipoDeOrg tipoDeLaOrg, int cantEmpleados, FuncionalidadExterna nuevaMuestra, FuncionalidadExterna validacionMuestra){
@@ -42,7 +34,7 @@ public class Website {
     }
 
     public void nuevaZonaDeCobertura(String nombre,Ubicacion epicentro, int radio){
-        //TODO
+        this.zonasDeCoberturas.add(new ZonaDeCobertura(epicentro, radio, nombre));
     }
 
 

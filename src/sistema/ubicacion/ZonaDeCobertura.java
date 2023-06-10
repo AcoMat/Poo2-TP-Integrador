@@ -22,6 +22,14 @@ public class ZonaDeCobertura {
         return radio;
     }
 
+    //
+
+    public ZonaDeCobertura(Ubicacion epicentro, double radio,String nombre){
+        this.epicentro = epicentro;
+        this. radio = radio;
+        this.nombre = nombre;
+    }
+
     //  Metodos
 
     public void agregarSiEstaEnLaZona(Muestra muestra){
