@@ -34,7 +34,7 @@ public class ZonaDeCobertura {
 
     public void agregarSiEstaEnLaZona(Muestra muestra){
         if(this.epicentro.distanciaHasta(muestra.getUbicacion()) < this.radio){
-
+            this.nuevaMuestraEnLaZona(muestra);
         }
     }
 
@@ -44,6 +44,8 @@ public class ZonaDeCobertura {
             org.eventoNuevaMuestra();
         }
     }
+
+
 
     public void nuevaValidacionEnLaZona(Muestra muestra){
         for (Organizacion org:organizacionesSuscritas) {

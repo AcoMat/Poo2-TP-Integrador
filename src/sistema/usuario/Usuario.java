@@ -45,6 +45,10 @@ public class Usuario {
 		return opiniones;
 	}
 
+	public Website dondeEstaRegistrado() {
+		return website;
+	}
+
 	// Setters
 	public void setNivel() {
 		CalculadorDeNivel calculador = new CalculadorDeNivel();
@@ -61,8 +65,6 @@ public class Usuario {
 	}
 
 	public void guardarOpinion(Muestra muestra, Opinion opinion) {
-		this.website.registrarOpinion(muestra, opinion);
-		//creo q el usuario deberia opinar desde el website (como parametro), por ende no tendria ese atributo "website"
 		this.opiniones.add(opinion);
 	}
 

@@ -74,11 +74,6 @@ public class Muestra {
 		this.ubicacion = ubicacion;
 	}
 
-	// Metodos
-
-	public void registrarOpinion(Opinion o) {
-		this.getManejadorVotos().agregarOpinion(o);
-	}
 
 	// la muestra de un experto la pueden opinar basicos?¿ seguramente no??
 

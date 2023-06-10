@@ -38,13 +38,15 @@ public class Ubicacion {
 
 	}
 
-	public ArrayList<Ubicacion> aquellasAMenosDe1Km(ArrayList<Ubicacion> ubicaciones, double kms){
+	public ArrayList<Ubicacion> aquellasAMenosDeXKm(ArrayList<Ubicacion> ubicaciones, double kms){
 		return ubicaciones.stream().filter(ubi -> ubi.distanciaHasta(this) < kms).collect(Collectors.toCollection(ArrayList::new));
 	}
 
-	public ArrayList<Muestra> muestrasAMenosDeXKm(Muestra muestra){
-		//TODO
-		//	como hago para saber las muestras a menos de x km???
+	public ArrayList<Muestra> muestrasAMenosDeXKm(Muestra muestra, double kms){
+		ArrayList<Muestra> todasLasMuestras = muestra.getAutor().dondeEstaRegistrado().todasLasMuestras();
+		return todasLasMuestras.stream()
+				.filter(m -> this.distanciaHasta(m.getUbicacion()) < kms)
+				.collect(Collectors.toCollection(ArrayList::new));
 	}
 	
 }

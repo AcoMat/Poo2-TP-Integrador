@@ -40,7 +40,7 @@ public class ManejadorDeVotos {
 	public void agregarOpinionBasica(Opinion opinion) {
 		if (estadoValidacion.permiteVotoBasico()) {
 			opinionesBasicas.add(opinion);
-			setEstadoValidacion(opinion);
+			this.setEstadoValidacion(opinion);
 		}
 
 	}
@@ -48,7 +48,7 @@ public class ManejadorDeVotos {
 	public void agregarOpinionExperta(Opinion opinion) {
 		if (estadoValidacion.permiteVotoExperto()) {
 			opinionesExpertas.add(opinion);
-			setEstadoValidacion(opinion);
+			this.setEstadoValidacion(opinion);
 		} else {
 			System.err.println("No es posible agregar opiniones");
 		}

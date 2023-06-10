@@ -17,7 +17,6 @@ public class Website {
     //registrar usuarios usar el buscador etc
 
     private BuscadorV2 motorDeBusqueda= new BuscadorV2();
-    private ArrayList<Organizacion> organizacionsRegistradas;
     private ArrayList<ZonaDeCobertura> zonasDeCoberturas = new ArrayList<ZonaDeCobertura>();
 
 
@@ -28,13 +27,16 @@ public class Website {
         this.zonasDeCoberturas.stream().forEach(zC -> zC.agregarSiEstaEnLaZona(muestra));
     }
 
-    public void registrarNuevaOrganizacion(Ubicacion ubicacion, TipoDeOrg tipoDeLaOrg, int cantEmpleados, FuncionalidadExterna nuevaMuestra, FuncionalidadExterna validacionMuestra){
-        Organizacion nuevaOrg = new Organizacion(ubicacion, tipoDeLaOrg, cantEmpleados , nuevaMuestra, validacionMuestra);
-        organizacionsRegistradas.add(nuevaOrg);
+    public void registrarValidacion(Muestra muestra){
+        this.zonasDeCoberturas.stream().forEach(zC -> zC.nuevaValidacionEnLaZona(muestra));
     }
 
     public void nuevaZonaDeCobertura(String nombre,Ubicacion epicentro, int radio){
         this.zonasDeCoberturas.add(new ZonaDeCobertura(epicentro, radio, nombre));
+    }
+
+    public ArrayList<Muestra> todasLasMuestras(){
+        return this.motorDeBusqueda.getMuestrasEnSistema();
     }
 
 

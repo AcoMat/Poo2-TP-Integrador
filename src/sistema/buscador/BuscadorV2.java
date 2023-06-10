@@ -11,7 +11,9 @@ public class BuscadorV2 {
         this.muestrasEnSistema.add(muestra);
     }
 
-
+    public ArrayList<Muestra> getMuestrasEnSistema() {
+        return this.muestrasEnSistema;
+    }
 
 
 }
