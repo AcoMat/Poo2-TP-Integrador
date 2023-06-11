@@ -1,4 +1,5 @@
 package sistema.buscador.implementacionMartin;
 
-public interface TipoDeVoto {
+public interface ISistemaVoto1 {
+	
 }

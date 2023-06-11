@@ -1,5 +1,5 @@
 package sistema.buscador.implementacionMartin;
 
-public interface SistemaVotos {
-	
+public interface IManejadorVotos1 {
+
 }
