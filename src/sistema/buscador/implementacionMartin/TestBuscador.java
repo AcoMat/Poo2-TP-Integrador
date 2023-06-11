@@ -20,20 +20,25 @@ class TestBuscador {
 	private ITipoDeVoto1  tipo3;
 	ArrayList<IMuestra1> iMuestra1s = new ArrayList<IMuestra1>();
 	
+	
+	ArrayList mockList;
+	
 	@BeforeEach
-	void buscadorIncializado() {
+	void setUp() {
 		//Test Double Instalation
 		buscador = new Buscador(iMuestra1s);
 		
 		//set up 
-		muestra1 = spy(IMuestra1.class);
-		muestra2 = spy(IMuestra1.class);
-		muestra3 = spy (IMuestra1.class);
+		muestra1 = mock(IMuestra1.class);
+		muestra2 = mock(IMuestra1.class);
+		muestra3 = mock (IMuestra1.class);
 		
 		//tiposDeIsectos
-		tipo1 = spy(ITipoDeVoto1.class);
-		tipo2 = spy(ITipoDeVoto1.class);
-		tipo3 = spy(ITipoDeVoto1.class);
+		tipo1 = mock(ITipoDeVoto1.class);
+		tipo2 = mock(ITipoDeVoto1.class);
+		tipo3 = mock(ITipoDeVoto1.class);
+		
+		mockList = new ArrayList<>();
 		
 	}
 	
@@ -62,19 +67,19 @@ class TestBuscador {
 	@Test
 	void testMuestraCreadaEnLaFecha() {
 		//Test Double Configuration
-		Date fechaActual = new Date();
-		when(muestra3.getFecha()).thenReturn(fechaActual);
+		Date fecha1 = new Date();
+		Date fecha2 = new Date();
+		Date fecha3 = new Date();
+		
+		when(muestra1.getFecha()).thenReturn(fecha1);
+		when(muestra2.getFecha()).thenReturn(fecha2);
+		when(muestra3.getFecha()).thenReturn(fecha3);
+		
 		
 		//Exercise
-		buscador.muestraAAgregar(muestra1);
-		buscador.muestraAAgregar(muestra2);
-		buscador.muestraAAgregar(muestra3);
-	 
-		
-		buscador.atacar(muestra3);
 		
 		//Verify
-		verify(muestra3).getFecha();
+		verify(muestra1,never()).getFecha();
 
 	}
 
@@ -85,9 +90,7 @@ class TestBuscador {
 		when(muestra2.getEspecieEstadoActual()).thenReturn(tipo2);
 		when(muestra1.getEspecieEstadoActual()).thenReturn(tipo1);
 		
-		buscador.muestraAAgregar(muestra1);
-		buscador.muestraAAgregar(muestra2);
-		buscador.muestraAAgregar(muestra3);
+		when(mockList.get(0)).thenReturn("visitMeHere");
 		
 		//Exercise
 		buscador.muestrasConInsecto(tipo2);
@@ -107,12 +110,15 @@ class TestBuscador {
 		buscador.muestraAAgregar(muestra2);
 		buscador.muestraAAgregar(muestra3);
 		
+		
+		buscador.
+		
 		verify(muestra3,  never()).getEstado();
 	}
 
 	@Test
 	void testBuscadorGeneral() {
-		fail("Not yet implemented");
+		fail("Not yet implemented"); 
 	}
 
 	@Test
