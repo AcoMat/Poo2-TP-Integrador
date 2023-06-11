@@ -1,4 +1,4 @@
 package sistema.buscador.implementacionMartin;
 
-public interface TipoDeVoto {
+public interface ITipoDeVoto1 {
 }

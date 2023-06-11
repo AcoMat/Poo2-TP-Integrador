@@ -2,11 +2,11 @@ package sistema.buscador.implementacionMartin;
 
 import java.util.Date;
 
-public class Muestra {
-	public  TipoDeVoto getEstado() {
+public class IMuestra1 {
+	public  ITipoDeVoto1 getEstado() {
 		return null;
 	}
-	public TipoDeVoto getEspecieEstadoActual() {
+	public ITipoDeVoto1 getEspecieEstadoActual() {
 		return null;
 	}
 	public IManejadorVotos1 getManejadorVotos() {
