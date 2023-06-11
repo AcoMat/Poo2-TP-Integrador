@@ -2,14 +2,14 @@ package sistema.buscador;
 
 import java.util.Date;
 
-public abstract class Muestra {
-	public  TipoDeVoto getEstado() {
+public abstract class IMuestra1 {
+	public  ITipoDeVoto getEstado() {
 		return null;
 	}
-	public TipoDeVoto getEspecieEstadoActual() {
+	public ITipoDeVoto getEspecieEstadoActual() {
 		return null;
 	}
-	public ManejadorVotos getManejadorVotos() {
+	public IManejadorVotos1 getManejadorVotos() {
 		return null;
 	}
 	public Date getFecha() {

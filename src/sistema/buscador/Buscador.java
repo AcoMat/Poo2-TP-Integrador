@@ -8,34 +8,34 @@ import java.util.Comparator;
 
 public class Buscador {
 
-	private ArrayList<Muestra> muestrasTotalesDelSys;
-	private Comparator<Muestra> comparator = Comparator.comparing(Muestra::getFechaUltimaOpinion);
+	private ArrayList<IMuestra1> muestrasTotalesDelSys;
+	private Comparator<IMuestra1> comparator = Comparator.comparing(IMuestra1::getFechaUltimaOpinion);
 
-	public void muestraAAgregar(Muestra m) {
+	public void muestraAAgregar(IMuestra1 m) {
 		muestrasTotalesDelSys.add(m);
 	}
 
 	// buscar muestras por la fecha de creacion
-	public Stream<Muestra> muestraCreadaEnLaFecha(Date fecha) {
+	public Stream<IMuestra1> muestraCreadaEnLaFecha(Date fecha) {
 		return muestrasTotalesDelSys.stream().filter(s -> s.getFecha() == fecha);
 	}
 
 	// consultar tenemos 2 arrays para opiniones
-	public Optional<Muestra> ultimaMuestraVotada() {
+	public Optional<IMuestra1> ultimaMuestraVotada() {
 		return muestrasTotalesDelSys.stream().max(comparator);
 	}
 
 	// Busqueda por la especie
-	public Stream<Muestra> muestrasConInsecto(TipoDeVoto insecto) {
+	public Stream<IMuestra1> muestrasConInsecto(ITipoDeVoto insecto) {
 		return muestrasTotalesDelSys.stream().filter(s -> s.getEspecieEstadoActual() == insecto);
 	}
 
 	// Busqueda por la validacion (falta completar la clase validacion con la
 	// muestra
-	public Stream<Muestra> nivelValidacion(TipoDeVoto validacionMuestra) {
+	public Stream<IMuestra1> nivelValidacion(ITipoDeVoto validacionMuestra) {
 		return muestrasTotalesDelSys.stream().filter(s -> s.getEstado() == validacionMuestra);
 	}
-	private Stream<Muestra> buscadorGeneral(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM, Date ultimaOpinion) {
+	private Stream<IMuestra1> buscadorGeneral(Date fecha, ITipoDeVoto insecto, ITipoDeVoto validacionM, Date ultimaOpinion) {
 		return  muestrasTotalesDelSys.stream().filter(
 				s -> s.getFecha() == fecha &&
 				s.getEspecieEstadoActual() == insecto && 
@@ -44,17 +44,17 @@ public class Buscador {
 	}
 
 	// constructor
-	public Buscador(ArrayList<Muestra> muestrasTotalesDelSys) {
+	public Buscador(ArrayList<IMuestra1> muestrasTotalesDelSys) {
 		super();
 		this.muestrasTotalesDelSys = muestrasTotalesDelSys;
 	}
 
 	// setter y getter
-	public ArrayList<Muestra> getMuestrasTotalesDelSys() {
+	public ArrayList<IMuestra1> getMuestrasTotalesDelSys() {
 		return muestrasTotalesDelSys;
 	}
 
-	public void setMuestrasTotalesDelSys(ArrayList<Muestra> muestrasTotalesDelSys) {
+	public void setMuestrasTotalesDelSys(ArrayList<IMuestra1> muestrasTotalesDelSys) {
 		this.muestrasTotalesDelSys = muestrasTotalesDelSys;
 	}
 

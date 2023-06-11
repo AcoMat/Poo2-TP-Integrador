@@ -12,28 +12,28 @@ import java.util.Date;
 
 class TestBuscador {
 	private Buscador buscador; 
-	private Muestra muestra1;
-	private Muestra muestra2;
-	private Muestra muestra3;
-	private TipoDeVoto tipo1;
-	private TipoDeVoto  tipo2;
-	private TipoDeVoto  tipo3;
-	ArrayList<Muestra> muestras = new ArrayList<Muestra>();
+	private IMuestra1 muestra1;
+	private IMuestra1 muestra2;
+	private IMuestra1 muestra3;
+	private ITipoDeVoto tipo1;
+	private ITipoDeVoto  tipo2;
+	private ITipoDeVoto  tipo3;
+	ArrayList<IMuestra1> iMuestra1s = new ArrayList<IMuestra1>();
 	
 	@BeforeEach
 	void buscadorIncializado() {
 		//Test Double Instalation
-		buscador = new Buscador(muestras);
+		buscador = new Buscador(iMuestra1s);
 		
 		//set up 
-		muestra1 = mock(Muestra.class);
-		muestra2 = mock(Muestra.class);
-		muestra3 = mock (Muestra.class);
+		muestra1 = mock(IMuestra1.class);
+		muestra2 = mock(IMuestra1.class);
+		muestra3 = mock (IMuestra1.class);
 		
 		//tiposDeIsectos
-		tipo1 = mock(TipoDeVoto.class);
-		tipo2 = mock(TipoDeVoto.class);
-		tipo3 = mock(TipoDeVoto.class);
+		tipo1 = mock(ITipoDeVoto.class);
+		tipo2 = mock(ITipoDeVoto.class);
+		tipo3 = mock(ITipoDeVoto.class);
 		
 	}
 	
