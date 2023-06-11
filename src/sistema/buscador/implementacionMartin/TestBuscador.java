@@ -1,12 +1,11 @@
 package sistema.buscador.implementacionMartin;
 
+import org.junit.*;
+
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.fail;
 import static org.mockito.Mockito.*;
 
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,7 +19,7 @@ class TestBuscador {
 	private ITipoDeVoto1  tipo3;
 	ArrayList<IMuestra1> iMuestra1s = new ArrayList<IMuestra1>();
 	
-	@BeforeEach
+	@Before
 	void buscadorIncializado() {
 		//Test Double Instalation
 		buscador = new Buscador(iMuestra1s);
@@ -28,7 +27,7 @@ class TestBuscador {
 		//set up 
 		muestra1 = mock(IMuestra1.class);
 		muestra2 = mock(IMuestra1.class);
-		muestra3 = mock (IMuestra1.class);
+		muestra3 = mock(IMuestra1.class);
 		
 		//tiposDeIsectos
 		tipo1 = mock(ITipoDeVoto1.class);
@@ -40,9 +39,9 @@ class TestBuscador {
 	@Test
 	void testObject() {
 		//testeo el constructor
-		assertInstanceOf(Buscador.class, buscador);
+		assertEquals(Buscador.class, buscador);
 	}
-	
+
 
 	@Test
 	void testNuevaMuestraEnSistema() {
