@@ -9,7 +9,7 @@ import java.util.Comparator;
 public class Buscador {
 
 	private ArrayList<Muestra> muestrasTotalesDelSys;
-	private Comparator<Muestra> comparator = Comparator.comparing(Muestra::FechaUltimaOpinion);
+	private Comparator<Muestra> comparator = Comparator.comparing(Muestra::getFechaUltimaOpinion);
 
 	public void muestraAAgregar(Muestra m) {
 		muestrasTotalesDelSys.add(m);
@@ -35,19 +35,12 @@ public class Buscador {
 	public Stream<Muestra> nivelValidacion(TipoDeVoto validacionMuestra) {
 		return muestrasTotalesDelSys.stream().filter(s -> s.getEstado() == validacionMuestra);
 	}
-
-	public Stream<Muestra>  buscadorGeneral(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM,
-			boolean ultimaFecha) {
-		if (ultimaFecha) {
-			return extracted(fecha, insecto, validacionM);
-		} else {
-			return extracted(fecha, insecto, validacionM); // agregarElFiltroPorUltimaFecha
-		}
-	}
-
-	private Stream<Muestra>  extracted(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM) {
+	private Stream<Muestra> buscadorGeneral(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM, Date ultimaOpinion) {
 		return  muestrasTotalesDelSys.stream().filter(
-				s -> s.getFecha() == fecha && s.getEspecieEstadoActual() == insecto && s.getEstado() == validacionM);
+				s -> s.getFecha() == fecha &&
+				s.getEspecieEstadoActual() == insecto && 
+				s.getEstado() == validacionM && 
+				s.getFechaUltimaOpinion() == ultimaOpinion) ;
 	}
 
 	// constructor

@@ -15,5 +15,6 @@ public abstract class Muestra {
 	public Date getFecha() {
 		return null;
 	}
-	public abstract Date FechaUltimaOpinion() ;
+	public Date getFechaUltimaOpinion() {
+		return null;}
 }
