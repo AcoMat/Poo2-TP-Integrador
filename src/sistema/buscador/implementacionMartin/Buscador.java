@@ -19,7 +19,7 @@ public class Buscador {
 	public Stream<IMuestra1> muestraCreadaEnLaFecha(Date fecha) {
 		return muestrasTotalesDelSys.stream().filter(s -> s.getFecha() == fecha);
 	}
-
+ 
 	// consultar tenemos 2 arrays para opiniones
 	public Optional<IMuestra1> ultimaMuestraVotada() {
 		return muestrasTotalesDelSys.stream().max(comparator);
@@ -57,6 +57,7 @@ public class Buscador {
 	public void setMuestrasTotalesDelSys(ArrayList<IMuestra1> muestrasTotalesDelSys) {
 		this.muestrasTotalesDelSys = muestrasTotalesDelSys;
 	}
+	
 	
 	
 
