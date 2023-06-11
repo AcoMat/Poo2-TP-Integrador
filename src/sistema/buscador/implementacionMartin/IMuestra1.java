@@ -17,4 +17,7 @@ public class IMuestra1 {
 	}
 	public Date getFechaUltimaOpinion() {
 		return null;}
+	
+
+	
 }

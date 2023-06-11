@@ -58,6 +58,10 @@ public class Buscador {
 		this.muestrasTotalesDelSys = muestrasTotalesDelSys;
 	}
 	
+	public void atacar(IMuestra1 muestra) {
+		muestra.getFecha();
+	}
+	
 	
 
 }

@@ -26,14 +26,14 @@ class TestBuscador {
 		buscador = new Buscador(iMuestra1s);
 		
 		//set up 
-		muestra1 = mock(IMuestra1.class);
-		muestra2 = mock(IMuestra1.class);
-		muestra3 = mock (IMuestra1.class);
+		muestra1 = spy(IMuestra1.class);
+		muestra2 = spy(IMuestra1.class);
+		muestra3 = spy (IMuestra1.class);
 		
 		//tiposDeIsectos
-		tipo1 = mock(ITipoDeVoto1.class);
-		tipo2 = mock(ITipoDeVoto1.class);
-		tipo3 = mock(ITipoDeVoto1.class);
+		tipo1 = spy(ITipoDeVoto1.class);
+		tipo2 = spy(ITipoDeVoto1.class);
+		tipo3 = spy(ITipoDeVoto1.class);
 		
 	}
 	
@@ -71,10 +71,11 @@ class TestBuscador {
 		buscador.muestraAAgregar(muestra3);
 	 
 		
-		buscador.muestraCreadaEnLaFecha(fechaActual);
+		buscador.atacar(muestra3);
 		
 		//Verify
-		verify(muestra3, times(1)).getFecha();
+		verify(muestra3).getFecha();
+
 	}
 
 	@Test
@@ -84,18 +85,29 @@ class TestBuscador {
 		when(muestra2.getEspecieEstadoActual()).thenReturn(tipo2);
 		when(muestra1.getEspecieEstadoActual()).thenReturn(tipo1);
 		
-		
-		//Exercise
 		buscador.muestraAAgregar(muestra1);
 		buscador.muestraAAgregar(muestra2);
 		buscador.muestraAAgregar(muestra3);
 		
+		//Exercise
+		buscador.muestrasConInsecto(tipo2);
+		
+		
+		verify(muestra3,  never()).getEspecieEstadoActual();
 		
 	}
 
 	@Test
 	void testNivelValidacion() {
-		fail("Not yet implemented");
+		when(muestra3.getEstado()).thenReturn(tipo3);
+		when(muestra2.getEstado()).thenReturn(tipo2);
+		when(muestra1.getEstado()).thenReturn(tipo1);
+		
+		buscador.muestraAAgregar(muestra1);
+		buscador.muestraAAgregar(muestra2);
+		buscador.muestraAAgregar(muestra3);
+		
+		verify(muestra3,  never()).getEstado();
 	}
 
 	@Test
