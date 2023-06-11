@@ -9,7 +9,7 @@ public class Muestra {
 	public TipoDeVoto getEspecieEstadoActual() {
 		return null;
 	}
-	public ManejadorVotos getManejadorVotos() {
+	public IManejadorVotos1 getManejadorVotos() {
 		return null;
 	}
 	public Date getFecha() {
