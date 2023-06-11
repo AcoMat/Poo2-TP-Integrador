@@ -12,7 +12,9 @@ public abstract class IMuestra1 {
 	public IManejadorVotos1 getManejadorVotos() {
 		return null;
 	}
-	public abstract Date getFecha();
+	public Date getFecha() {
+		return null;
+	}
 	public Date getFechaUltimaOpinion() {
 		return null;}
 	
