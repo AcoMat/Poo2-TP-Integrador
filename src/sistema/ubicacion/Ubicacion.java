@@ -44,8 +44,9 @@ public class Ubicacion {
 
 	public ArrayList<Muestra> muestrasAMenosDeXKm(Muestra muestra, double kms){
 		ArrayList<Muestra> todasLasMuestras = muestra.getAutor().dondeEstaRegistrado().todasLasMuestras();
+		Ubicacion ubicacionMuestra = muestra.getUbicacion();
 		return todasLasMuestras.stream()
-				.filter(m -> this.distanciaHasta(m.getUbicacion()) < kms)
+				.filter(m -> ubicacionMuestra.distanciaHasta(m.getUbicacion()) < kms)
 				.collect(Collectors.toCollection(ArrayList::new));
 	}
 	
