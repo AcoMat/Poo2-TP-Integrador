@@ -1,9 +1,10 @@
 package sistema.buscador.implementacionMartin;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import org.junit.*;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,9 +28,10 @@ class TestBuscador {
 	
 	ArrayList<IMuestra1> muestras = new ArrayList<IMuestra1>();
 	ArrayList<IMuestra1> filtro =new ArrayList<IMuestra1>();
-	
+
 	@BeforeEach
 	void setUp() {
+
 		//Test Double Instalation
 		buscador = new Buscador(muestras);
 		
@@ -49,9 +51,9 @@ class TestBuscador {
 	@Test
 	void testObject() {
 		//testeo el constructor
-		assertInstanceOf(Buscador.class, buscador);
+		assertEquals(Buscador.class, buscador);
 	}
-	
+
 
 	@Test
 	void testNuevaMuestraEnSistema() {

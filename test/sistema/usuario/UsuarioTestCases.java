@@ -1,24 +1,28 @@
 package sistema.usuario;
 
-import static org.junit.Assert.assertArrayEquals;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
+
+import org.junit.Before;
+import org.junit.Test;
 import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.ubicacion.*;
 import sistema.muestras.*;
+import sistema.webSite.Website;
 
 class UsuarioTestCases {
 
-	Usuario usuarioLeo = new Usuario("Leo", false);
-	Usuario usuarioDiego = new Usuario("Diego", true);
+	Website web = mock(Website.class);
 
-	@BeforeEach
+	Usuario usuarioLeo = new Usuario("Leo", false, web);
+	Usuario usuarioDiego = new Usuario("Diego", true, web);
+
+	@Before
 	public void setUp() {
 
 	}
