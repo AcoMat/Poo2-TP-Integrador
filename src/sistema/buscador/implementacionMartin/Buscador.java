@@ -11,7 +11,7 @@ import java.util.Comparator;
 
 public class Buscador {
 	private ArrayList<Muestra> muestrasTotalesDelSys;
-	private Comparator<Muestra> comparator = Comparator.comparing(IMuestra1::getFechaUltimaOpinion);
+	private Comparator<Muestra> comparator = Comparator.comparing(Muestra::getFechaUltimaOpinion);
 
 	public void muestraAAgregar(Muestra m) {
 		muestrasTotalesDelSys.add(m);

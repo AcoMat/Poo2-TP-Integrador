@@ -12,6 +12,7 @@ import org.mockito.internal.stubbing.answers.ThrowsException;
 import org.mockito.internal.stubbing.answers.ThrowsExceptionForClassType;
 
 import sistema.muestras.Muestra;
+import sistema.sistemaDeVotos.TipoDeVoto;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,15 +20,15 @@ import java.util.stream.Stream;
 
 class TestBuscador {
 	private Buscador buscador; 
-	private IMuestra1 muestra1;
-	private IMuestra1 muestra2;
-	private IMuestra1 muestra3;
-	private ITipoDeVoto1 tipo1;
-	private ITipoDeVoto1  tipo2;
-	private ITipoDeVoto1  tipo3;
+	private Muestra muestra1;
+	private Muestra muestra2;
+	private Muestra muestra3;
+	private TipoDeVoto tipo1;
+	private TipoDeVoto  tipo2;
+	private TipoDeVoto  tipo3;
 	
-	ArrayList<IMuestra1> muestras = new ArrayList<IMuestra1>();
-	ArrayList<IMuestra1> filtro =new ArrayList<IMuestra1>();
+	ArrayList<Muestra> muestras = new ArrayList<Muestra>();
+	ArrayList<Muestra> filtro =new ArrayList<Muestra>();
 
 	@BeforeEach
 	void setUp() {
@@ -36,14 +37,14 @@ class TestBuscador {
 		buscador = new Buscador(muestras);
 		
 		//set up 
-		muestra1 = mock(IMuestra1.class);
-		muestra2 = mock(IMuestra1.class);
-		muestra3 = mock(IMuestra1.class);
+		muestra1 = new Muestra(tipo1, null, null, null);
+		muestra2 = new Muestra(tipo2, null, null, null);
+		muestra3 = new Muestra(tipo3, null, null, null);
 		
 		//tiposDeIsectos
-		tipo1 = mock(ITipoDeVoto1.class);
-		tipo2 = mock(ITipoDeVoto1.class);
-		tipo3 = mock(ITipoDeVoto1.class);
+		tipo1 = TipoDeVoto.Vinchuca_Infestans;
+		tipo2 =TipoDeVoto.Vinchuca_Guasayana;
+		tipo3 =TipoDeVoto.Imagen_poco_clara;
 		
 		
 	}

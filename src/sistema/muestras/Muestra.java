@@ -86,4 +86,12 @@ public class Muestra {
 		return this.getManejadorVotos().resultadoDeVotacion();
 	}
 
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public void setEspecie(TipoDeVoto especie) {
+		this.especie = especie;
+	}
+
 }
