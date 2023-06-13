@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 import sistema.muestras.Muestra;
+import sistema.sistemaDeVotos.TipoDeVoto;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -27,16 +28,16 @@ public class Buscador {
 	}
 
 	// Busqueda por la especie
-	public Stream<Muestra> muestrasConInsecto(ITipoDeVoto1 insecto) {
+	public Stream<Muestra> muestrasConInsecto(TipoDeVoto insecto) {
 		return muestrasTotalesDelSys.stream().filter(s -> s.getEspecieEstadoActual() == insecto);
 	}
 
 	// Busqueda por la validacion (falta completar la clase validacion con la
 	// muestra
-	public Stream<Muestra> nivelValidacion(ITipoDeVoto1 validacionMuestra) {
+	public Stream<Muestra> nivelValidacion(TipoDeVoto validacionMuestra) {
 		return muestrasTotalesDelSys.stream().filter(s -> s.getEstado() == validacionMuestra);
 	}
-	private Stream<Muestra> buscadorGeneral(Date fecha, ITipoDeVoto1 insecto, ITipoDeVoto1 validacionM, Date ultimaOpinion) {
+	private Stream<Muestra> buscadorGeneral(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM, Date ultimaOpinion) {
 		return  muestrasTotalesDelSys.stream().filter(
 				s -> s.getFecha() == fecha &&
 				s.getEspecieEstadoActual() == insecto && 
