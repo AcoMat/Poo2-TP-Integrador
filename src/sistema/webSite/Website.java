@@ -39,5 +39,11 @@ public class Website {
         return this.motorDeBusqueda.getMuestrasEnSistema();
     }
 
+    public BuscadorV2 getMotorDeBusqueda() {
+        return motorDeBusqueda;
+    }
+    public ArrayList<ZonaDeCobertura> getZonasDeCoberturas() {
+        return zonasDeCoberturas;
+    }
 
 }

@@ -1,4 +1,4 @@
-package sistema.usuario.ubicacion;
+package sistema.ubicacion;
 
 import org.junit.Assert;
 import org.junit.Test;
