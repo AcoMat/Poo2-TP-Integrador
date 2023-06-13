@@ -29,19 +29,19 @@ public class Buscador {
 
 	// Busqueda por la especie
 	public Stream<Muestra> muestrasConInsecto(TipoDeVoto insecto) {
-		return muestrasTotalesDelSys.stream().filter(s -> s.getEspecieEstadoActual() == insecto);
+		return muestrasTotalesDelSys.stream().filter(s -> s.getEspecie() == insecto);
 	}
 
 	// Busqueda por la validacion (falta completar la clase validacion con la
 	// muestra
 	public Stream<Muestra> nivelValidacion(TipoDeVoto validacionMuestra) {
-		return muestrasTotalesDelSys.stream().filter(s -> s.getEstado() == validacionMuestra);
+		return muestrasTotalesDelSys.stream().filter(s -> s.resultadoActual() == validacionMuestra);
 	}
 	private Stream<Muestra> buscadorGeneral(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM, Date ultimaOpinion) {
 		return  muestrasTotalesDelSys.stream().filter(
 				s -> s.getFecha() == fecha &&
-				s.getEspecieEstadoActual() == insecto && 
-				s.getEstado() == validacionM && 
+				s.getEspecie() == insecto && 
+				s.resultadoActual() == validacionM && 
 				s.getFechaUltimaOpinion() == ultimaOpinion) ;
 	}
 
