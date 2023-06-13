@@ -73,6 +73,11 @@ public class Muestra {
 	public void setUbicacion(Ubicacion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
+	
+	public Date  getFechaUltimaOpinion() {
+		return null; 
+		//necesito esta implementacion para el buscador.
+	}
 
 
 	// la muestra de un experto la pueden opinar basicos?¿ seguramente no??
