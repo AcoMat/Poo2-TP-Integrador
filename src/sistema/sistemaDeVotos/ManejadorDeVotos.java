@@ -27,6 +27,13 @@ public class ManejadorDeVotos {
 	public ArrayList<Opinion> getOpinionesExpertas() {
 		return opinionesExpertas;
 	}
+	
+	public ArrayList<Opinion> getTodasLasOpiniones(){
+		ArrayList<Opinion> todasLasOpiniones = new ArrayList<Opinion>();
+		todasLasOpiniones.addAll(opinionesBasicas);
+		todasLasOpiniones.addAll(opinionesExpertas);
+		return todasLasOpiniones;
+	}
 
 	// Setters
 
