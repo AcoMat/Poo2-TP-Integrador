@@ -83,11 +83,6 @@ public class Muestra {
 	public void setManejadorDeVotos(IManejadorDeVotos1 menejador) {
 		this.manejadorVotos = menejador;
 	}
-	
-	public Date  getFechaUltimaOpinion() {
-		return null; 
-		//necesito esta implementacion para el buscador.
-	}
 
 	public ITipoDeVoto2 resultadoActual() {
 		return this.getManejadorVotos().resultadoDeVotacion();

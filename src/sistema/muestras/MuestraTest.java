@@ -125,7 +125,13 @@ class MuestraTest {
 
 	@Test
 	void testResultadoActual() {
-		fail("Not yet implemented");
+		when(nuevoManejador.resultadoDeVotacion()).thenReturn(tipo3);
+		
+		muestra.setManejadorDeVotos(nuevoManejador);
+		
+		muestra.resultadoActual();
+		
+		verify(nuevoManejador).resultadoDeVotacion();
 	}
 
 	
