@@ -5,6 +5,8 @@ import org.junit.Test;
 import sistema.muestras.Muestra;
 import sistema.organizaciones.Organizacion;
 
+import java.util.concurrent.ExecutionException;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
@@ -21,15 +23,13 @@ public class ZonaDeCoberturaTest {
         epicentroMock =  mock(Ubicacion.class);
         muestraMock = mock(Muestra.class);
         ubicacionMock = mock(Ubicacion.class);
-        zonaDePrueba = new ZonaDeCobertura(epicentroMock, 15.0, "ZonaDePrueba");
+        zonaDePrueba = spy(new ZonaDeCobertura(epicentroMock, 15.0, "ZonaDePrueba"));
         orgMock = mock(Organizacion.class);
     }
 
     @Test
     public void agregarSiEstaEnLaZonaTest(){
-        when(muestraMock.getUbicacion()).thenReturn(ubicacionMock);
-        when(epicentroMock.distanciaHasta(ubicacionMock)).thenReturn(20.0);
-        //todo
+        //TODO
     }
 
     @Test
