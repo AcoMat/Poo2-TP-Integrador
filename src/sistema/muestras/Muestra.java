@@ -65,6 +65,10 @@ public class Muestra {
 	public ArrayList<Opinion> getTodasLasOpiniones() {
 		return this.getManejadorVotos().getTodasLasOpiniones();
 	}
+	
+	public Date getUltimaVotacion() {
+		return this.getManejadorVotos().getFechaUltimaVotación();
+	}
 
 	// Setters
 
