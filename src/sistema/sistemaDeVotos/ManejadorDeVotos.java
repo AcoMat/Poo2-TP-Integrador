@@ -1,5 +1,6 @@
 package sistema.sistemaDeVotos;
 
+import java.util.Date;
 import sistema.muestras.Muestra;
 
 import sistema.sistemaDeVotos.validacion.VotanTodos;
@@ -13,10 +14,11 @@ public class ManejadorDeVotos {
 
 	Muestra muestraAsociada;
 
-	ArrayList<Opinion> opinionesBasicas;
-	ArrayList<Opinion> opinionesExpertas;
+	ArrayList<Opinion> opinionesBasicas = new ArrayList<Opinion>();
+	ArrayList<Opinion> opinionesExpertas = new ArrayList<Opinion>();
 
 	EstadoValidacion estadoValidacion = new VotanTodos();
+	Date fechaUltimaVotación = new Date();
 
 	// Getters
 
@@ -28,18 +30,33 @@ public class ManejadorDeVotos {
 		return opinionesExpertas;
 	}
 
+	public ArrayList<Opinion> getTodasLasOpiniones() {
+		ArrayList<Opinion> todasLasOpiniones = new ArrayList<Opinion>();
+		todasLasOpiniones.addAll(opinionesBasicas);
+		todasLasOpiniones.addAll(opinionesExpertas);
+		return todasLasOpiniones;
+	}
+
+	public Date getFechaUltimaVotación() {
+		return fechaUltimaVotación;
+	}
+
 	// Setters
 
 	public void asociarMuestra(Muestra m) {
 		this.muestraAsociada = m;
 	}
 
+	public void setFechaDeUltimaVotacion(Date nuevaFecha) {
+		fechaUltimaVotación = nuevaFecha;
+	}
 	//
 	// Agregar Opiniones
 
 	public void agregarOpinionBasica(Opinion opinion) {
 		if (estadoValidacion.permiteVotoBasico()) {
 			opinionesBasicas.add(opinion);
+			this.setFechaDeUltimaVotacion(opinion.getFecha());
 			this.setEstadoValidacion(opinion);
 		}
 
@@ -48,6 +65,7 @@ public class ManejadorDeVotos {
 	public void agregarOpinionExperta(Opinion opinion) {
 		if (estadoValidacion.permiteVotoExperto()) {
 			opinionesExpertas.add(opinion);
+			this.setFechaDeUltimaVotacion(opinion.getFecha());
 			this.setEstadoValidacion(opinion);
 		} else {
 			System.err.println("No es posible agregar opiniones");

@@ -13,4 +13,6 @@ public interface IMuestra1 {
 	public Date getFecha();
 
 	public Date getFechaUltimaOpinion();
+
+
 }
