@@ -12,7 +12,7 @@ import java.util.Comparator;
 
 public class Buscador {
 	private ArrayList<Muestra> muestrasTotalesDelSys = new ArrayList<Muestra>();
-	private Comparator<Muestra> comparator = Comparator.comparing(Muestra::getFechaUltimaOpinion);
+	private Comparator<Muestra> comparator = Comparator.comparing(Muestra::getFechaUltimaVotacion);
 
 	public void muestraAAgregar(Muestra m) {
 		muestrasTotalesDelSys.add(m);
@@ -22,7 +22,7 @@ public class Buscador {
 	public List<Muestra> muestraCreadaEnLaFecha(Date fecha){
 		return muestrasTotalesDelSys.stream().filter(s -> s.getFecha() == fecha).collect(Collectors.toList());
 	}
- 
+
 	// consultar tenemos 2 arrays para opiniones
 	public Optional<Muestra> ultimaMuestraVotada() {
 		return muestrasTotalesDelSys.stream().max(comparator);
@@ -30,20 +30,20 @@ public class Buscador {
 
 	// Busqueda por la especie
 	public List<Muestra> muestrasConInsecto(TipoDeVoto insecto) {
-		return muestrasTotalesDelSys.stream().filter(s -> s.getEspecieEstadoActual() == insecto).collect(Collectors.toList());
+		return muestrasTotalesDelSys.stream().filter(s -> s.getEspecie() == insecto).collect(Collectors.toList());
 	}
 
-	// Busqueda por la validacion 
+	// Busqueda por la validacion
 	public  List<Muestra> nivelValidacion(TipoDeVoto validacionMuestra) {
-		return muestrasTotalesDelSys.stream().filter(s -> s.getEstado() == validacionMuestra).collect(Collectors.toList());
+		return muestrasTotalesDelSys.stream().filter(s -> s.resultadoActual() == validacionMuestra).collect(Collectors.toList());
 	}
 	//busqueda conbinando todos los campos
 	List<Muestra> buscadorGeneral(Date fecha, TipoDeVoto insecto, TipoDeVoto validacionM, Date ultimaOpinion) {
 		return  muestrasTotalesDelSys.stream().filter(
 				s -> (s.getFecha() == fecha &&
-				s.getEspecieEstadoActual() == insecto && 
-				s.getEstado() == validacionM && 
-				s.getFechaUltimaOpinion() == ultimaOpinion)).collect(Collectors.toList());
+				s.getEspecie() == insecto &&
+				s.resultadoActual() == validacionM &&
+				s.getFechaUltimaVotacion() == ultimaOpinion)).collect(Collectors.toList());
 	}
 
 	// constructor
