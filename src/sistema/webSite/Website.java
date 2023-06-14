@@ -1,15 +1,9 @@
 package sistema.webSite;
 
 import sistema.buscador.BuscadorV2;
-import sistema.buscador.implementacionMartin.Buscador;
 import sistema.muestras.Muestra;
-import sistema.organizaciones.FuncionalidadExterna;
-import sistema.organizaciones.Organizacion;
-import sistema.organizaciones.TipoDeOrg;
-import sistema.sistemaDeVotos.Opinion;
 import sistema.ubicacion.Ubicacion;
 import sistema.ubicacion.ZonaDeCobertura;
-import sistema.usuario.Usuario;
 
 import java.util.ArrayList;
 
@@ -28,7 +22,7 @@ public class Website {
     }
 
     public void registrarValidacion(Muestra muestra){
-        this.zonasDeCoberturas.stream().forEach(zC -> zC.nuevaValidacionEnLaZona(muestra));
+        this.zonasDeCoberturas.stream().forEach(zC -> zC.nuevaValidacion(muestra));
     }
 
     public void nuevaZonaDeCobertura(String nombre,Ubicacion epicentro, int radio){
