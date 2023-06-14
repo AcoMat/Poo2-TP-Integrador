@@ -26,6 +26,16 @@ public class Organizacion {
         this.funcionalidadExternaNuevaValidacion = validacionMuestra;
     }
 
+
+    public void suscribirseAZona(ZonaDeCobertura zona){
+        zona.suscribirA(this);
+    }
+
+    public void deSuscribirseDe(ZonaDeCobertura zona){
+        zona.desuscribirA(this);
+    }
+
+
     //
 
     public void setFuncionalidadExternaNuevaMuestra(FuncionalidadExterna funcionalidadExterna) {
@@ -38,12 +48,11 @@ public class Organizacion {
 
     //  Funcionalidades Externas
 
-    public void eventoNuevaMuestra(Muestra muestra){
-        funcionalidadExternaNuevaMuestra.nuevoEvento(this, zonasSubscritas, muestra);
+    public void eventoNuevaMuestra(Muestra muestra, ZonaDeCobertura zona){
+        funcionalidadExternaNuevaMuestra.nuevoEvento(this, zona, muestra);
     }
 
-    public void eventoNuevaValidacion(Muestra muestra){
-        funcionalidadExternaNuevaValidacion.nuevoEvento(this, zonasSubscritas, muestra);
+    public void eventoNuevaValidacion(Muestra muestra, ZonaDeCobertura zona){
+        funcionalidadExternaNuevaValidacion.nuevoEvento(this, zona, muestra);
     }
-
 }
