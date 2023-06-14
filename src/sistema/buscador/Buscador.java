@@ -1,5 +1,5 @@
 package sistema.buscador;
-import sistema.buscador.interfacez.Muestra;
+
 import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.muestras.Muestra;
 
@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 
