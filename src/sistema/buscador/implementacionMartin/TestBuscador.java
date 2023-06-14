@@ -95,7 +95,7 @@ class TestBuscador {
 		when(muestra1.getEspecieEstadoActual()).thenReturn(tipo1);
 		when(muestra2.getEspecieEstadoActual()).thenReturn(tipo2);
 		when(muestra3.getEspecieEstadoActual()).thenReturn(tipo3);
-		
+		 
 		
 		buscador.muestraAAgregar(muestra1);
 		buscador.muestraAAgregar(muestra2);

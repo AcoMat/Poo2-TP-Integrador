@@ -2,10 +2,13 @@ package sistema.muestras;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
+
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import java.util.Date;
+
 
 
 class MuestraTest {
@@ -14,7 +17,10 @@ class MuestraTest {
 	private ITipoDeVoto2 tipo2;
 	private ITipoDeVoto2 tipo3;
 	private IUbicacion ubicacion;
+	private IUbicacion ubicacion2;
 	private IUsuario usuario;
+	private IUsuario usuario2;
+	private IManejadorDeVotos1 nuevoManejador;
 	
 	
 	@BeforeEach
@@ -23,14 +29,17 @@ class MuestraTest {
 		
 		//clases de otro programador
 		ubicacion = mock(IUbicacion.class);
+		ubicacion2 = mock( IUbicacion.class);
 		usuario = mock(IUsuario.class);
+		usuario2 = mock(IUsuario.class);
+		nuevoManejador = mock(IManejadorDeVotos1.class);
 		
 		//tiposDeIsectos
 		tipo1 = ITipoDeVoto2.Chinche_Foliada;
 		tipo2 = ITipoDeVoto2.Vinchuca_Infestans;
 		tipo3 = ITipoDeVoto2.Vinchuca_Sordida;
 		
-		
+		//mi clase a testear
 		muestra = new Muestra(tipo1, "foto.jpg", usuario, ubicacion);
 	}
 
@@ -41,63 +50,77 @@ class MuestraTest {
 
 	@Test
 	void testGetFotoURL() {
-		muestra.getFotoURL();
-		fail("Not yet implemented");
+		assertEquals("foto.jpg",muestra.getFotoURL());
 	}
 
 	@Test
 	void testGetAutor() {
-		fail("Not yet implemented");
+		assertEquals(usuario,muestra.getAutor());
 	}
 
 	@Test
 	void testGetUbicacion() {
-		fail("Not yet implemented");
+		assertEquals(ubicacion,muestra.getUbicacion());
 	}
 
 	@Test
 	void testGetManejadorVotos() {
-		fail("Not yet implemented");
+		assertEquals(ubicacion,muestra.getUbicacion());
 	}
 
 	@Test
 	void testGetFecha() {
-		fail("Not yet implemented");
-	}
+		Date fecha1 = new Date();
+		
+		muestra.setFecha(fecha1);
+		
+		assertEquals(fecha1,muestra.getFecha());
+	} 
 
 	@Test
 	void testGetEspecie() {
-		fail("Not yet implemented");
+		assertEquals(ITipoDeVoto2.Chinche_Foliada,muestra.getEspecie());
 	}
 
 	@Test
 	void testGetTodasLasOpiniones() {
 		fail("Not yet implemented");
 	}
-
+ 
 	@Test
 	void testGetUltimaVotacion() {
-		fail("Not yet implemented");
+		Date fecha1 = new Date();
+		when(nuevoManejador.getFechaUltimaVotación()).thenReturn(fecha1);
+		
+		muestra.setManejadorDeVotos(nuevoManejador);
+		
+		muestra.getUltimaVotacion();
+		
+		verify(nuevoManejador).getFechaUltimaVotación();
 	}
 
 	@Test
 	void testSetFotoURL() {
-		fail("Not yet implemented");
+		muestra.setFotoURL("nuevaFoto.jpg");
+		assertEquals("nuevaFoto.jpg",muestra.getFotoURL());
 	}
 
 	@Test
 	void testSetAutor() {
-		fail("Not yet implemented");
+		muestra.setAutor(usuario2);
+		assertEquals(usuario2,muestra.getAutor());
 	}
 
 	@Test
 	void testSetUbicacion() {
-		fail("Not yet implemented");
+		muestra.setUbicacion(ubicacion2);
+		assertEquals(ubicacion2,muestra.getUbicacion());
 	}
 
 	@Test
-	void testGetFechaUltimaOpinion() {
-		fail("Not yet implemented");
+	void testSetManejadorDeVotos() {
+		muestra.setManejadorDeVotos(nuevoManejador);
+		assertEquals(nuevoManejador,muestra.getManejadorVotos());
 	}
 
 	@Test
@@ -105,14 +128,18 @@ class MuestraTest {
 		fail("Not yet implemented");
 	}
 
+	
 	@Test
 	void testSetFecha() {
-		fail("Not yet implemented");
+		Date nuevaFecha = new Date();
+		muestra.setFecha(nuevaFecha);
+		assertEquals(nuevaFecha,muestra.getFecha());
 	}
 
 	@Test
 	void testSetEspecie() {
-		fail("Not yet implemented");
+		muestra.setEspecie(tipo2);
+		assertEquals(tipo2,muestra.getEspecie());
 	}
 
 }

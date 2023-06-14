@@ -80,6 +80,10 @@ public class Muestra {
 		this.ubicacion = ubicacion;
 	}
 	
+	public void setManejadorDeVotos(IManejadorDeVotos1 menejador) {
+		this.manejadorVotos = menejador;
+	}
+	
 	public Date  getFechaUltimaOpinion() {
 		return null; 
 		//necesito esta implementacion para el buscador.
