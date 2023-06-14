@@ -38,7 +38,7 @@ public class ZonaDeCoberturaTest {
         assertEquals(0 , zonaDePrueba.getMuestrasReportadas().size());
         zonaDePrueba.suscribirA(orgMock);
         zonaDePrueba.nuevaMuestraEnLaZona(muestraMock);
-        verify(orgMock).eventoNuevaMuestra();
+        verify(orgMock).eventoNuevaMuestra(muestraMock, zonaDePrueba);
         assertEquals(1 , zonaDePrueba.getMuestrasReportadas().size());
     }
 
@@ -46,7 +46,7 @@ public class ZonaDeCoberturaTest {
     public void nuevaValidacionEnLaZonaTest(){
         zonaDePrueba.suscribirA(orgMock);
         zonaDePrueba.nuevaValidacion(muestraMock);
-        verify(orgMock).eventoNuevaValidacion();
+        verify(orgMock).eventoNuevaValidacion(muestraMock, zonaDePrueba);
     }
 
     @Test
