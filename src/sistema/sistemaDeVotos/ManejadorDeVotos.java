@@ -13,8 +13,8 @@ public class ManejadorDeVotos {
 
 	Muestra muestraAsociada;
 
-	ArrayList<Opinion> opinionesBasicas;
-	ArrayList<Opinion> opinionesExpertas;
+	ArrayList<Opinion> opinionesBasicas = new ArrayList<Opinion>();
+	ArrayList<Opinion> opinionesExpertas = new ArrayList<Opinion>();
 
 	EstadoValidacion estadoValidacion = new VotanTodos();
 
@@ -27,8 +27,8 @@ public class ManejadorDeVotos {
 	public ArrayList<Opinion> getOpinionesExpertas() {
 		return opinionesExpertas;
 	}
-	
-	public ArrayList<Opinion> getTodasLasOpiniones(){
+
+	public ArrayList<Opinion> getTodasLasOpiniones() {
 		ArrayList<Opinion> todasLasOpiniones = new ArrayList<Opinion>();
 		todasLasOpiniones.addAll(opinionesBasicas);
 		todasLasOpiniones.addAll(opinionesExpertas);
