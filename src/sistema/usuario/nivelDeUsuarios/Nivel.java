@@ -9,7 +9,7 @@ import sistema.usuario.Usuario;
 public abstract class Nivel {
 	public abstract void opinar(Usuario usuario, Muestra muestra, TipoDeVoto voto);
 
-	public void enviarMuestra(IUsuario usuario, ITipoDeVoto2 especie, String fotoURL, IUbicacion ubicacion) {
+	public void enviarMuestra(Usuario usuario, TipoDeVoto especie, String fotoURL, Ubicacion ubicacion) {
 		Muestra nuevaMuestra = new Muestra(especie, fotoURL, usuario, ubicacion);
 		usuario.guardarMuestra(nuevaMuestra);
 	};

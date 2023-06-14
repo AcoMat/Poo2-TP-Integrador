@@ -3,6 +3,7 @@ package sistema.buscador;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sistema.muestras.Muestra;
@@ -96,9 +97,9 @@ class TestBuscador {
 	void testMuestrasConInsecto() {
 		//Test  Configuration
 		
-		when(muestra1.getEspecieEstadoActual()).thenReturn(tipo1);
-		when(muestra2.getEspecieEstadoActual()).thenReturn(tipo2);
-		when(muestra3.getEspecieEstadoActual()).thenReturn(tipo3);
+		when(muestra1.getEspecie()).thenReturn(tipo1);
+		when(muestra2.getEspecie()).thenReturn(tipo2);
+		when(muestra3.getEspecie()).thenReturn(tipo3);
 		 
 		
 		buscador.muestraAAgregar(muestra1);
@@ -110,9 +111,9 @@ class TestBuscador {
 		
 		//verify
 		
-		verify(muestra3).getEspecieEstadoActual();
-		verify(muestra2).getEspecieEstadoActual();
-		verify(muestra1).getEspecieEstadoActual();
+		verify(muestra3).getEspecie();
+		verify(muestra2).getEspecie();
+		verify(muestra1).getEspecie();
 		
 	}
 	
@@ -123,9 +124,9 @@ class TestBuscador {
 		Date fecha2 = new Date();
 		Date fecha3 = new Date();
 		
-		when(muestra1.getFechaUltimaOpinion()).thenReturn(fecha1);
-		when(muestra2.getFechaUltimaOpinion()).thenReturn(fecha2);
-		when(muestra3.getFechaUltimaOpinion()).thenReturn(fecha3);
+		when(muestra1.getFechaUltimaVotacion()).thenReturn(fecha1);
+		when(muestra2.getFechaUltimaVotacion()).thenReturn(fecha2);
+		when(muestra3.getFechaUltimaVotacion()).thenReturn(fecha3);
 		
 		buscador.muestraAAgregar(muestra1);
 		buscador.muestraAAgregar(muestra2);
@@ -133,28 +134,23 @@ class TestBuscador {
 		
 		buscador.ultimaMuestraVotada();
 		
-		verify(muestra3).getFechaUltimaOpinion();
+		verify(muestra3).getFechaUltimaVotacion();
 	}
 
 	@Test
 	void testNivelValidacion() {
 		//Test configuracion
 		
-		when(muestra1.getEstado()).thenReturn(tipo1);
-		when(muestra2.getEstado()).thenReturn(tipo2);
-		when(muestra3.getEstado()).thenReturn(tipo3);
+		when(muestra1.resultadoActual()).thenReturn(tipo1);
+		when(muestra2.resultadoActual()).thenReturn(tipo2);
+		when(muestra3.resultadoActual()).thenReturn(tipo3);
 		
 		buscador.muestraAAgregar(muestra1);
 		buscador.muestraAAgregar(muestra2);
 		buscador.muestraAAgregar(muestra3);
-	
-		//exercise
-		buscador.nivelValidacion(tipo3);
 		
 		//verify
-		verify(muestra1).getEstado();
-		verify(muestra2).getEstado();
-		verify(muestra3).getEstado();
+		assertEquals(1, buscador.nivelValidacion(tipo3).size());
 	}
 
 	@Test
@@ -168,13 +164,13 @@ class TestBuscador {
 		when(muestra2.getFecha()).thenReturn(fecha2);
 		when(muestra3.getFecha()).thenReturn(fecha3);
 		
-		when(muestra3.getEspecieEstadoActual()).thenReturn(tipo3);
-		when(muestra2.getEspecieEstadoActual()).thenReturn(tipo2);
-		when(muestra1.getEspecieEstadoActual()).thenReturn(tipo1);
+		when(muestra3.resultadoActual()).thenReturn(tipo3);
+		when(muestra2.resultadoActual()).thenReturn(tipo2);
+		when(muestra1.resultadoActual()).thenReturn(tipo1);
 		
-		when(muestra3.getEstado()).thenReturn(tipo3);
-		when(muestra2.getEstado()).thenReturn(tipo2);
-		when(muestra1.getEstado()).thenReturn(tipo1);
+		when(muestra3.getEspecie()).thenReturn(tipo3);
+		when(muestra2.getEspecie()).thenReturn(tipo2);
+		when(muestra1.getEspecie()).thenReturn(tipo1);
 		
 		
 		

@@ -1,8 +1,5 @@
 package sistema.usuario;
 
-import sistema.muestras.ITipoDeVoto2;
-import sistema.muestras.IUbicacion;
-import sistema.muestras.IUsuario;
 import sistema.muestras.Muestra;
 
 import java.util.ArrayList;
@@ -72,9 +69,9 @@ public class Usuario {
 	}
 
 	// Enviar muestras
-	public void enviarMuestra(ITipoDeVoto2 especie, String fotoURL, IUbicacion ubicacion) {
+	public void enviarMuestra(TipoDeVoto especie, String fotoURL, Ubicacion ubicacion) {
 		this.setNivel();
-		this.nivel.enviarMuestra((IUsuario) this, especie, fotoURL, ubicacion);
+		this.nivel.enviarMuestra(this, especie, fotoURL, ubicacion);
 	}
 
 	public void guardarMuestra(Muestra muestra) {

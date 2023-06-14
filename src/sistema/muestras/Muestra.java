@@ -18,15 +18,12 @@ public class Muestra {
 
 	ManejadorDeVotos manejadorVotos = new ManejadorDeVotos();
 
-	// La muestra debe conocer a "website"?? xq a la hora de validar o agregar, las
-	// zonas de cobertura tienen q estar al tanto
-
 	// Constructor
 	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
 		this.getManejadorVotos().asociarMuestra(this);
-		this.setFotoURL(fotoURL);
-		this.setAutor(autor);
-		this.setUbicacion(ubicacion);
+		this.fotoURL =fotoURL;
+		this.autor = autor;
+		this.ubicacion = ubicacion;
 		this.especie = especie;
 		this.fecha = new Date();
 		autor.opinar(this, especie);
@@ -37,63 +34,32 @@ public class Muestra {
 	public String getFotoURL() {
 		return fotoURL;
 	}
-
 	public Usuario getAutor() {
 		return autor;
 	}
-
 	public Ubicacion getUbicacion() {
 		return ubicacion;
 	}
-
 	public ManejadorDeVotos getManejadorVotos() {
 		return manejadorVotos;
 	}
-
 	public Date getFecha() {
 		return fecha;
 	}
- 
 	public TipoDeVoto getEspecie() {
 		return especie;
 	}
 
-	public ArrayList<Opinion> getTodasLasOpiniones() {
-		return this.getManejadorVotos().getTodasLasOpiniones();
-	}
+	//
 
-	public Date getUltimaVotacion() {
+	public Date getFechaUltimaVotacion() {
 		return this.getManejadorVotos().getFechaUltimaVotación();
-	}
-
-	// Setters
-
-	public void setFotoURL(String fotoURL) {
-		this.fotoURL = fotoURL;
-	}
-
-	public void setAutor(Usuario autor) {
-		this.autor = autor;
-	}
-
-	public void setUbicacion(Ubicacion ubicacion) {
-		this.ubicacion = ubicacion;
-	}
-	
-	public void setManejadorDeVotos(ManejadorDeVotos menejador) {
-		this.manejadorVotos = menejador;
 	}
 
 	public TipoDeVoto resultadoActual() {
 		return this.getManejadorVotos().resultadoDeVotacion();
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
 
-	public void setEspecie(TipoDeVoto especie) {
-		this.especie = especie;
-	}
 
 }
