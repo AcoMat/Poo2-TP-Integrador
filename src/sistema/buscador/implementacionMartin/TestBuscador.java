@@ -3,7 +3,6 @@ package sistema.buscador.implementacionMartin;
 import org.junit.*;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -12,47 +11,48 @@ import org.mockito.internal.stubbing.answers.ThrowsException;
 import org.mockito.internal.stubbing.answers.ThrowsExceptionForClassType;
 
 import sistema.muestras.Muestra;
+import sistema.sistemaDeVotos.ManejadorDeVotos;
 import sistema.sistemaDeVotos.TipoDeVoto;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Stream;
 
 class TestBuscador {
 	private Buscador buscador; 
-	private Muestra muestra1;
-	private Muestra muestra2;
-	private Muestra muestra3;
-	private TipoDeVoto tipo1;
-	private TipoDeVoto  tipo2;
-	private TipoDeVoto  tipo3;
+	private IMuestra1 muestra1;
+	private IMuestra1 muestra2;
+	private IMuestra1 muestra3;
+
+	private ITipoDeVoto1 tipo1;
+	private ITipoDeVoto1  tipo2;
+	private ITipoDeVoto1  tipo3;
 	
-	ArrayList<Muestra> muestras = new ArrayList<Muestra>();
-	ArrayList<Muestra> filtro =new ArrayList<Muestra>();
+	List<IMuestra1> muestras=new ArrayList<IMuestra1>();
+	List<IMuestra1> filtro =new ArrayList<IMuestra1>();
 
 	@BeforeEach
 	void setUp() {
+		//Test  Instalation
+		buscador =new Buscador(new ArrayList<IMuestra1>());
+		
+		//set 
+		muestra1 = mock(IMuestra1.class);
+		muestra2 = mock(IMuestra1.class);
+		muestra3 = mock(IMuestra1.class);
 
-		//Test Double Instalation
-		buscador = new Buscador(muestras);
-		
-		//set up 
-		muestra1 = new Muestra(tipo1, null, null, null);
-		muestra2 = new Muestra(tipo2, null, null, null);
-		muestra3 = new Muestra(tipo3, null, null, null);
-		
 		//tiposDeIsectos
-		tipo1 = TipoDeVoto.Vinchuca_Infestans;
-		tipo2 =TipoDeVoto.Vinchuca_Guasayana;
-		tipo3 =TipoDeVoto.Imagen_poco_clara;
-		
+		tipo1 = ITipoDeVoto1.Chinche_Foliada;
+		tipo2 =ITipoDeVoto1.Imagen_poco_clara;
+		tipo3 = ITipoDeVoto1.Ninguna;
 		
 	}
 	
 	@Test
 	void testObject() {
 		//testeo el constructor
-		assertEquals(Buscador.class, buscador);
+		assertEquals(Buscador.class, buscador.getClass());
 	}
 
 
@@ -76,86 +76,86 @@ class TestBuscador {
 		Date fecha1 = new Date();
 		Date fecha2 = new Date();
 		Date fecha3 = new Date();
-		
-		when(muestra1.getFecha()).thenReturn(fecha1);
-		when(muestra2.getFecha()).thenReturn(fecha2);
+
 		when(muestra3.getFecha()).thenReturn(fecha3);
+		when(muestra2.getFecha()).thenReturn(fecha3);
+		when(muestra1.getFecha()).thenReturn(fecha3);
 		
+		buscador.muestraAAgregar(muestra1);
+		buscador.muestraAAgregar(muestra2);
+		buscador.muestraAAgregar(muestra3);
+
+		//exercise
+		buscador.muestraCreadaEnLaFecha(fecha2);
 		
-		muestras.add(muestra1);
-		muestras.add(muestra2);
-		muestras.add(muestra3);
-		
-		
-		//Exercise
-		/*
-		 * hago un filtro que es basicamente lo que hago en el metodo pero acá no
-		 * transformo el array en un stream porque no funciona con el mock.
-		 */
-		for (IMuestra1 m:muestras) {
-			if ( m.getFecha()== fecha3) {
-				filtro.add(m);
-			}
-		}
-		
-		//Verify
-		verify(muestra1).getFecha();
-		verify(muestra2).getFecha();
+		//assertEquals(muestras, filtro);
 		verify(muestra3).getFecha();
+		verify(muestra2).getFecha();
+		verify(muestra1).getFecha();
+		
 
 	}
 
 	@Test
 	void testMuestrasConInsecto() {
-		//Test Double Configuration
-		when(muestra3.getEspecieEstadoActual()).thenReturn(tipo3);
-		when(muestra2.getEspecieEstadoActual()).thenReturn(tipo2);
+		//Test  Configuration
+		
 		when(muestra1.getEspecieEstadoActual()).thenReturn(tipo1);
+		when(muestra2.getEspecieEstadoActual()).thenReturn(tipo2);
+		when(muestra3.getEspecieEstadoActual()).thenReturn(tipo3);
 		
 		
-		muestras.add(muestra1);
-		muestras.add(muestra2);
-		muestras.add(muestra3);
-		
+		buscador.muestraAAgregar(muestra1);
+		buscador.muestraAAgregar(muestra2);
+		buscador.muestraAAgregar(muestra3);
 		//Exercise
-		/*
-		 * hago un filtro que es basicamente lo que hago en el metodo pero acá no
-		 * transformo el array en un stream porque no funciona con el mock.
-		 */
-		for (IMuestra1 m:muestras) {
-			if ( m.getEspecieEstadoActual()== tipo2) {
-				filtro.add(m);
-			}
-		}
 		
-		verify(muestra1).getEspecieEstadoActual();
-		verify(muestra2).getEspecieEstadoActual();
+		buscador.muestrasConInsecto(tipo3);
+		
+		//verify
+		
 		verify(muestra3).getEspecieEstadoActual();
+		verify(muestra2).getEspecieEstadoActual();
+		verify(muestra1).getEspecieEstadoActual();
 		
+	}
+	
+	@Test
+	void testUltimaMuestraVotada() {
+		//Test  Configuration
+		Date fecha1 = new Date();
+		Date fecha2 = new Date();
+		Date fecha3 = new Date();
+		
+		when(muestra1.getFechaUltimaOpinion()).thenReturn(fecha1);
+		when(muestra2.getFechaUltimaOpinion()).thenReturn(fecha2);
+		when(muestra3.getFechaUltimaOpinion()).thenReturn(fecha3);
+		
+		buscador.muestraAAgregar(muestra1);
+		buscador.muestraAAgregar(muestra2);
+		buscador.muestraAAgregar(muestra3);
+		
+		buscador.ultimaMuestraVotada();
+		
+		verify(muestra3).getFechaUltimaOpinion();
 	}
 
 	@Test
 	void testNivelValidacion() {
-		//Test Double Configuration
-		when(muestra3.getEstado()).thenReturn(tipo3);
-		when(muestra2.getEstado()).thenReturn(tipo2);
-		when(muestra1.getEstado()).thenReturn(tipo1);
+		//Test configuracion
 		
-		muestras.add(muestra1);
-		muestras.add(muestra2);
-		muestras.add(muestra3);
+		when(muestra1.getEspecieEstadoActual()).thenReturn(tipo1);
+		when(muestra2.getEspecieEstadoActual()).thenReturn(tipo2);
+		when(muestra3.getEspecieEstadoActual()).thenReturn(tipo3);
 		
-		//Exercise
-		/*
-		* hago un filtro que es basicamente lo que hago en el metodo pero acá no
-		* transformo el array en un stream porque no funciona con el mock.
-		*/
-		for (IMuestra1 m:muestras) {
-			if ( m.getEstado()== tipo1) {
-				filtro.add(m);
-			}
-		}
+		buscador.muestraAAgregar(muestra1);
+		buscador.muestraAAgregar(muestra2);
+		buscador.muestraAAgregar(muestra3);
+	
+		//exercise
+		buscador.nivelValidacion(tipo3);
 		
+		//verify
 		verify(muestra1).getEstado();
 		verify(muestra2).getEstado();
 		verify(muestra3).getEstado();
@@ -163,6 +163,7 @@ class TestBuscador {
 
 	@Test
 	void testBuscadorGeneral() {
+		//Test configuracion
 		Date fecha1 = new Date();
 		Date fecha2 = new Date();
 		Date fecha3 = new Date();
@@ -171,37 +172,61 @@ class TestBuscador {
 		when(muestra2.getFecha()).thenReturn(fecha2);
 		when(muestra3.getFecha()).thenReturn(fecha3);
 		
-		when(muestra3.getEstado()).thenReturn(tipo3);
-		when(muestra2.getEstado()).thenReturn(tipo2);
-		when(muestra1.getEstado()).thenReturn(tipo1);
-		
 		when(muestra3.getEspecieEstadoActual()).thenReturn(tipo3);
 		when(muestra2.getEspecieEstadoActual()).thenReturn(tipo2);
 		when(muestra1.getEspecieEstadoActual()).thenReturn(tipo1);
 		
+		when(muestra3.getEstado()).thenReturn(tipo3);
+		when(muestra2.getEstado()).thenReturn(tipo2);
+		when(muestra1.getEstado()).thenReturn(tipo1);
 		
-		muestras.add(muestra1);
-		muestras.add(muestra2);
-		muestras.add(muestra3);
 		
-		//Exercise
-		/*
-		* hago un filtro que es basicamente lo que hago en el metodo pero acá no
-		* transformo el array en un stream porque no funciona con el mock.
-		*/
-		for (IMuestra1 m:muestras) {
-			if ( m.getEstado()== tipo1 && m.getFecha() == fecha3 && m.getEspecieEstadoActual()==  tipo3) {
-				filtro.add(m);
-			}
-		}
-		verify(muestra2).getEspecieEstadoActual();
+		
+		buscador.muestraAAgregar(muestra1);
+		buscador.muestraAAgregar(muestra2);
+		buscador.muestraAAgregar(muestra3);
+		
+		//exercise
+		buscador.buscadorGeneral(fecha1,tipo1, tipo2,fecha3 );
+		
+		//verify
+		verify(muestra2).getFecha();
 		
 	}
 
+	
 	@Test
-	void testBuscador() {
-		fail("Not yet implemented");
+	void testSetMuestrasTotalesDelSys() {
+		//Test configuracion
+		ArrayList<IMuestra1> muestrasIniciales = new ArrayList<IMuestra1>();
+		muestrasIniciales.add(muestra1);
+		muestrasIniciales.add(muestra2);
+		
+		//exercise
+		buscador.setMuestrasTotalesDelSys(muestrasIniciales);
+		
+		//verify
+		assertEquals(2, buscador.getMuestrasTotalesDelSys().size());
 	}
+	
+	@Test
+	void testGetMuestrasTotalesDelSys() {
+		//Test configuracion
+		ArrayList<IMuestra1> muestrasIniciales = new ArrayList<IMuestra1>();
+		muestrasIniciales.add(muestra1);
+		muestrasIniciales.add(muestra2);
+		
+		//exercise
+		buscador.setMuestrasTotalesDelSys(muestrasIniciales);
+		
+		buscador.muestraAAgregar(muestra3);
+		buscador.muestraAAgregar(muestra3);
+		buscador.muestraAAgregar(muestra3);
+		
+		//verify
+		assertEquals(5, buscador.getMuestrasTotalesDelSys().size());
+	}
+	
 
 
 }

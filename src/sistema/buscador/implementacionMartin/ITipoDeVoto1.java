@@ -1,4 +1,11 @@
 package sistema.buscador.implementacionMartin;
 
-public interface ITipoDeVoto1 {
+public enum ITipoDeVoto1 {
+	Vinchuca_Infestans,
+	Vinchuca_Sordida,
+	Vinchuca_Guasayana,
+	Chinche_Foliada,
+	Phtia_Chinche,
+	Ninguna,
+	Imagen_poco_clara
 }
