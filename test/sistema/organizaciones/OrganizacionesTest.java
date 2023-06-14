@@ -19,7 +19,7 @@ public class OrganizacionesTest {
     FuncionalidadExterna funcExtV;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         muestraMock = mock(Muestra.class);
         zonaDeCoMock = mock(ZonaDeCobertura.class);
         ubicacionMock = mock(Ubicacion.class);
@@ -29,7 +29,7 @@ public class OrganizacionesTest {
         funcExtV = mock(FuncionalidadExterna.class);
 
         orgDePrueba = spy(new Organizacion(ubicacionMock, tipoMock, 15, funcExtM, funcExtV));
-
+    }
 
     @Test
     public void eventoNuevaMuestraTest(){
