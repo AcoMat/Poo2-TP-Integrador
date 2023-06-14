@@ -80,9 +80,22 @@ public class Muestra {
 	public void setUbicacion(Ubicacion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
+	
+	public Date  getFechaUltimaOpinion() {
+		return null; 
+		//necesito esta implementacion para el buscador.
+	}
 
 	public TipoDeVoto resultadoActual() {
 		return this.getManejadorVotos().resultadoDeVotacion();
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public void setEspecie(TipoDeVoto especie) {
+		this.especie = especie;
 	}
 
 }

@@ -1,8 +1,8 @@
 package sistema.buscador.implementacionMartin;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
-
+import java.util.stream.Collectors;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -16,8 +16,8 @@ public class Buscador {
 	}
 
 	// buscar muestras por la fecha de creacion
-	public Stream<IMuestra1> muestraCreadaEnLaFecha(Date fecha) {
-		return muestrasTotalesDelSys.stream().filter(s -> s.getFecha() == fecha);
+	public List<IMuestra1> muestraCreadaEnLaFecha(Date fecha){
+		return muestrasTotalesDelSys.stream().filter(s -> s.getFecha() == fecha).collect(Collectors.toList());
 	}
  
 	// consultar tenemos 2 arrays para opiniones
@@ -26,21 +26,21 @@ public class Buscador {
 	}
 
 	// Busqueda por la especie
-	public Stream<IMuestra1> muestrasConInsecto(ITipoDeVoto1 insecto) {
-		return muestrasTotalesDelSys.stream().filter(s -> s.getEspecieEstadoActual() == insecto);
+	public List<IMuestra1> muestrasConInsecto(ITipoDeVoto1 insecto) {
+		return muestrasTotalesDelSys.stream().filter(s -> s.getEspecieEstadoActual() == insecto).collect(Collectors.toList());
 	}
 
-	// Busqueda por la validacion (falta completar la clase validacion con la
-	// muestra
-	public Stream<IMuestra1> nivelValidacion(ITipoDeVoto1 validacionMuestra) {
-		return muestrasTotalesDelSys.stream().filter(s -> s.getEstado() == validacionMuestra);
+	// Busqueda por la validacion 
+	public  List<IMuestra1> nivelValidacion(ITipoDeVoto1 validacionMuestra) {
+		return muestrasTotalesDelSys.stream().filter(s -> s.getEstado() == validacionMuestra).collect(Collectors.toList());
 	}
-	private Stream<IMuestra1> buscadorGeneral(Date fecha, ITipoDeVoto1 insecto, ITipoDeVoto1 validacionM, Date ultimaOpinion) {
+	//busqueda conbinando todos los campos
+	List<IMuestra1> buscadorGeneral(Date fecha, ITipoDeVoto1 insecto, ITipoDeVoto1 validacionM, Date ultimaOpinion) {
 		return  muestrasTotalesDelSys.stream().filter(
-				s -> s.getFecha() == fecha &&
+				s -> (s.getFecha() == fecha &&
 				s.getEspecieEstadoActual() == insecto && 
 				s.getEstado() == validacionM && 
-				s.getFechaUltimaOpinion() == ultimaOpinion) ;
+				s.getFechaUltimaOpinion() == ultimaOpinion)).collect(Collectors.toList());
 	}
 
 	// constructor
