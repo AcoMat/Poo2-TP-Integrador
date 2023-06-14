@@ -1,23 +1,15 @@
 package sistema.buscador.implementacionMartin;
 
-import org.junit.*;
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.stubbing.answers.ThrowsException;
-import org.mockito.internal.stubbing.answers.ThrowsExceptionForClassType;
 
-import sistema.muestras.Muestra;
-import sistema.sistemaDeVotos.ManejadorDeVotos;
-import sistema.sistemaDeVotos.TipoDeVoto;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Stream;
 
 class TestBuscador {
 	private Buscador buscador; 
