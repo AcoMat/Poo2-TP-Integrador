@@ -1,5 +1,6 @@
 package sistema.organizaciones;
 
+import sistema.muestras.Muestra;
 import sistema.ubicacion.Ubicacion;
 import sistema.ubicacion.ZonaDeCobertura;
 
@@ -10,8 +11,8 @@ public class Organizacion {
     private TipoDeOrg tipoDeLaOrg;
     private int cantEmpleados;
     //
-    private FuncionalidadExterna seCargoUnaNuevaMuestra;
-    private FuncionalidadExterna seValidoUnaMuestra;
+    private FuncionalidadExterna funcionalidadExternaNuevaMuestra;
+    private FuncionalidadExterna funcionalidadExternaNuevaValidacion;
     //
     private ArrayList<ZonaDeCobertura> zonasSubscritas;
 
@@ -21,39 +22,28 @@ public class Organizacion {
         this.ubicacion = ubicacion;
         this.tipoDeLaOrg = tipoDeLaOrg;
         this.cantEmpleados = cantEmpleados;
-        this.seCargoUnaNuevaMuestra = nuevaMuestra;
-        this.seValidoUnaMuestra = validacionMuestra;
+        this.funcionalidadExternaNuevaMuestra = nuevaMuestra;
+        this.funcionalidadExternaNuevaValidacion = validacionMuestra;
     }
 
     //
 
-    public void setSeCargoUnaNuevaMuestra(FuncionalidadExterna seCargoUnaNuevaMuestra) {
-        this.seCargoUnaNuevaMuestra = seCargoUnaNuevaMuestra;
+    public void setFuncionalidadExternaNuevaMuestra(FuncionalidadExterna funcionalidadExterna) {
+        this.funcionalidadExternaNuevaMuestra = funcionalidadExterna;
     }
 
-    public void setSeValidoUnaMuestra(FuncionalidadExterna seValidoUnaMuestra) {
-        this.seValidoUnaMuestra = seValidoUnaMuestra;
+    public void setFuncionalidadExternaNuevaValidacion(FuncionalidadExterna funcionalidadExterna) {
+        this.funcionalidadExternaNuevaValidacion = funcionalidadExterna;
     }
-
-    //
-    public void suscribirseAZona(ZonaDeCobertura zona){
-        //observer
-        zona.suscribirA(this);
-    }
-
-    public void deSuscribirseDe(ZonaDeCobertura zona){
-        zona.desuscribirA(this);
-    }
-    //
 
     //  Funcionalidades Externas
 
-    public void eventoNuevaMuestra(){
-        //Todo
+    public void eventoNuevaMuestra(Muestra muestra){
+        funcionalidadExternaNuevaMuestra.nuevoEvento(this, zonasSubscritas, muestra);
     }
 
-    public void eventoNuevaValidacion(){
-        //TODO
+    public void eventoNuevaValidacion(Muestra muestra){
+        funcionalidadExternaNuevaValidacion.nuevoEvento(this, zonasSubscritas, muestra);
     }
 
 }
