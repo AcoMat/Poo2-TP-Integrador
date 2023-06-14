@@ -31,11 +31,7 @@ public class Muestra {
 		this.especie = especie;
 		this.fecha = new Date();
 		autor.opinar(this, especie);
-		// registrar voto owner
 	}
-
-	// Cuando se crea una muestra se le registra el voto del owner, del resto se
-	// encarga el sistema
 
 	// Getters
 
@@ -66,7 +62,7 @@ public class Muestra {
 	public ArrayList<Opinion> getTodasLasOpiniones() {
 		return this.getManejadorVotos().getTodasLasOpiniones();
 	}
-	
+
 	public Date getUltimaVotacion() {
 		return this.getManejadorVotos().getFechaUltimaVotación();
 	}
@@ -84,8 +80,6 @@ public class Muestra {
 	public void setUbicacion(Ubicacion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-
-	// la muestra de un experto la pueden opinar basicos?¿ seguramente no??
 
 	public TipoDeVoto resultadoActual() {
 		return this.getManejadorVotos().resultadoDeVotacion();
