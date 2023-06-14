@@ -1,29 +1,28 @@
 package sistema.muestras;
 
-import sistema.usuario.*;
+import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-import sistema.sistemaDeVotos.*;
-import sistema.ubicacion.*;
+
 
 public class Muestra {
 
 	String fotoURL;
-	Usuario autor;
-	Ubicacion ubicacion;
+	IUsuario autor;
+	IUbicacion ubicacion;
 	Date fecha;
-	TipoDeVoto especie;
+	ITipoDeVoto2 especie;
 
-	ManejadorDeVotos manejadorVotos = new ManejadorDeVotos();
+	IManejadorDeVotos1 manejadorVotos = mock(IManejadorDeVotos1.class);
 
 	// La muestra debe conocer a "website"?? xq a la hora de validar o agregar, las
 	// zonas de cobertura tienen q estar al tanto
 
 	// Constructor
 
-	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
+	public Muestra(ITipoDeVoto2 especie, String fotoURL, IUsuario autor, IUbicacion ubicacion) {
 		this.getManejadorVotos().asociarMuestra(this);
 		this.setFotoURL(fotoURL);
 		this.setAutor(autor);
@@ -39,15 +38,15 @@ public class Muestra {
 		return fotoURL;
 	}
 
-	public Usuario getAutor() {
+	public IUsuario getAutor() {
 		return autor;
 	}
 
-	public Ubicacion getUbicacion() {
+	public IUbicacion getUbicacion() {
 		return ubicacion;
 	}
 
-	public ManejadorDeVotos getManejadorVotos() {
+	public IManejadorDeVotos1 getManejadorVotos() {
 		return manejadorVotos;
 	}
 
@@ -55,11 +54,11 @@ public class Muestra {
 		return fecha;
 	}
 
-	public TipoDeVoto getEspecie() {
+	public ITipoDeVoto2 getEspecie() {
 		return especie;
 	}
 
-	public ArrayList<Opinion> getTodasLasOpiniones() {
+	public ArrayList<IOpinion1> getTodasLasOpiniones() {
 		return this.getManejadorVotos().getTodasLasOpiniones();
 	}
 
@@ -73,11 +72,11 @@ public class Muestra {
 		this.fotoURL = fotoURL;
 	}
 
-	public void setAutor(Usuario autor) {
+	public void setAutor(IUsuario autor) {
 		this.autor = autor;
 	}
 
-	public void setUbicacion(Ubicacion ubicacion) {
+	public void setUbicacion(IUbicacion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
 	
@@ -86,7 +85,7 @@ public class Muestra {
 		//necesito esta implementacion para el buscador.
 	}
 
-	public TipoDeVoto resultadoActual() {
+	public ITipoDeVoto2 resultadoActual() {
 		return this.getManejadorVotos().resultadoDeVotacion();
 	}
 
@@ -94,7 +93,7 @@ public class Muestra {
 		this.fecha = fecha;
 	}
 
-	public void setEspecie(TipoDeVoto especie) {
+	public void setEspecie(ITipoDeVoto2 especie) {
 		this.especie = especie;
 	}
 

@@ -1,18 +1,47 @@
 package sistema.muestras;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 class MuestraTest {
+	private Muestra muestra;
+	private ITipoDeVoto2 tipo1;
+	private ITipoDeVoto2 tipo2;
+	private ITipoDeVoto2 tipo3;
+	private IUbicacion ubicacion;
+	private IUsuario usuario;
+	
+	
+	@BeforeEach
+	void setUp() {
+		//Test  Instalation
+		
+		//clases de otro programador
+		ubicacion = mock(IUbicacion.class);
+		usuario = mock(IUsuario.class);
+		
+		//tiposDeIsectos
+		tipo1 = ITipoDeVoto2.Chinche_Foliada;
+		tipo2 = ITipoDeVoto2.Vinchuca_Infestans;
+		tipo3 = ITipoDeVoto2.Vinchuca_Sordida;
+		
+		
+		muestra = new Muestra(tipo1, "foto.jpg", usuario, ubicacion);
+	}
 
 	@Test
 	void testMuestra() {
-		fail("Not yet implemented");
+		assertEquals(Muestra.class, muestra.getClass());
 	}
 
 	@Test
 	void testGetFotoURL() {
+		muestra.getFotoURL();
 		fail("Not yet implemented");
 	}
 
