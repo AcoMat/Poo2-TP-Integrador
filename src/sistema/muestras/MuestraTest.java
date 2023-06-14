@@ -7,6 +7,8 @@ import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -21,7 +23,7 @@ class MuestraTest {
 	private IUsuario usuario;
 	private IUsuario usuario2;
 	private IManejadorDeVotos1 nuevoManejador;
-	
+	private ArrayList<IOpinion1> opiniones;
 	
 	@BeforeEach
 	void setUp() {
@@ -84,8 +86,14 @@ class MuestraTest {
 
 	@Test
 	void testGetTodasLasOpiniones() {
-		fail("Not yet implemented");
-	}
+		when(nuevoManejador.getTodasLasOpiniones()).thenReturn(opiniones);
+		
+		muestra.setManejadorDeVotos(nuevoManejador);
+		
+		muestra.getTodasLasOpiniones();
+		
+		verify(nuevoManejador).getTodasLasOpiniones();
+	} 
  
 	@Test
 	void testGetUltimaVotacion() {

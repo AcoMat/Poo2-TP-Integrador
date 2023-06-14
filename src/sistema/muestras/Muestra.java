@@ -53,7 +53,7 @@ public class Muestra {
 	public Date getFecha() {
 		return fecha;
 	}
-
+ 
 	public ITipoDeVoto2 getEspecie() {
 		return especie;
 	}
