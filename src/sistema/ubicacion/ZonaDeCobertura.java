@@ -33,7 +33,7 @@ public class ZonaDeCobertura {
     //  Metodos
 
     public void agregarSiEstaEnLaZona(Muestra muestra){
-        if(this.epicentro.distanciaHasta(muestra.getUbicacion()) < this.radio){
+        if(this.epicentro.distanciaHasta((Ubicacion) muestra.getUbicacion()) < this.radio){
             this.nuevaMuestraEnLaZona(muestra);
         }
     }
@@ -41,14 +41,14 @@ public class ZonaDeCobertura {
     public void nuevaMuestraEnLaZona(Muestra muestra){
         this.muestrasReportadas.add(muestra);
         for (Organizacion org:organizacionesSuscritas) {
-            org.eventoNuevaMuestra();
+            org.eventoNuevaMuestra(muestra);
         }
     }
 
 
 
     public void nuevaValidacion(Muestra muestra){
-        if(this.epicentro.distanciaHasta(muestra.getUbicacion()) < this.radio) {
+        if(this.epicentro.distanciaHasta((Ubicacion) muestra.getUbicacion()) < this.radio) {
             for (Organizacion org : organizacionesSuscritas) {
                 org.eventoNuevaValidacion();
             }
