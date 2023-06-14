@@ -30,6 +30,7 @@ public class Muestra {
 		this.setUbicacion(ubicacion);
 		this.especie = especie;
 		this.fecha = new Date();
+		autor.opinar(this, especie);
 		// registrar voto owner
 	}
 
