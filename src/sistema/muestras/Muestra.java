@@ -1,28 +1,29 @@
 package sistema.muestras;
 
-import static org.mockito.Mockito.mock;
-
 import java.util.ArrayList;
 import java.util.Date;
+import sistema.sistemaDeVotos.*;
+import sistema.ubicacion.Ubicacion;
+import sistema.usuario.Usuario;
 
 
 
 public class Muestra {
 
 	String fotoURL;
-	IUsuario autor;
-	IUbicacion ubicacion;
+	Usuario autor;
+	Ubicacion ubicacion;
 	Date fecha;
-	ITipoDeVoto2 especie;
+	TipoDeVoto especie;
 
-	IManejadorDeVotos1 manejadorVotos = mock(IManejadorDeVotos1.class);
+	ManejadorDeVotos manejadorVotos = new ManejadorDeVotos();
 
 	// La muestra debe conocer a "website"?? xq a la hora de validar o agregar, las
 	// zonas de cobertura tienen q estar al tanto
 
 	// Constructor
 
-	public Muestra(ITipoDeVoto2 especie, String fotoURL, IUsuario autor, IUbicacion ubicacion) {
+	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
 		this.getManejadorVotos().asociarMuestra(this);
 		this.setFotoURL(fotoURL);
 		this.setAutor(autor);
@@ -38,15 +39,15 @@ public class Muestra {
 		return fotoURL;
 	}
 
-	public IUsuario getAutor() {
+	public Usuario getAutor() {
 		return autor;
 	}
 
-	public IUbicacion getUbicacion() {
+	public Ubicacion getUbicacion() {
 		return ubicacion;
 	}
 
-	public IManejadorDeVotos1 getManejadorVotos() {
+	public ManejadorDeVotos getManejadorVotos() {
 		return manejadorVotos;
 	}
 
@@ -54,11 +55,11 @@ public class Muestra {
 		return fecha;
 	}
  
-	public ITipoDeVoto2 getEspecie() {
+	public TipoDeVoto getEspecie() {
 		return especie;
 	}
 
-	public ArrayList<IOpinion1> getTodasLasOpiniones() {
+	public ArrayList<Opinion> getTodasLasOpiniones() {
 		return this.getManejadorVotos().getTodasLasOpiniones();
 	}
 
@@ -72,19 +73,19 @@ public class Muestra {
 		this.fotoURL = fotoURL;
 	}
 
-	public void setAutor(IUsuario autor) {
+	public void setAutor(Usuario autor) {
 		this.autor = autor;
 	}
 
-	public void setUbicacion(IUbicacion ubicacion) {
+	public void setUbicacion(Ubicacion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
 	
-	public void setManejadorDeVotos(IManejadorDeVotos1 menejador) {
+	public void setManejadorDeVotos(ManejadorDeVotos menejador) {
 		this.manejadorVotos = menejador;
 	}
 
-	public ITipoDeVoto2 resultadoActual() {
+	public TipoDeVoto resultadoActual() {
 		return this.getManejadorVotos().resultadoDeVotacion();
 	}
 
@@ -92,7 +93,7 @@ public class Muestra {
 		this.fecha = fecha;
 	}
 
-	public void setEspecie(ITipoDeVoto2 especie) {
+	public void setEspecie(TipoDeVoto especie) {
 		this.especie = especie;
 	}
 
