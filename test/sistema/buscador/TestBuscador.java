@@ -1,10 +1,14 @@
-package sistema.buscador.implementacionMartin;
+package sistema.buscador;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import sistema.muestras.Muestra;
+import sistema.sistemaDeVotos.TipoDeVoto;
+import sistema.muestras.Muestra;
+import sistema.sistemaDeVotos.TipoDeVoto;
 
 
 import java.util.ArrayList;
@@ -12,32 +16,32 @@ import java.util.Date;
 import java.util.List;
 
 class TestBuscador {
-	private Buscador buscador; 
-	private IMuestra1 muestra1;
-	private IMuestra1 muestra2;
-	private IMuestra1 muestra3;
+	private Buscador buscador;
+	private Muestra muestra1;
+	private Muestra muestra2;
+	private Muestra muestra3;
 
-	private ITipoDeVoto1 tipo1;
-	private ITipoDeVoto1  tipo2;
-	private ITipoDeVoto1  tipo3;
+	private TipoDeVoto tipo1;
+	private TipoDeVoto tipo2;
+	private TipoDeVoto tipo3;
 	
-	List<IMuestra1> muestras=new ArrayList<IMuestra1>();
-	List<IMuestra1> filtro =new ArrayList<IMuestra1>();
+	List<Muestra> muestras= new ArrayList<Muestra>();
+	List<Muestra> filtro = new ArrayList<Muestra>();
 
 	@BeforeEach
 	void setUp() {
 		//Test  Instalation
-		buscador =new Buscador(new ArrayList<IMuestra1>());
+		buscador =new Buscador(new ArrayList<Muestra>());
 		
 		//set 
-		muestra1 = mock(IMuestra1.class);
-		muestra2 = mock(IMuestra1.class);
-		muestra3 = mock(IMuestra1.class);
+		muestra1 = mock(Muestra.class);
+		muestra2 = mock(Muestra.class);
+		muestra3 = mock(Muestra.class);
 
 		//tiposDeIsectos
-		tipo1 = ITipoDeVoto1.Chinche_Foliada;
-		tipo2 =ITipoDeVoto1.Imagen_poco_clara;
-		tipo3 = ITipoDeVoto1.Ninguna;
+		tipo1 = TipoDeVoto.Chinche_Foliada;
+		tipo2 = TipoDeVoto.Imagen_poco_clara;
+		tipo3 = TipoDeVoto.Ninguna;
 		
 	}
 	
@@ -190,7 +194,7 @@ class TestBuscador {
 	@Test
 	void testSetMuestrasTotalesDelSys() {
 		//Test configuracion
-		ArrayList<IMuestra1> muestrasIniciales = new ArrayList<IMuestra1>();
+		ArrayList<Muestra> muestrasIniciales = new ArrayList<Muestra>();
 		muestrasIniciales.add(muestra1);
 		muestrasIniciales.add(muestra2);
 		
@@ -204,7 +208,7 @@ class TestBuscador {
 	@Test
 	void testGetMuestrasTotalesDelSys() {
 		//Test configuracion
-		ArrayList<IMuestra1> muestrasIniciales = new ArrayList<IMuestra1>();
+		ArrayList<Muestra> muestrasIniciales = new ArrayList<Muestra>();
 		muestrasIniciales.add(muestra1);
 		muestrasIniciales.add(muestra2);
 		
