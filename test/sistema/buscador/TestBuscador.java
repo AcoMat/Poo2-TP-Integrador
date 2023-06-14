@@ -1,10 +1,12 @@
-package sistema.buscador.implementacionMartin;
+package sistema.buscador;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import sistema.buscador.interfacez.IMuestra1;
+import sistema.buscador.interfacez.ITipoDeVoto1;
 
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 class TestBuscador {
-	private Buscador buscador; 
+	private Buscador buscador;
 	private IMuestra1 muestra1;
 	private IMuestra1 muestra2;
 	private IMuestra1 muestra3;

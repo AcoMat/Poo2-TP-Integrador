@@ -1,4 +1,4 @@
-package sistema.buscador.implementacionMartin;
+package sistema.buscador.interfacez;
 
 public enum ITipoDeVoto1 {
 	Vinchuca_Infestans,

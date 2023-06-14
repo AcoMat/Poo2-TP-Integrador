@@ -1,5 +1,7 @@
 package sistema.ubicacion;
 
+import sistema.buscador.interfacez.IMuestra1;
+import sistema.muestras.IUbicacion;
 import sistema.muestras.Muestra;
 
 import java.util.ArrayList;
@@ -42,9 +44,9 @@ public class Ubicacion {
 		return ubicaciones.stream().filter(ubi -> ubi.distanciaHasta(this) < kms).collect(Collectors.toCollection(ArrayList::new));
 	}
 
-	public ArrayList<Muestra> muestrasAMenosDeXKm(Muestra muestra, double kms){
-		ArrayList<Muestra> todasLasMuestras = muestra.getAutor().dondeEstaRegistrado().todasLasMuestras();
-		Ubicacion ubicacionMuestra = muestra.getUbicacion();
+	public ArrayList<IMuestra1> muestrasAMenosDeXKm(Muestra muestra, double kms){
+		ArrayList<IMuestra1> todasLasMuestras = muestra.getAutor().dondeEstaRegistrado().todasLasMuestras();
+		IUbicacion ubicacionMuestra = muestra.getUbicacion();
 		return todasLasMuestras.stream()
 				.filter(m -> ubicacionMuestra.distanciaHasta(m.getUbicacion()) < kms)
 				.collect(Collectors.toCollection(ArrayList::new));

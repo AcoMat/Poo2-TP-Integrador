@@ -6,5 +6,5 @@ import sistema.ubicacion.ZonaDeCobertura;
 import java.util.ArrayList;
 
 public interface FuncionalidadExterna {
-    public void nuevoEvento(Organizacion org, ArrayList<ZonaDeCobertura> zonas, Muestra muestra);
+    public void nuevoEvento(Organizacion org, ZonaDeCobertura zona, Muestra muestra);
 }
