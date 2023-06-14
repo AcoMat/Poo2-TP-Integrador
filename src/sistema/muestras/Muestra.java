@@ -22,7 +22,6 @@ public class Muestra {
 	// zonas de cobertura tienen q estar al tanto
 
 	// Constructor
-
 	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
 		this.getManejadorVotos().asociarMuestra(this);
 		this.setFotoURL(fotoURL);
