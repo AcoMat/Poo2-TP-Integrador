@@ -2,6 +2,7 @@ package sistema.muestras;
 
 import sistema.usuario.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import sistema.sistemaDeVotos.*;
@@ -17,22 +18,20 @@ public class Muestra {
 
 	ManejadorDeVotos manejadorVotos = new ManejadorDeVotos();
 
-	// La muestra debe conocer a "website"?? xq a la hora de validar o agregar, las zonas de cobertura tienen q estar al tanto
+	// La muestra debe conocer a "website"?? xq a la hora de validar o agregar, las
+	// zonas de cobertura tienen q estar al tanto
 
 	// Constructor
 
 	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
 		this.getManejadorVotos().asociarMuestra(this);
-		this.setFotoURL(fotoURL); 
+		this.setFotoURL(fotoURL);
 		this.setAutor(autor);
 		this.setUbicacion(ubicacion);
 		this.especie = especie;
 		this.fecha = new Date();
-		// registrar voto owner
+		autor.opinar(this, especie);
 	}
-
-	// Cuando se crea una muestra se le registra el voto del owner, del resto se
-	// encarga el sistema
 
 	// Getters
 
@@ -60,6 +59,14 @@ public class Muestra {
 		return especie;
 	}
 
+	public ArrayList<Opinion> getTodasLasOpiniones() {
+		return this.getManejadorVotos().getTodasLasOpiniones();
+	}
+
+	public Date getUltimaVotacion() {
+		return this.getManejadorVotos().getFechaUltimaVotación();
+	}
+
 	// Setters
 
 	public void setFotoURL(String fotoURL) {
@@ -73,9 +80,6 @@ public class Muestra {
 	public void setUbicacion(Ubicacion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-
-
-	// la muestra de un experto la pueden opinar basicos?¿ seguramente no??
 
 	public TipoDeVoto resultadoActual() {
 		return this.getManejadorVotos().resultadoDeVotacion();
