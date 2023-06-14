@@ -1,4 +1,6 @@
-package sistema.buscador.implementacionMartin;
+package sistema.buscador.interfacez;
+
+import sistema.muestras.IUbicacion;
 
 import java.util.Date;
 
@@ -15,4 +17,5 @@ public interface IMuestra1 {
 	public Date getFechaUltimaOpinion();
 
 
+	IUbicacion getUbicacion();
 }

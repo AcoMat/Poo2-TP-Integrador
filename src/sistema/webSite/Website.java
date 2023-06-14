@@ -1,6 +1,7 @@
 package sistema.webSite;
 
-import sistema.buscador.BuscadorV2;
+import sistema.buscador.Buscador;
+import sistema.buscador.interfacez.IMuestra1;
 import sistema.muestras.Muestra;
 import sistema.ubicacion.Ubicacion;
 import sistema.ubicacion.ZonaDeCobertura;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 public class Website {
     //registrar usuarios usar el buscador etc
 
-    private BuscadorV2 motorDeBusqueda= new BuscadorV2();
+    private Buscador motorDeBusqueda= new Buscador(new ArrayList<IMuestra1>());
     private ArrayList<ZonaDeCobertura> zonasDeCoberturas = new ArrayList<ZonaDeCobertura>();
 
 
@@ -29,11 +30,11 @@ public class Website {
         this.zonasDeCoberturas.add(new ZonaDeCobertura(epicentro, radio, nombre));
     }
 
-    public ArrayList<Muestra> todasLasMuestras(){
-        return this.motorDeBusqueda.getMuestrasEnSistema();
+    public ArrayList<IMuestra1> todasLasMuestras(){
+        return this.motorDeBusqueda.getMuestrasTotalesDelSys();
     }
 
-    public BuscadorV2 getMotorDeBusqueda() {
+    public Buscador getMotorDeBusqueda() {
         return motorDeBusqueda;
     }
     public ArrayList<ZonaDeCobertura> getZonasDeCoberturas() {

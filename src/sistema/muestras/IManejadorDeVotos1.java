@@ -1,5 +1,7 @@
 package sistema.muestras;
 
+import sistema.sistemaDeVotos.Opinion;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,4 +13,8 @@ public interface IManejadorDeVotos1 {
 	
 	
 	public Date getFechaUltimaVotación();
+
+    void agregarOpinionBasica(Opinion nuevaOpinion);
+
+	void agregarOpinionExperta(Opinion nuevaOpinion);
 }

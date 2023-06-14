@@ -1,4 +1,8 @@
-package sistema.buscador.implementacionMartin;
+package sistema.buscador;
+import sistema.buscador.interfacez.IMuestra1;
+import sistema.buscador.interfacez.ITipoDeVoto1;
+import sistema.muestras.Muestra;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Buscador {
-	private ArrayList<IMuestra1> muestrasTotalesDelSys;
+	private ArrayList<IMuestra1> muestrasTotalesDelSys = new ArrayList<IMuestra1>();
 	private Comparator<IMuestra1> comparator = Comparator.comparing(IMuestra1::getFechaUltimaOpinion);
 
 	public void muestraAAgregar(IMuestra1 m) {
@@ -56,6 +60,10 @@ public class Buscador {
 
 	public void setMuestrasTotalesDelSys(ArrayList<IMuestra1> muestrasTotalesDelSys) {
 		this.muestrasTotalesDelSys = muestrasTotalesDelSys;
+	}
+
+	public void registrarNuevaMuestra(Muestra muestra){
+		this.muestrasTotalesDelSys.add((IMuestra1) muestra);
 	}
 	
 	
