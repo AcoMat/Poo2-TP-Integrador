@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 
 public class Ubicacion {
 	
-	double latitud;
-	double longitud;
+	private double latitud;
+	private double longitud;
 
 	// Getters
 

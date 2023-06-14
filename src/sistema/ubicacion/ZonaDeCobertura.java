@@ -39,7 +39,7 @@ public class ZonaDeCobertura {
     }
 
     public void nuevaMuestraEnLaZona(Muestra muestra){
-        muestrasReportadas.add(muestra);
+        this.muestrasReportadas.add(muestra);
         for (Organizacion org:organizacionesSuscritas) {
             org.eventoNuevaMuestra();
         }
@@ -47,9 +47,11 @@ public class ZonaDeCobertura {
 
 
 
-    public void nuevaValidacionEnLaZona(Muestra muestra){
-        for (Organizacion org:organizacionesSuscritas) {
-            org.eventoNuevaValidacion();
+    public void nuevaValidacion(Muestra muestra){
+        if(this.epicentro.distanciaHasta(muestra.getUbicacion()) < this.radio) {
+            for (Organizacion org : organizacionesSuscritas) {
+                org.eventoNuevaValidacion();
+            }
         }
     }
 
@@ -62,7 +64,7 @@ public class ZonaDeCobertura {
     }
 
     public boolean seSolapaCon(ZonaDeCobertura zc){
-        return (this.epicentro.distanciaHasta(zc.getEpicentro())) < zc.getRadio();
+        return (this.epicentro.distanciaHasta(zc.getEpicentro())) < this.radio;
     }
 
     public ArrayList<Muestra> getMuestrasReportadas() {

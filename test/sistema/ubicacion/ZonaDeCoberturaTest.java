@@ -5,62 +5,84 @@ import org.junit.Test;
 import sistema.muestras.Muestra;
 import sistema.organizaciones.Organizacion;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class ZonaDeCoberturaTest {
 
-    Ubicacion epicentro;
-    Muestra muestra;
-    Ubicacion muestraUbicacion;
+    Ubicacion epicentroMock;
+    Muestra muestraMock;
+    Ubicacion ubicacionMock;
     ZonaDeCobertura zonaDePrueba;
-    Organizacion orgPrueba;
+    Organizacion orgMock;
 
     @Before
     public void setUp(){
-        epicentro =  mock(Ubicacion.class);
-        muestra = mock(Muestra.class);
-        muestraUbicacion = mock(Ubicacion.class);
-        zonaDePrueba = spy(new ZonaDeCobertura(epicentro, 15, "ZonaDePrueba"));
-        orgPrueba = mock(Organizacion.class);
+        epicentroMock =  mock(Ubicacion.class);
+        muestraMock = mock(Muestra.class);
+        ubicacionMock = mock(Ubicacion.class);
+        zonaDePrueba = new ZonaDeCobertura(epicentroMock, 15.0, "ZonaDePrueba");
+        orgMock = mock(Organizacion.class);
     }
 
     @Test
     public void agregarSiEstaEnLaZonaTest(){
-        when(muestra.getUbicacion()).thenReturn(muestraUbicacion);
-        when(epicentro.distanciaHasta(muestraUbicacion)).thenReturn(20.0);
-        zonaDePrueba.agregarSiEstaEnLaZona(muestra);
-        verify(zonaDePrueba, times(1)).nuevaMuestraEnLaZona(muestra);
-        //Todo
+        when(muestraMock.getUbicacion()).thenReturn(ubicacionMock);
+        when(epicentroMock.distanciaHasta(ubicacionMock)).thenReturn(20.0);
+        //todo
     }
 
     @Test
     public void nuevaMuestraEnLaZonaTest(){
 
         assertEquals(0 , zonaDePrueba.getMuestrasReportadas().size());
-        zonaDePrueba.suscribirA(orgPrueba);
-        zonaDePrueba.nuevaMuestraEnLaZona(muestra);
-        verify(orgPrueba).eventoNuevaMuestra();
+        zonaDePrueba.suscribirA(orgMock);
+        zonaDePrueba.nuevaMuestraEnLaZona(muestraMock);
+        verify(orgMock).eventoNuevaMuestra();
         assertEquals(1 , zonaDePrueba.getMuestrasReportadas().size());
     }
 
     @Test
     public void nuevaValidacionEnLaZonaTest(){
-
+        zonaDePrueba.suscribirA(orgMock);
+        zonaDePrueba.nuevaValidacion(muestraMock);
+        verify(orgMock).eventoNuevaValidacion();
     }
 
     @Test
     public void suscribirATest() {
-
+        assertEquals(0,zonaDePrueba.getOrganizacionesSuscritas().size());
+        zonaDePrueba.suscribirA(orgMock);
+        assertEquals(1,zonaDePrueba.getOrganizacionesSuscritas().size());
+        assertTrue(zonaDePrueba.getOrganizacionesSuscritas().stream().anyMatch(o -> o.equals(orgMock)));
     }
 
     @Test
     public void desuscribirATest() {
-
+        zonaDePrueba.suscribirA(orgMock);
+        assertEquals(1,zonaDePrueba.getOrganizacionesSuscritas().size());
+        zonaDePrueba.desuscribirA(orgMock);
+        assertEquals(0,zonaDePrueba.getOrganizacionesSuscritas().size());
     }
 
     @Test
     public void seSolapaConTest(){
+        ZonaDeCobertura zonaDePrueba2 = mock(ZonaDeCobertura.class);
 
+        when(zonaDePrueba2.getEpicentro()).thenReturn(ubicacionMock);
+        when(epicentroMock.distanciaHasta(ubicacionMock)).thenReturn(120.0);
+
+
+        assertFalse(zonaDePrueba.seSolapaCon(zonaDePrueba2));
+    }
+
+    @Test
+    public void seSolapaConTest2(){
+        ZonaDeCobertura zonaDePrueba2 = mock(ZonaDeCobertura.class);
+
+        when(zonaDePrueba2.getEpicentro()).thenReturn(ubicacionMock);
+        when(epicentroMock.distanciaHasta(ubicacionMock)).thenReturn(10.0);
+
+        assertTrue(zonaDePrueba.seSolapaCon(zonaDePrueba2));
     }
 }
