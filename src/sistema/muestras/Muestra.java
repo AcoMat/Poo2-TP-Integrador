@@ -2,6 +2,7 @@ package sistema.muestras;
 
 import sistema.usuario.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import sistema.sistemaDeVotos.*;
@@ -17,13 +18,14 @@ public class Muestra {
 
 	ManejadorDeVotos manejadorVotos = new ManejadorDeVotos();
 
-	// La muestra debe conocer a "website"?? xq a la hora de validar o agregar, las zonas de cobertura tienen q estar al tanto
+	// La muestra debe conocer a "website"?? xq a la hora de validar o agregar, las
+	// zonas de cobertura tienen q estar al tanto
 
 	// Constructor
 
 	public Muestra(TipoDeVoto especie, String fotoURL, Usuario autor, Ubicacion ubicacion) {
 		this.getManejadorVotos().asociarMuestra(this);
-		this.setFotoURL(fotoURL); 
+		this.setFotoURL(fotoURL);
 		this.setAutor(autor);
 		this.setUbicacion(ubicacion);
 		this.especie = especie;
@@ -60,6 +62,10 @@ public class Muestra {
 		return especie;
 	}
 
+	public ArrayList<Opinion> getTodasLasOpiniones() {
+		return this.getManejadorVotos().getTodasLasOpiniones();
+	}
+
 	// Setters
 
 	public void setFotoURL(String fotoURL) {
@@ -73,7 +79,6 @@ public class Muestra {
 	public void setUbicacion(Ubicacion ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-
 
 	// la muestra de un experto la pueden opinar basicos?¿ seguramente no??
 
