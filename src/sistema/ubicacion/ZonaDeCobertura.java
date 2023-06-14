@@ -10,9 +10,9 @@ public class ZonaDeCobertura {
     private double radio;
     private String nombre;
 
-    private ArrayList<Muestra> muestrasReportadas;
+    private ArrayList<Muestra> muestrasReportadas = new ArrayList<Muestra>();
 
-    private ArrayList<Organizacion> organizacionesSuscritas;
+    private ArrayList<Organizacion> organizacionesSuscritas = new ArrayList<Organizacion>();
 
     public Ubicacion getEpicentro() {
         return epicentro;
@@ -63,5 +63,13 @@ public class ZonaDeCobertura {
 
     public boolean seSolapaCon(ZonaDeCobertura zc){
         return (this.epicentro.distanciaHasta(zc.getEpicentro())) < zc.getRadio();
+    }
+
+    public ArrayList<Muestra> getMuestrasReportadas() {
+        return muestrasReportadas;
+    }
+
+    public ArrayList<Organizacion> getOrganizacionesSuscritas() {
+        return organizacionesSuscritas;
     }
 }
