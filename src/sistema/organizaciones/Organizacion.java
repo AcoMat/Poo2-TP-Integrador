@@ -26,6 +26,14 @@ public class Organizacion {
         this.funcionalidadExternaNuevaValidacion = validacionMuestra;
     }
 
+    public void suscribirseAZona(ZonaDeCobertura zona){
+        zona.suscribirA(this);
+    }
+
+    public void deSuscribirseDe(ZonaDeCobertura zona){
+        zona.desuscribirA(this);
+    }
+
     //
 
     public void setFuncionalidadExternaNuevaMuestra(FuncionalidadExterna funcionalidadExterna) {

@@ -29,7 +29,7 @@ public class OrganizacionesTest {
         funcExtV = mock(FuncionalidadExterna.class);
 
         orgDePrueba = spy(new Organizacion(ubicacionMock, tipoMock, 15, funcExtM, funcExtV));
-    }
+
 
     @Test
     public void eventoNuevaMuestraTest(){
