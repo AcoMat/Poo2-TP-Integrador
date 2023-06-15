@@ -4,8 +4,6 @@ import sistema.muestras.Muestra;
 import sistema.ubicacion.Ubicacion;
 import sistema.ubicacion.ZonaDeCobertura;
 
-import java.util.ArrayList;
-
 public class Organizacion {
     private Ubicacion ubicacion;
     private TipoDeOrg tipoDeLaOrg;

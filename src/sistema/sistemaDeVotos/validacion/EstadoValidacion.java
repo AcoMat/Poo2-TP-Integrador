@@ -1,10 +1,8 @@
 package sistema.sistemaDeVotos.validacion;
 
-import sistema.muestras.Muestra;
 import sistema.sistemaDeVotos.ManejadorDeVotos;
 import sistema.sistemaDeVotos.Opinion;
 import sistema.sistemaDeVotos.TipoDeVoto;
-import sistema.usuario.Usuario;
 
 public abstract class EstadoValidacion {
 

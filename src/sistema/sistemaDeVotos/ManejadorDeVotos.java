@@ -5,8 +5,6 @@ import sistema.muestras.Muestra;
 
 import sistema.sistemaDeVotos.validacion.VotanTodos;
 import sistema.sistemaDeVotos.validacion.EstadoValidacion;
-import sistema.sistemaDeVotos.validacion.Validada;
-import sistema.usuario.Usuario;
 
 import java.util.ArrayList;
 

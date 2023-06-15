@@ -3,11 +3,8 @@ package sistema.buscador;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import sistema.muestras.Muestra;
-import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.muestras.Muestra;
 import sistema.sistemaDeVotos.TipoDeVoto;
 

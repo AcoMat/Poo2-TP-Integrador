@@ -1,7 +1,5 @@
 package sistema.usuario.nivelDeUsuarios;
 
-import sistema.sistemaDeVotos.Opinion;
-
 import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.ubicacion.Ubicacion;
 import sistema.muestras.*;

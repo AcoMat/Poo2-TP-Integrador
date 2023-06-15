@@ -2,13 +2,10 @@ package sistema.usuario;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import sistema.muestras.Muestra;
 import sistema.sistemaDeVotos.ManejadorDeVotos;
 import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.ubicacion.Ubicacion;
-import sistema.usuario.nivelDeUsuarios.CalculadorDeNivel;
 import sistema.usuario.nivelDeUsuarios.Nivel;
 import sistema.websiteapp.Website;
 
