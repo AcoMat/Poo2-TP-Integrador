@@ -14,3 +14,12 @@ https://drive.google.com/file/d/1D4uB1TCYF1ERNtvVOtnP7dfDeFrMUEBe/view?usp=shari
 - Garcia Ignacio
 - Martinez Eduardo
 
+- ## Correcciones
+
+- Mover logica / if del manejador
+- username OPiniones cambiarlo por el objeto
+- encapsular en un metodo la condicion de si esta en la zona (ZOnaDeCobertura)
+- Buscador, le falta metodos, filtrar por "creado antes De x", "despues" , "etc"
+
+
+
