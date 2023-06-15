@@ -1,18 +1,14 @@
 package sistema.ubicacion;
 
-import org.junit.Assert;
 import org.junit.Test;
 import sistema.muestras.Muestra;
-import sistema.ubicacion.Ubicacion;
 import sistema.usuario.Usuario;
 import sistema.websiteapp.Website;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

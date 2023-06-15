@@ -5,8 +5,6 @@ import org.junit.Test;
 import sistema.muestras.Muestra;
 import sistema.organizaciones.Organizacion;
 
-import java.util.concurrent.ExecutionException;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 

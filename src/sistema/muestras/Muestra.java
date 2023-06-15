@@ -1,6 +1,5 @@
 package sistema.muestras;
 
-import java.util.ArrayList;
 import java.util.Date;
 import sistema.sistemaDeVotos.*;
 import sistema.ubicacion.Ubicacion;
