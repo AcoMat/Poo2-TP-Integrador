@@ -20,6 +20,7 @@ public class Usuario {
 	private ArrayList<Muestra> muestras = new ArrayList<Muestra>();
 	private ArrayList<Opinion> opiniones = new ArrayList<Opinion>();
 	private Website website;
+	private CalculadorDeNivel calculador = new CalculadorDeNivel();
 
 	// Constructor
 	public Usuario(String name, Boolean expertoValidado, Website registradoEn) {
@@ -51,7 +52,6 @@ public class Usuario {
 
 	// Setters
 	public void setNivel() {
-		CalculadorDeNivel calculador = new CalculadorDeNivel();
 		this.nivel = calculador.esExperto(this) ? new Experto() : new Basico();
 	}
 

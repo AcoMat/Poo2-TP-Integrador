@@ -77,6 +77,7 @@ public class UsuarioTest {
         manejadorDeVotosMock = mock(ManejadorDeVotos.class);
         when(muestraMock.getManejadorVotos()).thenReturn(manejadorDeVotosMock);
         when(userLeo.getNivel()).thenReturn(nivelMock);
+        when(userLeo.isConocimientoValidado()).thenReturn(false);
         userLeo.opinar(muestraMock, tipoDeVotoMock);
 
         verify(userLeo).setNivel();
