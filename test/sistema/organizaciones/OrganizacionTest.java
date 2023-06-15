@@ -8,7 +8,7 @@ import sistema.ubicacion.ZonaDeCobertura;
 
 import static org.mockito.Mockito.*;
 
-public class OrganizacionesTest {
+public class OrganizacionTest {
 
     Muestra muestraMock;
     ZonaDeCobertura zonaDeCoMock;
@@ -42,4 +42,17 @@ public class OrganizacionesTest {
         orgDePrueba.eventoNuevaValidacion(muestraMock, zonaDeCoMock);
         verify(funcExtV).nuevoEvento(orgDePrueba, zonaDeCoMock, muestraMock);
     }
+
+    @Test
+    public void suscribirseAZona() {
+        orgDePrueba.suscribirseAZona(zonaDeCoMock);
+        verify(zonaDeCoMock).suscribirA(orgDePrueba);
+    }
+
+    @Test
+    public void deSuscribirseDe() {
+        orgDePrueba.deSuscribirseDe(zonaDeCoMock);
+        verify(zonaDeCoMock).desuscribirA(orgDePrueba);
+    }
+
 }

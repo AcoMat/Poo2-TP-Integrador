@@ -12,13 +12,13 @@ import java.util.ArrayList;
 
 public class ManejadorDeVotos {
 
-	Muestra muestraAsociada;
+	private Muestra muestraAsociada;
 
-	ArrayList<Opinion> opinionesBasicas = new ArrayList<Opinion>();
-	ArrayList<Opinion> opinionesExpertas = new ArrayList<Opinion>();
+	private ArrayList<Opinion> opinionesBasicas = new ArrayList<Opinion>();
+	private ArrayList<Opinion> opinionesExpertas = new ArrayList<Opinion>();
 
-	EstadoValidacion estadoValidacion = new VotanTodos();
-	Date fechaUltimaVotación = new Date();
+	private EstadoValidacion estadoValidacion = new VotanTodos();
+	private Date fechaUltimaVotación = new Date();
 
 	// Getters
 
@@ -79,9 +79,6 @@ public class ManejadorDeVotos {
 		estadoValidacion = estadoValidacion.cambioDeEstado(this, opinion);
 	}
 
-	public Boolean hayDosVotosExpertosIguales() {
-		return true;
-	}
 
 	// Resultado de votación actual
 	public TipoDeVoto resultadoDeVotacion() {
