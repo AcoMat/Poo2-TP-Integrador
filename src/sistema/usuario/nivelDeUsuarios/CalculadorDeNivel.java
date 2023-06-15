@@ -24,6 +24,6 @@ public class CalculadorDeNivel {
 	}
 
 	public Boolean esExperto(Usuario usuario) {
-		return usuario.isConocimientoValidado() || (this.cumpleEnvios(usuario) && this.cumpleRevisiones(usuario));
+		return (this.cumpleEnvios(usuario) && this.cumpleRevisiones(usuario)) || usuario.isConocimientoValidado();
 	}
 }

@@ -27,8 +27,4 @@ public class Opinion {
 	public Date getFecha() {
 		return fecha;
 	}
-
-	public void setVotoUserName(String votoUserName) {
-		this.votoUserName = votoUserName;
-	}
 }
