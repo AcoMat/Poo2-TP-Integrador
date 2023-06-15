@@ -5,7 +5,7 @@ import sistema.buscador.Buscador;
 import sistema.muestras.Muestra;
 import sistema.ubicacion.Ubicacion;
 import sistema.ubicacion.ZonaDeCobertura;
-import sistema.webSite.Website;
+import sistema.websiteapp.Website;
 
 import java.util.ArrayList;
 

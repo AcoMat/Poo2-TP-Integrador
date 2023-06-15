@@ -12,8 +12,8 @@ import org.junit.Before;
 import org.junit.Test;
 import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.ubicacion.*;
+import sistema.websiteapp.Website;
 import sistema.muestras.*;
-import sistema.webSite.Website;
 
 
 class UsuarioTestCases {

@@ -1,4 +1,4 @@
-package sistema.webSite;
+package sistema.websiteapp;
 
 import sistema.buscador.Buscador;
 import sistema.muestras.Muestra;
