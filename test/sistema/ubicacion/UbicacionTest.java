@@ -5,7 +5,7 @@ import org.junit.Test;
 import sistema.muestras.Muestra;
 import sistema.ubicacion.Ubicacion;
 import sistema.usuario.Usuario;
-import sistema.webSite.Website;
+import sistema.websiteapp.Website;
 
 import java.util.ArrayList;
 import java.util.Arrays;

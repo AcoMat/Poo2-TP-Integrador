@@ -10,7 +10,7 @@ import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.ubicacion.Ubicacion;
 import sistema.usuario.nivelDeUsuarios.CalculadorDeNivel;
 import sistema.usuario.nivelDeUsuarios.Nivel;
-import sistema.webSite.Website;
+import sistema.websiteapp.Website;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
