@@ -8,17 +8,19 @@ import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.usuario.Usuario;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
-class BasicoTest {
+class ExpertoTest {
 
-    Basico nivelB = new Basico();
+    Experto nivelE = new Experto();
 
     Usuario userMock;
     Muestra muestraMock;
     TipoDeVoto tipoDeVotoMock;
     ManejadorDeVotos manejadorDeVotosMock;
-
 
     @Test
     public void opinarTest() {
@@ -29,17 +31,15 @@ class BasicoTest {
 
         when(muestraMock.getManejadorVotos()).thenReturn(manejadorDeVotosMock);
 
-        nivelB.opinar(userMock, muestraMock, tipoDeVotoMock);
+        nivelE.opinar(userMock, muestraMock, tipoDeVotoMock);
 
-        verify(manejadorDeVotosMock).agregarOpinionBasica(any(Opinion.class));
-        verify(manejadorDeVotosMock, never()).agregarOpinionExperta(any(Opinion.class));
+        verify(manejadorDeVotosMock).agregarOpinionExperta(any(Opinion.class));
+        verify(manejadorDeVotosMock, never()).agregarOpinionBasica(any(Opinion.class));
         verify(userMock).guardarOpinion(eq(muestraMock), any(Opinion.class));
-
     }
 
     @Test
     public void esExpertoTest() {
-        assertFalse(nivelB.esExperto());
+        assertTrue(nivelE.esExperto());
     }
-
 }
