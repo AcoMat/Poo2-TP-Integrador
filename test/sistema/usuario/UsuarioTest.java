@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import sistema.muestras.Muestra;
+import sistema.sistemaDeVotos.ManejadorDeVotos;
 import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.ubicacion.Ubicacion;
 import sistema.usuario.nivelDeUsuarios.CalculadorDeNivel;
@@ -21,14 +22,10 @@ public class UsuarioTest {
 
     Ubicacion ubicacionMock;
     TipoDeVoto tipoDeVotoMock;
+    ManejadorDeVotos manejadorDeVotosMock;
+    Nivel nivelMock;
 
-    @Mock
-    Nivel nivelMock = mock(Nivel.class);
-    CalculadorDeNivel calMock;
-
-    @InjectMocks
     Usuario userLeo;
-
     Usuario userDiego;
 
 
@@ -40,6 +37,8 @@ public class UsuarioTest {
         ubicacionMock = mock(Ubicacion.class);
         tipoDeVotoMock = mock(TipoDeVoto.class);
 
+        nivelMock = mock(Nivel.class);
+
         userLeo = spy(new Usuario("Leo", false, web));
         userDiego = new Usuario("Diego", true, web);
     }
@@ -49,9 +48,9 @@ public class UsuarioTest {
     public void testCreacionLeoYDiego() {
 
         assertEquals("Leo", userLeo.getUserName());
-        assertFalse(userDiego.isConocimientoValidado());
+        assertFalse(userLeo.isConocimientoValidado());
 
-        assertEquals("Diego", userLeo.getUserName());
+        assertEquals("Diego", userDiego.getUserName());
         assertTrue(userDiego.isConocimientoValidado());
     }
 
@@ -62,31 +61,22 @@ public class UsuarioTest {
         verify(web).registrarNuevaMuestra(muestraMock);
     }
 
-    @Test
-    public void opinar(){
-
-    }
-
 
     @Test
     public void enviarMuestraTest() {
-        doNothing().when(userLeo).setNivel();
-        calMock = mock(CalculadorDeNivel.class);
-
-        when(calMock.esExperto(userLeo)).thenReturn(false);
-        doNothing().when(nivelMock).enviarMuestra(userLeo, tipoDeVotoMock, "url", ubicacionMock);
+        when(userLeo.getNivel()).thenReturn(nivelMock);
+        doNothing().when(nivelMock).enviarMuestra(userLeo,tipoDeVotoMock, "url", ubicacionMock);
 
         userLeo.enviarMuestra(tipoDeVotoMock, "url", ubicacionMock);
 
-        //verify(nivelMock).enviarMuestra(userLeo, tipoDeVotoMock, "url", ubicacionMock);
-        verify(userLeo).setNivel();
+        verify(nivelMock).enviarMuestra(userLeo,tipoDeVotoMock, "url", ubicacionMock);
     }
 
     @Test
     public void opinarTest() {
-        doNothing().when(userLeo).setNivel();
-        doNothing().when(nivelMock).opinar(userLeo, muestraMock, tipoDeVotoMock);
-
+        manejadorDeVotosMock = mock(ManejadorDeVotos.class);
+        when(muestraMock.getManejadorVotos()).thenReturn(manejadorDeVotosMock);
+        when(userLeo.getNivel()).thenReturn(nivelMock);
         userLeo.opinar(muestraMock, tipoDeVotoMock);
 
         verify(userLeo).setNivel();

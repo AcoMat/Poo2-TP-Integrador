@@ -17,16 +17,20 @@ public class Website {
     //  Metodos
 
     public void registrarNuevaMuestra(Muestra muestra){
-        this.motorDeBusqueda.registrarNuevaMuestra(muestra);
-        this.zonasDeCoberturas.stream().forEach(zC -> zC.agregarSiEstaEnLaZona(muestra));
+        this.getMotorDeBusqueda().registrarNuevaMuestra(muestra);
+        this.getZonasDeCoberturas().stream().forEach(zC -> zC.agregarSiEstaEnLaZona(muestra));
     }
 
     public void registrarValidacion(Muestra muestra){
-        this.zonasDeCoberturas.stream().forEach(zC -> zC.nuevaValidacion(muestra));
+        this.getZonasDeCoberturas().stream().forEach(zC -> zC.nuevaValidacion(muestra));
     }
 
     public void nuevaZonaDeCobertura(String nombre,Ubicacion epicentro, int radio){
-        this.zonasDeCoberturas.add(new ZonaDeCobertura(epicentro, radio, nombre));
+        this.getZonasDeCoberturas().add(new ZonaDeCobertura(epicentro, radio, nombre));
+    }
+
+    public void nuevaZonaDeCobertura(ZonaDeCobertura zc){
+        this.getZonasDeCoberturas().add(zc);
     }
 
     public ArrayList<Muestra> todasLasMuestras(){
