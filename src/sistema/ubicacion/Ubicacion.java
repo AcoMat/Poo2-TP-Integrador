@@ -29,9 +29,8 @@ public class Ubicacion {
 	//
 
 	public double distanciaHasta(Ubicacion ubi){
-		//Teorema de pitagoras?? o Formula de Haversine ??
+		//Se utiliza para calcular el "Teorema de pitagoras"
 
-		// Pitagoras:
 		double calculoXs = Math.pow((ubi.getLatitud()-this.getLatitud()),2);
 		double calculoYs = Math.pow((ubi.getLongitud()-this.getLongitud()),2);
 		return Math.sqrt(calculoXs + calculoYs);

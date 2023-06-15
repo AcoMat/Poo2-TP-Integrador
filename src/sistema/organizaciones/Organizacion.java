@@ -14,7 +14,6 @@ public class Organizacion {
     private FuncionalidadExterna funcionalidadExternaNuevaMuestra;
     private FuncionalidadExterna funcionalidadExternaNuevaValidacion;
     //
-    private ArrayList<ZonaDeCobertura> zonasSubscritas;
 
     //  Constructor
 

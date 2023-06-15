@@ -61,7 +61,7 @@ public class Usuario {
 	// Opinar
 	public void opinar(Muestra muestra, TipoDeVoto voto) {
 		this.setNivel();
-		this.nivel.opinar(this, muestra, voto);
+		this.getNivel().opinar(this, muestra, voto);
 	}
 
 	public void guardarOpinion(Muestra muestra, Opinion opinion) {
@@ -77,5 +77,9 @@ public class Usuario {
 	public void guardarMuestra(Muestra muestra) {
 		this.website.registrarNuevaMuestra(muestra);
 		this.muestras.add(muestra);
+	}
+
+	public Nivel getNivel() {
+		return nivel;
 	}
 }
