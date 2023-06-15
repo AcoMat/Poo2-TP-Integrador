@@ -71,7 +71,7 @@ public class Usuario {
 	// Enviar muestras
 	public void enviarMuestra(TipoDeVoto especie, String fotoURL, Ubicacion ubicacion) {
 		this.setNivel();
-		this.nivel.enviarMuestra(this, especie, fotoURL, ubicacion);
+		this.getNivel().enviarMuestra(this, especie, fotoURL, ubicacion);
 	}
 
 	public void guardarMuestra(Muestra muestra) {
