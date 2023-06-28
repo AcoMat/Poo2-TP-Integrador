@@ -8,7 +8,7 @@ import sistema.usuario.Usuario;
 public class Basico extends Nivel {
 
 	public void opinar(Usuario usuario, Muestra muestra, TipoDeVoto voto) {
-		Opinion nuevaOpinion = new Opinion(voto, usuario.getUserName());
+		Opinion nuevaOpinion = new Opinion(voto, usuario);
 		muestra.getManejadorVotos().agregarOpinionBasica(nuevaOpinion);
 		usuario.guardarOpinion(muestra, nuevaOpinion);
 	};
