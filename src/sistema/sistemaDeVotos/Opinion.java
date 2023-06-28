@@ -2,14 +2,16 @@ package sistema.sistemaDeVotos;
 
 import java.util.Date;
 
+import sistema.usuario.Usuario;
+
 public class Opinion {
 	private TipoDeVoto voto;
-	private String votoUserName;
+	private Usuario votoUserName;
 	Date fecha = new Date();
 
-	public Opinion(TipoDeVoto v, String username) {
+	public Opinion(TipoDeVoto v, Usuario usuario) {
 		this.voto = v;
-		this.votoUserName = username;
+		this.votoUserName = usuario;
 	}
 
 	public TipoDeVoto getVoto() {
@@ -20,7 +22,7 @@ public class Opinion {
 		this.voto = voto;
 	}
 
-	public String getVotoUserName() {
+	public Usuario getVotoUserName() {
 		return votoUserName;
 	}
 
