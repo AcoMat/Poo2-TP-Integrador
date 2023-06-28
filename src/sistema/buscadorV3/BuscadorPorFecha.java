@@ -8,10 +8,21 @@ import java.util.Optional;
 import sistema.muestras.Muestra;
 
 public abstract class BuscadorPorFecha implements IBuscador {
+	private Date fechaDeInteres;
 	private Comparator<Muestra> comparator = Comparator.comparing(Muestra::getFechaUltimaVotacion);
 
+	// setters y getters
+	public Date getFechaDeInteres() {
+		return fechaDeInteres;
+	}
+
+	public void setFechaDeInteres(Date fechaDeInteres) {
+		this.fechaDeInteres = fechaDeInteres;
+	}
+
+	// funciones de busqueda
 	public List<Muestra> buscarMuestras(List<Muestra> muestras) {
-		List<Muestra> resultado = this.criterioDeBusquedaPorFecha(muestras, null);
+		List<Muestra> resultado = this.criterioDeBusquedaPorFecha(muestras, this.getFechaDeInteres());
 		return resultado;
 	}
 
@@ -36,5 +47,10 @@ public abstract class BuscadorPorFecha implements IBuscador {
 	}
 
 	public abstract List<Muestra> criterioDeBusquedaPorFecha(List<Muestra> muestras, Date fecha);
+
+	public BuscadorPorFecha(Date fechaDeInteres) {
+		super();
+		this.fechaDeInteres = fechaDeInteres;
+	}
 
 }
