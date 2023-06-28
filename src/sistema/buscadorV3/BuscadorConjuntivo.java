@@ -21,5 +21,5 @@ public class BuscadorConjuntivo extends CombinadorDeBusqueda {
 		resultado.retainAll(muestra2);
 		return resultado;
 	}
-
+ 
 }
