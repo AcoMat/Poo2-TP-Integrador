@@ -8,8 +8,6 @@ import java.util.List;
 public abstract class CombinadorDeBusqueda implements IBuscador {
 	private  IBuscador primerTipoDeFiltro;
 	private  IBuscador segundoTipoDeFiltro;
-	private ArrayList<Muestra> primeraBusqueda = new ArrayList<Muestra>();
-	private ArrayList<Muestra> segundaBusqueda = new ArrayList<Muestra>();
  	
 	
 	
@@ -30,6 +28,8 @@ public abstract class CombinadorDeBusqueda implements IBuscador {
 	}
 
 	public List<Muestra> buscarMuestras(List<Muestra> muestras){
+		ArrayList<Muestra> primeraBusqueda = new ArrayList<Muestra>();
+		ArrayList<Muestra> segundaBusqueda = new ArrayList<Muestra>();
 		primeraBusqueda.addAll(this.getPrimerTipoDeFiltro().buscarMuestras(muestras));
 		segundaBusqueda.addAll(this.getSegundoTipoDeFiltro().buscarMuestras(muestras));
 		return this.tipoDeCombinacion(primeraBusqueda, segundaBusqueda);
