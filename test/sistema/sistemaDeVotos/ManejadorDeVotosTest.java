@@ -3,16 +3,21 @@ package sistema.sistemaDeVotos;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import sistema.sistemaDeVotos.validacion.EstadoValidacion;
+import sistema.sistemaDeVotos.validacion.VotanTodos;
+
 import java.util.Date;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class ManejadorDeVotosTest {
 
     ManejadorDeVotos mv = new ManejadorDeVotos();
     Opinion opinionMock;
+    EstadoValidacion estado = new VotanTodos();
 
     @BeforeEach
     public void setUp(){
@@ -43,9 +48,7 @@ public class ManejadorDeVotosTest {
 
         mv.agregarOpinionBasica(opinionMock);
 
-        assertFalse(mv.getTodasLasOpiniones().size() == 0);
-        assertFalse(mv.getTodasLasOpiniones().size() == 5);
-        assertEquals(4, mv.getTodasLasOpiniones().size());
+        assertTrue(mv.getTodasLasOpiniones().size() == 5);
     }
 
     @Test
@@ -81,6 +84,27 @@ public class ManejadorDeVotosTest {
         mv.agregarOpinionBasica(opinionMock);
 
         assertEquals(fecha, mv.getFechaUltimaVotación());
+    }
+    @Test
+    void estadoDeValidacionTest() {
+        mv.setEstadoValidacion(estado);
+    
+
+        assertEquals(estado, mv.getEstadoValidacion());
+    }
+    
+    @Test
+    void agregarOpinionTest() {
+        mv.agregarOpinion(opinionMock);
+    
+
+        verify(opinionMock).suscribirse(mv);
+    }
+    @Test
+    void TestResultadoDeVotacion() {
+    	mv.setEstadoValidacion(estado);
+
+        assertEquals(mv.resultadoDeVotacion(),estado.resultadoActual(mv));
     }
 
 }

@@ -83,4 +83,15 @@ public class ZonaDeCoberturaTest {
 
         assertTrue(zonaDePrueba.seSolapaCon(zonaDePrueba2));
     }
+    @Test
+    public void testGetEpicentro(){
+        
+        assertEquals(zonaDePrueba.getEpicentro(), epicentroMock);
+    }
+    @Test
+    public void testGetRadio(){
+        double resultado  =15.0;
+        double radio = zonaDePrueba.getRadio();
+        assertTrue(resultado == radio);
+    }
 }

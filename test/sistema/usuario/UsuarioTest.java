@@ -2,20 +2,25 @@ package sistema.usuario;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import sistema.buscadorV3.BuscadorVotadasDespuesDe;
 import sistema.muestras.Muestra;
 import sistema.sistemaDeVotos.ManejadorDeVotos;
+import sistema.sistemaDeVotos.Opinion;
 import sistema.sistemaDeVotos.TipoDeVoto;
 import sistema.ubicacion.Ubicacion;
 import sistema.usuario.nivelDeUsuarios.Nivel;
 import sistema.websiteapp.Website;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class UsuarioTest {
 
     Website web;
     Muestra muestraMock;
+    Opinion opinion;
 
     Ubicacion ubicacionMock;
     TipoDeVoto tipoDeVotoMock;
@@ -30,6 +35,7 @@ public class UsuarioTest {
     public void before() {
         web = mock(Website.class);
         muestraMock = mock(Muestra.class);
+        opinion = mock(Opinion.class);
 
         ubicacionMock = mock(Ubicacion.class);
         tipoDeVotoMock = mock(TipoDeVoto.class);
@@ -79,6 +85,20 @@ public class UsuarioTest {
 
         verify(userLeo).setNivel();
         verify(nivelMock).opinar(userLeo, muestraMock, tipoDeVotoMock);
+
+    }
+    
+    @Test
+    public void testDondeEstaRegistrado() {
+    	assertEquals(userDiego.dondeEstaRegistrado(), web);
+
+    }
+    
+    @Test
+    public void testGuardarOpinion() {
+    	userDiego.guardarOpinion(muestraMock, opinion);
+    	
+    	assertEquals(userDiego.getOpiniones().size(), 1);
 
     }
 }

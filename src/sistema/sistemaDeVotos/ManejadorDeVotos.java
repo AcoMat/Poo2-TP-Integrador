@@ -52,23 +52,21 @@ public class ManejadorDeVotos {
 	// Agregar Opiniones
 
 	public void agregarOpinionBasica(Opinion opinion) {
-		if (estadoValidacion.permiteVotoBasico()) {
-			opinionesBasicas.add(opinion);
-			this.setFechaDeUltimaVotacion(opinion.getFecha());
-			this.setEstadoValidacion(opinion);
-		}
+		opinionesBasicas.add(opinion);
+		this.setFechaDeUltimaVotacion(opinion.getFecha());
+		this.setEstadoValidacion(opinion);
 
 	}
 
 	public void agregarOpinionExperta(Opinion opinion) {
-		if (estadoValidacion.permiteVotoExperto()) {
-			opinionesExpertas.add(opinion);
-			this.setFechaDeUltimaVotacion(opinion.getFecha());
-			this.setEstadoValidacion(opinion);
-		} else {
-			System.err.println("No es posible agregar opiniones");
-		}
+		opinionesExpertas.add(opinion);
+		this.setFechaDeUltimaVotacion(opinion.getFecha());
+		this.setEstadoValidacion(opinion);
 
+	}
+
+	public void agregarOpinion(Opinion opinionAAgregar) {
+		opinionAAgregar.suscribirse(this);
 	}
 
 	//
@@ -77,6 +75,13 @@ public class ManejadorDeVotos {
 		estadoValidacion = estadoValidacion.cambioDeEstado(this, opinion);
 	}
 
+	// get Estado
+	public EstadoValidacion getEstadoValidacion() {
+		return estadoValidacion;
+	}
+	public void setEstadoValidacion(EstadoValidacion estado) {
+		this.estadoValidacion=estado ;
+	}
 
 	// Resultado de votación actual
 	public TipoDeVoto resultadoDeVotacion() {
