@@ -1,7 +1,6 @@
 package sistema.website;
 
 import org.junit.Test;
-import sistema.buscador.Buscador;
 import sistema.muestras.Muestra;
 import sistema.ubicacion.Ubicacion;
 import sistema.ubicacion.ZonaDeCobertura;
@@ -14,19 +13,16 @@ import static org.mockito.Mockito.*;
 public class WebsiteTest {
     Website web = spy(new Website());
     Muestra mockMuestra = mock(Muestra.class);
-    Buscador motorDeBusquedaMock = mock(Buscador.class);
     Ubicacion ubiMock = mock(Ubicacion.class);
     ZonaDeCobertura zc = mock(ZonaDeCobertura.class);
 
     @Test
     public void registrarNuevaMuestraTest(){
-        when(web.getMotorDeBusqueda()).thenReturn(motorDeBusquedaMock);
         web.nuevaZonaDeCobertura(zc);
 
         web.registrarNuevaMuestra(mockMuestra);
 
         verify(zc).agregarSiEstaEnLaZona(mockMuestra);
-        verify(motorDeBusquedaMock).registrarNuevaMuestra(mockMuestra);
     }
 
     @Test

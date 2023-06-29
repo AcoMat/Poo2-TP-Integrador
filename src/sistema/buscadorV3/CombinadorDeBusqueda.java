@@ -38,13 +38,10 @@ public abstract class CombinadorDeBusqueda implements IBuscador {
 	
 	public abstract List<Muestra> tipoDeCombinacion(List<Muestra> muestra1 , List<Muestra> muestra2);
 
-	public CombinadorDeBusqueda(IBuscador primerTipoDeFiltro, IBuscador segundoTipoDeFiltro,
-			ArrayList<Muestra> primeraBusqueda, ArrayList<Muestra> segundaBusqueda) {
+	public CombinadorDeBusqueda(IBuscador primerTipoDeFiltro, IBuscador segundoTipoDeFiltro) {
 		super();
 		this.primerTipoDeFiltro = primerTipoDeFiltro;
 		this.segundoTipoDeFiltro = segundoTipoDeFiltro;
-		this.primeraBusqueda = primeraBusqueda;
-		this.segundaBusqueda = segundaBusqueda;
 	}
 	
 	

@@ -1,23 +1,22 @@
 package sistema.websiteapp;
 
-import sistema.buscador.Buscador;
 import sistema.muestras.Muestra;
 import sistema.ubicacion.Ubicacion;
 import sistema.ubicacion.ZonaDeCobertura;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Website {
     //registrar usuarios usar el buscador etc
 
-    private Buscador motorDeBusqueda= new Buscador(new ArrayList<Muestra>());
+    private ArrayList<Muestra> muestras = new ArrayList<Muestra>();
     private ArrayList<ZonaDeCobertura> zonasDeCoberturas = new ArrayList<ZonaDeCobertura>();
 
 
     //  Metodos
 
     public void registrarNuevaMuestra(Muestra muestra){
-        this.getMotorDeBusqueda().registrarNuevaMuestra(muestra);
+        muestras.add(muestra);
         this.getZonasDeCoberturas().stream().forEach(zC -> zC.agregarSiEstaEnLaZona(muestra));
     }
 
@@ -34,12 +33,9 @@ public class Website {
     }
 
     public ArrayList<Muestra> todasLasMuestras(){
-        return this.motorDeBusqueda.getMuestrasTotalesDelSys();
+        return muestras;
     }
 
-    public Buscador getMotorDeBusqueda() {
-        return motorDeBusqueda;
-    }
     public ArrayList<ZonaDeCobertura> getZonasDeCoberturas() {
         return zonasDeCoberturas;
     }

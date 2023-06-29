@@ -42,8 +42,14 @@ public class Muestra {
 	public ManejadorDeVotos getManejadorVotos() {
 		return manejadorVotos;
 	}
+	public void setManejadorVotos(ManejadorDeVotos manejador) {
+		this.manejadorVotos= manejador;
+	}
 	public Date getFecha() {
 		return fecha;
+	}
+	public void setFecha(Date fecha) {
+		this.fecha= fecha;
 	}
 	public TipoDeVoto getEspecie() {
 		return especie;

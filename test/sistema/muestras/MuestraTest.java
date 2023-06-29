@@ -2,7 +2,10 @@ package sistema.muestras;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+import java.util.Date;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -73,6 +76,34 @@ class MuestraTest {
 	@Test
 	void testGetEspecie() {
 		assertEquals(TipoDeVoto.Chinche_Foliada,muestra.getEspecie());
+	}
+	
+	@Test
+	void testGetFecha() {
+		Date nuevaFecha = new Date();
+		muestra.setFecha(nuevaFecha);
+		assertEquals(muestra.getFecha(),nuevaFecha);
+	}
+	
+	@Test
+	void testGetFechaUltimaVotacion() {
+		Date nuevaFecha = new Date();
+		when(nuevoManejador.getFechaUltimaVotación()).thenReturn(nuevaFecha);
+		muestra.setManejadorVotos(nuevoManejador);
+		
+		muestra.getFechaUltimaVotacion();
+		
+		verify(nuevoManejador).getFechaUltimaVotación();
+	}
+	
+	@Test
+	void testGetResultadoActual() {
+		when(nuevoManejador.resultadoDeVotacion()).thenReturn(tipo2);
+		muestra.setManejadorVotos(nuevoManejador);
+		
+		muestra.resultadoActual();
+		
+		verify(nuevoManejador).resultadoDeVotacion();
 	}
 
 
