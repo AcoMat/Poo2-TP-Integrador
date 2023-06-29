@@ -1,5 +1,6 @@
 package sistema.websiteapp;
 
+import sistema.buscadorV3.IBuscador;
 import sistema.muestras.Muestra;
 import sistema.ubicacion.Ubicacion;
 import sistema.ubicacion.ZonaDeCobertura;
@@ -8,7 +9,7 @@ import java.util.*;
 
 public class Website {
     //registrar usuarios usar el buscador etc
-
+	private IBuscador motorDeBusqueda;
     private ArrayList<Muestra> muestras = new ArrayList<Muestra>();
     private ArrayList<ZonaDeCobertura> zonasDeCoberturas = new ArrayList<ZonaDeCobertura>();
 
