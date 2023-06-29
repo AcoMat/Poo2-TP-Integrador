@@ -12,6 +12,14 @@ public class Opinion {
 	public Opinion(TipoDeVoto v, Usuario usuario) {
 		this.voto = v;
 		this.votoUserName = usuario;
+	} 
+	public void suscribirse(ManejadorDeVotos manejador) {
+		if (manejador.getEstadoValidacion().permiteVotoBasico()) {
+			manejador.agregarOpinionBasica(this);
+		}
+		else if (manejador.getEstadoValidacion().permiteVotoExperto()) {
+			manejador.agregarOpinionExperta(this);
+		}
 	}
 
 	public TipoDeVoto getVoto() {

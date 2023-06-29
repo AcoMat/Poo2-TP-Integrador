@@ -62,5 +62,6 @@ public class UbicacionTest {
         when(muestra.getUbicacion()).thenReturn(ubi1,ubi2,ubi3,ubi4,ubi5);
         assertEquals(2, (ubi1.muestrasAMenosDeXKm(muestra,15)).size());
     }
+    
 
 }

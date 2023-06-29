@@ -2,18 +2,28 @@ package sistema.sistemaDeVotos;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.Date;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import sistema.sistemaDeVotos.validacion.EstadoValidacion;
+import sistema.sistemaDeVotos.validacion.VotanSoloExpertos;
+import sistema.sistemaDeVotos.validacion.VotanTodos;
 import sistema.usuario.Usuario;
+import sistema.usuario.nivelDeUsuarios.Basico;
 
 class OpinionTest {
 	private TipoDeVoto voto;
 	private Usuario votoUserName;
 	Date fecha = new Date(); 
 	Opinion opinion;
+	ManejadorDeVotos manejador;
+	EstadoValidacion todos = new VotanTodos() ;
+	EstadoValidacion expertos = new VotanSoloExpertos() ;
 	
 	
 	@BeforeEach
@@ -21,6 +31,7 @@ class OpinionTest {
 		voto = TipoDeVoto.Phtia_Chinche;
 		votoUserName = mock(Usuario.class);
 		opinion = new Opinion(voto, votoUserName);
+		manejador = mock(ManejadorDeVotos.class);
 		
 	}
 
@@ -51,6 +62,22 @@ class OpinionTest {
 	void testGetFecha() {
 		opinion.setFecha(fecha);
 		assertEquals(opinion.getFecha(),fecha);
+	}
+	@Test
+	void testSuscribirse() {
+		when(manejador.getEstadoValidacion()).thenReturn(todos);
+		
+		opinion.suscribirse(manejador);
+		
+		verify(manejador).agregarOpinionBasica(opinion);
+	}
+	@Test
+	void testSuscribirseExpertos() {
+		when(manejador.getEstadoValidacion()).thenReturn(expertos);
+		
+		opinion.suscribirse(manejador);
+		
+		verify(manejador).agregarOpinionExperta(opinion);
 	}
 
 }

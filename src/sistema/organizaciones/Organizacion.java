@@ -34,12 +34,23 @@ public class Organizacion {
 
 
     //
+    
 
     public void setFuncionalidadExternaNuevaMuestra(FuncionalidadExterna funcionalidadExterna) {
         this.funcionalidadExternaNuevaMuestra = funcionalidadExterna;
     }
 
-    public void setFuncionalidadExternaNuevaValidacion(FuncionalidadExterna funcionalidadExterna) {
+    public FuncionalidadExterna getFuncionalidadExternaNuevaMuestra() {
+		return funcionalidadExternaNuevaMuestra;
+	}
+
+
+	public FuncionalidadExterna getFuncionalidadExternaNuevaValidacion() {
+		return funcionalidadExternaNuevaValidacion;
+	}
+
+
+	public void setFuncionalidadExternaNuevaValidacion(FuncionalidadExterna funcionalidadExterna) {
         this.funcionalidadExternaNuevaValidacion = funcionalidadExterna;
     }
 

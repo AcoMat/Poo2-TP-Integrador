@@ -6,6 +6,7 @@ import sistema.muestras.Muestra;
 import sistema.ubicacion.Ubicacion;
 import sistema.ubicacion.ZonaDeCobertura;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class OrganizacionTest {
@@ -53,6 +54,17 @@ public class OrganizacionTest {
     public void deSuscribirseDe() {
         orgDePrueba.deSuscribirseDe(zonaDeCoMock);
         verify(zonaDeCoMock).desuscribirA(orgDePrueba);
+    }
+    
+    @Test
+    public void testSetFuncionalidadExternaNuevaMuestra() {
+        orgDePrueba.setFuncionalidadExternaNuevaMuestra(funcExtM);
+        assertEquals(orgDePrueba.getFuncionalidadExternaNuevaMuestra(),funcExtM );
+    }
+    @Test
+    public void testSetFuncionalidadExternaNuevaValidacion() {
+        orgDePrueba.setFuncionalidadExternaNuevaValidacion(funcExtM);
+        assertEquals(orgDePrueba.getFuncionalidadExternaNuevaValidacion(),funcExtM );
     }
 
 }
