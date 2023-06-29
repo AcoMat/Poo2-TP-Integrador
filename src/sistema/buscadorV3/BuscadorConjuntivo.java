@@ -7,9 +7,8 @@ import sistema.muestras.Muestra;
 
 public class BuscadorConjuntivo extends CombinadorDeBusqueda {
 
-	public BuscadorConjuntivo(IBuscador primerTipoDeFiltro, IBuscador segundoTipoDeFiltro,
-			ArrayList<Muestra> primeraBusqueda, ArrayList<Muestra> segundaBusqueda) {
-		super(primerTipoDeFiltro, segundoTipoDeFiltro, primeraBusqueda, segundaBusqueda);
+	public BuscadorConjuntivo(IBuscador primerTipoDeFiltro, IBuscador segundoTipoDeFiltro) {
+		super(primerTipoDeFiltro, segundoTipoDeFiltro);
 		// TODO Auto-generated constructor stub
 	}
 

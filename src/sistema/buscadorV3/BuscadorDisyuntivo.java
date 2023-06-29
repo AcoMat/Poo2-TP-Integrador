@@ -16,9 +16,8 @@ public class BuscadorDisyuntivo extends CombinadorDeBusqueda {
 		return resultado;
 	}
 
-	public BuscadorDisyuntivo(IBuscador primerTipoDeFiltro, IBuscador segundoTipoDeFiltro,
-			ArrayList<Muestra> primeraBusqueda, ArrayList<Muestra> segundaBusqueda) {
-		super(primerTipoDeFiltro, segundoTipoDeFiltro, primeraBusqueda, segundaBusqueda);
+	public BuscadorDisyuntivo(IBuscador primerTipoDeFiltro, IBuscador segundoTipoDeFiltro) {
+		super(primerTipoDeFiltro, segundoTipoDeFiltro);
 		// TODO Auto-generated constructor stub
 	}
 	
